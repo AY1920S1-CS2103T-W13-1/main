@@ -20,8 +20,8 @@ Responsibilities: Storage design
 
 '''
 
-=== Shirley Wang
-image::lejolly.jpg[width="150", align="left"]
+=== Wang Rong Shirley
+image::bitterg0d.png[width="150", align="left"]
 {empty}[https://github.com/bitterg0d[github]]
 
 Role: Developer +
@@ -39,7 +39,7 @@ Responsibilities: Grade Manager
 '''
 
 === Alex Wu
-image::m133225.jpg[width="150", align="left"]
+image::alexwxh.png[width="150", align="left"]
 {empty}[https://github.com/alexwxh[github]]
 
 Role: Developer +
