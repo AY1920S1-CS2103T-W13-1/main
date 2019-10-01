@@ -313,8 +313,6 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |graduating student |check what modules I need to complete |
 
-|`* *` |new student |schedule my modules |plan how to approach my future focus areas
-
 |`* *` |computing student |plan my focus area modules |choose a specialization
 
 |`* *` |competitive student |calculate my GPA |
@@ -366,20 +364,20 @@ Use case ends.
 
 [none]
 * 2a. The module is not currently tracked
-* 2b. User requests to track the module
-* 2c. The module is now tracked
+[none]
+** 2a1. User requests to track the module
+** 2a2. The module is now tracked
+
 +
 Use case resumes at step 3
 
 [%hardbreaks]
 [none]
 * 3a. ModuleBook requests for a description
-* 3b. User provides a description
-* 3c. ModuleBook requests for a datetime
-* 3d. User provides a datetime
 [none]
-** 3d1. User provided invalid datetime
-** 3d2. Display error message and go to step 3c
+** 3a1. User provides a description
+** 3a2. ModuleBook requests for a datetime
+** 3a3. User provides a datetime
 
 +
 Use case resumes at step 4.
