@@ -19,7 +19,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
      */
     public DeleteCommand parse(String args) throws ParseException {
         try {
-            Index index = Index.fromOneBased(Integer.parseInt(args));
+            Index index = Index.fromOneBased(Integer.parseInt(args.trim()));
             return new DeleteCommand(index);
         } catch (NumberFormatException pe) {
             throw new ParseException(

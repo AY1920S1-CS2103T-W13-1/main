@@ -19,26 +19,26 @@ import seedu.address.model.module.Module;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final ModuleBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Module> filteredModules;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyModuleBook addressBook, ReadOnlyUserPrefs userPrefs) {
         super();
         requireAllNonNull(addressBook, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.addressBook = new ModuleBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredModules = new FilteredList<>(this.addressBook.getPersonList());
+        filteredModules = new FilteredList<>(this.addressBook.getModuleList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new ModuleBook(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -79,43 +79,43 @@ public class ModelManager implements Model {
     //=========== AddressBook ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
+    public void setAddressBook(ReadOnlyModuleBook addressBook) {
         this.addressBook.resetData(addressBook);
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
+    public ReadOnlyModuleBook getAddressBook() {
         return addressBook;
     }
 
     @Override
     public boolean hasModule(Module module) {
         requireNonNull(module);
-        return addressBook.hasPerson(module);
+        return addressBook.hasModule(module);
     }
 
     @Override
     public void deleteModule(Module target) {
-        addressBook.removePerson(target);
+        addressBook.removeModule(target);
     }
 
     @Override
-    public void addPerson(Module module) {
-        addressBook.addPerson(module);
+    public void addModule(Module module) {
+        addressBook.addModule(module);
         updateFilteredModuleList(PREDICATE_SHOW_ALL_Modules);
     }
 
     @Override
-    public void setPerson(Module target, Module editedModule) {
+    public void setModule(Module target, Module editedModule) {
         requireAllNonNull(target, editedModule);
 
-        addressBook.setPerson(target, editedModule);
+        addressBook.setModule(target, editedModule);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered module List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code module} backed by the internal list of
      * {@code versionedAddressBook}
      */
     @Override

@@ -30,7 +30,7 @@ public class AddCommandIntegrationTest {
         Module validModule = new PersonBuilder().build();
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        expectedModel.addPerson(validModule);
+        expectedModel.addModule(validModule);
 
         assertCommandSuccess(new AddCommand(validModule), model,
                 String.format(AddCommand.MESSAGE_SUCCESS, validModule), expectedModel);
@@ -38,7 +38,7 @@ public class AddCommandIntegrationTest {
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
-        Module moduleInList = model.getAddressBook().getPersonList().get(0);
+        Module moduleInList = model.getAddressBook().getModuleList().get(0);
         assertCommandFailure(new AddCommand(moduleInList), model, AddCommand.MESSAGE_DUPLICATE_MODULE);
     }
 

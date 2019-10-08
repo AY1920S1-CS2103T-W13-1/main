@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.ModuleBook;
 import seedu.address.model.module.Module;
 
 /**
@@ -63,10 +63,10 @@ public class TypicalPersons {
     /**
      * Returns an {@code AddressBook} with all the typical persons.
      */
-    public static AddressBook getTypicalAddressBook() {
-        AddressBook ab = new AddressBook();
+    public static ModuleBook getTypicalAddressBook() {
+        ModuleBook ab = new ModuleBook();
         for (Module module : getTypicalPersons()) {
-            ab.addPerson(module);
+            ab.addModule(module);
         }
         return ab;
     }

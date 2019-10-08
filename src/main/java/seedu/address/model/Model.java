@@ -49,12 +49,12 @@ public interface Model {
     /**
      * Replaces address book data with the data in {@code addressBook}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setAddressBook(ReadOnlyModuleBook addressBook);
 
     /**
      * Returns the AddressBook
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyModuleBook getAddressBook();
 
     /**
      * Returns true if a Module with the same identity as {@code Module} exists in the module book.
@@ -71,14 +71,14 @@ public interface Model {
      * Adds the given person.
      * {@code person} must not already exist in the address book.
      */
-    void addPerson(Module module);
+    void addModule(Module module);
 
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
      * {@code target} must exist in the address book.
      * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
      */
-    void setPerson(Module target, Module editedModule);
+    void setModule(Module target, Module editedModule);
 
     /**
      * Returns an unmodifiable view of the filtered person list

@@ -13,7 +13,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Jackson-friendly version of {@link Module}.
  */
-class JsonAdaptedPerson {
+class JsonAdaptedModule {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Module's %s field is missing!";
 
@@ -25,7 +25,7 @@ class JsonAdaptedPerson {
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedPerson(@JsonProperty("moduleCode") String moduleCode, @JsonProperty("title") String title,
+    public JsonAdaptedModule(@JsonProperty("moduleCode") String moduleCode, @JsonProperty("title") String title,
                              @JsonProperty("description") String description) {
         this.moduleCode = moduleCode;
         this.title = title;
@@ -35,7 +35,7 @@ class JsonAdaptedPerson {
     /**
      * Converts a given {@code Person} into this class for Jackson use.
      */
-    public JsonAdaptedPerson(Module source) {
+    public JsonAdaptedModule(Module source) {
         moduleCode = source.getModuleCode();
         title = source.getTitle();
         description = source.getDescription();
