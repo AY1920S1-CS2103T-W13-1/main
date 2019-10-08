@@ -15,8 +15,8 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
     public static Module[] getSampleModules() {
         return new Module[]{
-                new Module("CS2030", "Introduction to Java", "much java"),
-                new Module("CS2103T", "SOFTENG", "much cancer")
+            new Module("CS2030", "Introduction to Java", "much java"),
+            new Module("CS2103T", "SOFTENG", "much cancer")
         };
     }
 

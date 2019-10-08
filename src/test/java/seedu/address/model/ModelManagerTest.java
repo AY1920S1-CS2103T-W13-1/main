@@ -3,7 +3,7 @@ package seedu.address.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_Modules;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MODULES;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
@@ -122,7 +122,7 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
-        modelManager.updateFilteredModuleList(PREDICATE_SHOW_ALL_Modules);
+        modelManager.updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();

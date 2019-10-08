@@ -14,7 +14,7 @@ public interface Model {
     /**
      * {@code Predicate} that always evaluate to true
      */
-    Predicate<Module> PREDICATE_SHOW_ALL_Modules = unused -> true;
+    Predicate<Module> PREDICATE_SHOW_ALL_MODULES = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
