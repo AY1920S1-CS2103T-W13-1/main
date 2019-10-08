@@ -11,8 +11,10 @@ import seedu.address.model.module.Module;
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
-    Predicate<Module> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
+    Predicate<Module> PREDICATE_SHOW_ALL_Modules = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -49,19 +51,21 @@ public interface Model {
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);
 
-    /** Returns the AddressBook */
+    /**
+     * Returns the AddressBook
+     */
     ReadOnlyAddressBook getAddressBook();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a Module with the same identity as {@code Module} exists in the module book.
      */
-    boolean hasPerson(Module module);
+    boolean hasModule(Module module);
 
     /**
      * Deletes the given person.
      * The person must exist in the address book.
      */
-    void deletePerson(Module target);
+    void deleteModule(Module target);
 
     /**
      * Adds the given person.
@@ -76,12 +80,15 @@ public interface Model {
      */
     void setPerson(Module target, Module editedModule);
 
-    /** Returns an unmodifiable view of the filtered person list */
-    ObservableList<Module> getFilteredPersonList();
+    /**
+     * Returns an unmodifiable view of the filtered person list
+     */
+    ObservableList<Module> getFilteredModuleList();
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredPersonList(Predicate<Module> predicate);
+    void updateFilteredModuleList(Predicate<Module> predicate);
 }

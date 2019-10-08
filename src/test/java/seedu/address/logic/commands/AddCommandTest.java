@@ -47,7 +47,7 @@ public class AddCommandTest {
         AddCommand addCommand = new AddCommand(validModule);
         ModelStub modelStub = new ModelStubWithPerson(validModule);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_MODULE, () -> addCommand.execute(modelStub));
     }
 
     @Test
@@ -124,12 +124,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Module module) {
+        public boolean hasModule(Module module) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deletePerson(Module target) {
+        public void deleteModule(Module target) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -139,12 +139,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public ObservableList<Module> getFilteredPersonList() {
+        public ObservableList<Module> getFilteredModuleList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredPersonList(Predicate<Module> predicate) {
+        public void updateFilteredModuleList(Predicate<Module> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }
@@ -161,9 +161,9 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Module module) {
+        public boolean hasModule(Module module) {
             requireNonNull(module);
-            return this.module.isSamePerson(module);
+            return this.module.isSameModule(module);
         }
     }
 
@@ -174,9 +174,9 @@ public class AddCommandTest {
         final ArrayList<Module> personsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Module module) {
+        public boolean hasModule(Module module) {
             requireNonNull(module);
-            return personsAdded.stream().anyMatch(module::isSamePerson);
+            return personsAdded.stream().anyMatch(module::isSameModule);
         }
 
         @Override

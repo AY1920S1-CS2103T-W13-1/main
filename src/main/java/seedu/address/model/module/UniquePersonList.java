@@ -17,10 +17,10 @@ import seedu.address.model.module.exceptions.ModuleNotFoundException;
  * persons uses Person#isSamePerson(Person) for equality so as to ensure that the person being added or updated is
  * unique in terms of identity in the UniquePersonList. However, the removal of a person uses Person#equals(Object) so
  * as to ensure that the person with exactly the same fields will be removed.
- *
+ * <p>
  * Supports a minimal set of list operations.
  *
- * @see Module#isSamePerson(Module)
+ * @see Module#isSameModule(Module)
  */
 public class UniquePersonList implements Iterable<Module> {
 
@@ -33,7 +33,7 @@ public class UniquePersonList implements Iterable<Module> {
      */
     public boolean contains(Module toCheck) {
         requireNonNull(toCheck);
-        return internalList.stream().anyMatch(toCheck::isSamePerson);
+        return internalList.stream().anyMatch(toCheck::isSameModule);
     }
 
     /**
@@ -61,7 +61,7 @@ public class UniquePersonList implements Iterable<Module> {
             throw new ModuleNotFoundException();
         }
 
-        if (!target.isSamePerson(editedModule) && contains(editedModule)) {
+        if (!target.isSameModule(editedModule) && contains(editedModule)) {
             throw new DuplicateModuleException();
         }
 
@@ -113,7 +113,7 @@ public class UniquePersonList implements Iterable<Module> {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof UniquePersonList // instanceof handles nulls
-                        && internalList.equals(((UniquePersonList) other).internalList));
+                && internalList.equals(((UniquePersonList) other).internalList));
     }
 
     @Override
@@ -127,7 +127,7 @@ public class UniquePersonList implements Iterable<Module> {
     private boolean personsAreUnique(List<Module> modules) {
         for (int i = 0; i < modules.size() - 1; i++) {
             for (int j = i + 1; j < modules.size(); j++) {
-                if (modules.get(i).isSamePerson(modules.get(j))) {
+                if (modules.get(i).isSameModule(modules.get(j))) {
                     return false;
                 }
             }
