@@ -7,7 +7,7 @@ import java.util.Objects;
  */
 public class Module {
 
-    // Identity fields
+    // Identity field
     private final String moduleCode;
     private final String title;
     private final String description;
@@ -34,7 +34,7 @@ public class Module {
     }
 
     /**
-     * Returns true if both modules of the same name have at least one other identity field that is the same.
+     * Returns true if both modules of the same name have the same identity field.
      * This defines a weaker notion of equality between two modules.
      */
     public boolean isSameModule(Module otherModule) {
@@ -43,9 +43,7 @@ public class Module {
         }
 
         return otherModule != null
-                && otherModule.getModuleCode().equals(getModuleCode())
-                && (otherModule.getTitle().equals(getTitle())
-                && otherModule.getDescription().equals(getDescription()));
+                && otherModule.getModuleCode().equals(getModuleCode());
     }
 
     /**
