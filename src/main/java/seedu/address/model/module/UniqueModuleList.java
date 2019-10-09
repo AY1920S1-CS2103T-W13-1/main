@@ -13,10 +13,10 @@ import seedu.address.model.module.exceptions.ModuleNotFoundException;
 
 /**
  * A list of modules that enforces uniqueness between its elements and does not allow nulls.
- * A module is considered unique by comparing using {@code module#isSamemodule(module)}. As such, adding and updating of
- * modules uses module#isSamemodule(module) for equality so as to ensure that the module being added or updated is
- * unique in terms of identity in the UniqueModuleList. However, the removal of a module uses module#equals(Object) so
- * as to ensure that the module with exactly the same fields will be removed.
+ * A module is considered unique by comparing using {@code Module#isSameModule(Module)}. As such, adding and updating of
+ * modules uses Module#isSameModule(Module) for equality so as to ensure that the module being added or updated is
+ * unique in terms of identity in the UniqueModuleList. However, the removal of a module uses Module#equals(Object) so
+ * as to ensure that the Module with exactly the same fields will be removed.
  * <p>
  * Supports a minimal set of list operations.
  *
@@ -85,8 +85,8 @@ public class UniqueModuleList implements Iterable<Module> {
     }
 
     /**
-     * Replaces the contents of this list with {@code moduless}.
-     * {@code moduless} must not contain duplicate moduless.
+     * Replaces the contents of this list with {@code modules}.
+     * {@code modules} must not contain duplicate modules.
      */
     public void setModules(List<Module> modules) {
         requireAllNonNull(modules);
