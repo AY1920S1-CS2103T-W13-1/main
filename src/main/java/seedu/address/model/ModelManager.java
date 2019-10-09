@@ -14,27 +14,27 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.module.Module;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the module book data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final ModuleBook addressBook;
+    private final ModuleBook moduleBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Module> filteredModules;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given moduleBook and userPrefs.
      */
-    public ModelManager(ReadOnlyModuleBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyModuleBook moduleBook, ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, userPrefs);
+        requireAllNonNull(moduleBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with module book: " + moduleBook + " and user prefs " + userPrefs);
 
-        this.addressBook = new ModuleBook(addressBook);
+        this.moduleBook = new ModuleBook(moduleBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredModules = new FilteredList<>(this.addressBook.getModuleList());
+        filteredModules = new FilteredList<>(this.moduleBook.getModuleList());
     }
 
     public ModelManager() {
@@ -66,42 +66,42 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getModuleBookFilePath() {
+        return userPrefs.getModuleBookFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setModuleBookFilePath(Path moduleBookFilePath) {
+        requireNonNull(moduleBookFilePath);
+        userPrefs.setModuleBookFilePath(moduleBookFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== ModuleBook ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyModuleBook addressBook) {
-        this.addressBook.resetData(addressBook);
+    public void setModuleBook(ReadOnlyModuleBook moduleBook) {
+        this.moduleBook.resetData(moduleBook);
     }
 
     @Override
-    public ReadOnlyModuleBook getAddressBook() {
-        return addressBook;
+    public ReadOnlyModuleBook getModuleBook() {
+        return moduleBook;
     }
 
     @Override
     public boolean hasModule(Module module) {
         requireNonNull(module);
-        return addressBook.hasModule(module);
+        return moduleBook.hasModule(module);
     }
 
     @Override
     public void deleteModule(Module target) {
-        addressBook.removeModule(target);
+        moduleBook.removeModule(target);
     }
 
     @Override
     public void addModule(Module module) {
-        addressBook.addModule(module);
+        moduleBook.addModule(module);
         updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
     }
 
@@ -109,14 +109,14 @@ public class ModelManager implements Model {
     public void setModule(Module target, Module editedModule) {
         requireAllNonNull(target, editedModule);
 
-        addressBook.setModule(target, editedModule);
+        moduleBook.setModule(target, editedModule);
     }
 
     //=========== Filtered module List Accessors =============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code module} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedModuleBook}
      */
     @Override
     public ObservableList<Module> getFilteredModuleList() {
@@ -143,7 +143,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
+        return moduleBook.equals(other.moduleBook)
                 && userPrefs.equals(other.userPrefs)
                 && filteredModules.equals(other.filteredModules);
     }

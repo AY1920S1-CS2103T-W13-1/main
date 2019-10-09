@@ -11,25 +11,25 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.module.Module;
 
 /**
- * Panel containing the list of persons.
+ * Panel containing the list of modules.
  */
-public class PersonListPanel extends UiPart<Region> {
-    private static final String FXML = "PersonListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
+public class ModuleListPanel extends UiPart<Region> {
+    private static final String FXML = "ModuleListPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(ModuleListPanel.class);
 
     @FXML
-    private ListView<Module> personListView;
+    private ListView<Module> moduleListView;
 
-    public PersonListPanel(ObservableList<Module> moduleList) {
+    public ModuleListPanel(ObservableList<Module> moduleList) {
         super(FXML);
-        personListView.setItems(moduleList);
-        personListView.setCellFactory(listView -> new PersonListViewCell());
+        moduleListView.setItems(moduleList);
+        moduleListView.setCellFactory(listView -> new ModuleListViewCell());
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code PersonCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Module} using a {@code ModuleCard}.
      */
-    class PersonListViewCell extends ListCell<Module> {
+    class ModuleListViewCell extends ListCell<Module> {
         @Override
         protected void updateItem(Module module, boolean empty) {
             super.updateItem(module, empty);

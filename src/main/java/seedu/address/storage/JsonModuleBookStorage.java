@@ -27,32 +27,32 @@ public class JsonModuleBookStorage implements ModuleBookStorage {
         this.filePath = filePath;
     }
 
-    public Path getAddressBookFilePath() {
+    public Path getModuleBookFilePath() {
         return filePath;
     }
 
     @Override
-    public Optional<ReadOnlyModuleBook> readAddressBook() throws DataConversionException {
-        return readAddressBook(filePath);
+    public Optional<ReadOnlyModuleBook> readModuleBook() throws DataConversionException {
+        return readModuleBook(filePath);
     }
 
     /**
-     * Similar to {@link #readAddressBook()}.
+     * Similar to {@link #readModuleBook()}.
      *
      * @param filePath location of the data. Cannot be null.
      * @throws DataConversionException if the file is not in the correct format.
      */
-    public Optional<ReadOnlyModuleBook> readAddressBook(Path filePath) throws DataConversionException {
+    public Optional<ReadOnlyModuleBook> readModuleBook(Path filePath) throws DataConversionException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableModuleBook> jsonAddressBook = JsonUtil.readJsonFile(
+        Optional<JsonSerializableModuleBook> jsonModuleBook = JsonUtil.readJsonFile(
                 filePath, JsonSerializableModuleBook.class);
-        if (!jsonAddressBook.isPresent()) {
+        if (!jsonModuleBook.isPresent()) {
             return Optional.empty();
         }
 
         try {
-            return Optional.of(jsonAddressBook.get().toModelType());
+            return Optional.of(jsonModuleBook.get().toModelType());
         } catch (IllegalValueException ive) {
             logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
             throw new DataConversionException(ive);
@@ -60,21 +60,21 @@ public class JsonModuleBookStorage implements ModuleBookStorage {
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyModuleBook addressBook) throws IOException {
-        saveAddressBook(addressBook, filePath);
+    public void saveModuleBook(ReadOnlyModuleBook moduleBook) throws IOException {
+        saveModuleBook(moduleBook, filePath);
     }
 
     /**
-     * Similar to {@link #saveAddressBook(ReadOnlyModuleBook)}.
+     * Similar to {@link #saveModuleBook(ReadOnlyModuleBook)}.
      *
      * @param filePath location of the data. Cannot be null.
      */
-    public void saveAddressBook(ReadOnlyModuleBook addressBook, Path filePath) throws IOException {
-        requireNonNull(addressBook);
+    public void saveModuleBook(ReadOnlyModuleBook moduleBook, Path filePath) throws IOException {
+        requireNonNull(moduleBook);
         requireNonNull(filePath);
 
         FileUtil.createIfMissing(filePath);
-        JsonUtil.saveJsonFile(new JsonSerializableModuleBook(addressBook), filePath);
+        JsonUtil.saveJsonFile(new JsonSerializableModuleBook(moduleBook), filePath);
     }
 
 }

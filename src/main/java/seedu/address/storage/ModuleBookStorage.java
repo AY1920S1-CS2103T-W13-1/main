@@ -16,33 +16,33 @@ public interface ModuleBookStorage {
     /**
      * Returns the file path of the data file.
      */
-    Path getAddressBookFilePath();
+    Path getModuleBookFilePath();
 
     /**
-     * Returns AddressBook data as a {@link ReadOnlyModuleBook}.
+     * Returns ModuleBook data as a {@link ReadOnlyModuleBook}.
      * Returns {@code Optional.empty()} if storage file is not found.
      *
      * @throws DataConversionException if the data in storage is not in the expected format.
      * @throws IOException             if there was any problem when reading from the storage.
      */
-    Optional<ReadOnlyModuleBook> readAddressBook() throws DataConversionException, IOException;
+    Optional<ReadOnlyModuleBook> readModuleBook() throws DataConversionException, IOException;
 
     /**
-     * @see #getAddressBookFilePath()
+     * @see #getModuleBookFilePath()
      */
-    Optional<ReadOnlyModuleBook> readAddressBook(Path filePath) throws DataConversionException, IOException;
+    Optional<ReadOnlyModuleBook> readModuleBook(Path filePath) throws DataConversionException, IOException;
 
     /**
      * Saves the given {@link ReadOnlyModuleBook} to the storage.
      *
-     * @param addressBook cannot be null.
+     * @param moduleBook cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveAddressBook(ReadOnlyModuleBook addressBook) throws IOException;
+    void saveModuleBook(ReadOnlyModuleBook moduleBook) throws IOException;
 
     /**
-     * @see #saveAddressBook(ReadOnlyModuleBook)
+     * @see #saveModuleBook(ReadOnlyModuleBook)
      */
-    void saveAddressBook(ReadOnlyModuleBook addressBook, Path filePath) throws IOException;
+    void saveModuleBook(ReadOnlyModuleBook moduleBook, Path filePath) throws IOException;
 
 }

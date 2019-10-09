@@ -9,7 +9,7 @@ import seedu.address.model.module.Module;
 import seedu.address.model.module.UniqueModuleList;
 
 /**
- * Wraps all data at the address-book level
+ * Wraps all data at the module-book level
  * Duplicates are not allowed (by .isSameModule comparison)
  */
 public class ModuleBook implements ReadOnlyModuleBook {
@@ -30,7 +30,7 @@ public class ModuleBook implements ReadOnlyModuleBook {
     }
 
     /**
-     * Creates an AddressBook using the modules in the {@code toBeCopied}
+     * Creates an ModuleBook using the modules in the {@code toBeCopied}
      */
     public ModuleBook(ReadOnlyModuleBook toBeCopied) {
         this();
@@ -48,7 +48,7 @@ public class ModuleBook implements ReadOnlyModuleBook {
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code ModuleBook} with {@code newData}.
      */
     public void resetData(ReadOnlyModuleBook newData) {
         requireNonNull(newData);
@@ -59,7 +59,7 @@ public class ModuleBook implements ReadOnlyModuleBook {
     //// module-level operations
 
     /**
-     * Returns true if a module with the same identity as {@code module} exists in the address book.
+     * Returns true if a module with the same identity as {@code module} exists in the module book.
      */
     public boolean hasModule(Module module) {
         requireNonNull(module);
@@ -67,8 +67,8 @@ public class ModuleBook implements ReadOnlyModuleBook {
     }
 
     /**
-     * Adds a module to the address book.
-     * The module must not already exist in the address book.
+     * Adds a module to the module book.
+     * The module must not already exist in the module book.
      */
     public void addModule(Module p) {
         modules.add(p);
@@ -76,8 +76,8 @@ public class ModuleBook implements ReadOnlyModuleBook {
 
     /**
      * Replaces the given module {@code target} in the list with {@code editedmodule}.
-     * {@code target} must exist in the address book.
-     * The module identity of {@code editedmodule} must not be the same as another existing module in the address book.
+     * {@code target} must exist in the module book.
+     * The module identity of {@code editedmodule} must not be the same as another existing module in the module book.
      */
     public void setModule(Module target, Module editedModule) {
         requireNonNull(editedModule);
@@ -86,8 +86,8 @@ public class ModuleBook implements ReadOnlyModuleBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the address book.
+     * Removes {@code key} from this {@code ModuleBook}.
+     * {@code key} must exist in the module book.
      */
     public void removeModule(Module key) {
         modules.remove(key);

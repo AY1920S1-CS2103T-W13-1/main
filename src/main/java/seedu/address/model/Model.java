@@ -37,24 +37,24 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' module book file path.
      */
-    Path getAddressBookFilePath();
+    Path getModuleBookFilePath();
 
     /**
-     * Sets the user prefs' address book file path.
+     * Sets the user prefs' module book file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setModuleBookFilePath(Path moduleBookFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces module book data with the data in {@code moduleBook}.
      */
-    void setAddressBook(ReadOnlyModuleBook addressBook);
+    void setModuleBook(ReadOnlyModuleBook moduleBook);
 
     /**
-     * Returns the AddressBook
+     * Returns the ModuleBook
      */
-    ReadOnlyModuleBook getAddressBook();
+    ReadOnlyModuleBook getModuleBook();
 
     /**
      * Returns true if a Module with the same identity as {@code Module} exists in the module book.
@@ -62,31 +62,31 @@ public interface Model {
     boolean hasModule(Module module);
 
     /**
-     * Deletes the given person.
-     * The person must exist in the address book.
+     * Deletes the given module.
+     * The module must exist in the module book.
      */
     void deleteModule(Module target);
 
     /**
-     * Adds the given person.
-     * {@code person} must not already exist in the address book.
+     * Adds the given module.
+     * {@code module} must not already exist in the module book.
      */
     void addModule(Module module);
 
     /**
-     * Replaces the given person {@code target} with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * Replaces the given module {@code target} with {@code editedModule}.
+     * {@code target} must exist in the module book.
+     * The module identity of {@code editedModule} must not be the same as another existing module in the module book.
      */
     void setModule(Module target, Module editedModule);
 
     /**
-     * Returns an unmodifiable view of the filtered person list
+     * Returns an unmodifiable view of the filtered module list
      */
     ObservableList<Module> getFilteredModuleList();
 
     /**
-     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered module list to filter by the given {@code predicate}.
      *
      * @throws NullPointerException if {@code predicate} is null.
      */

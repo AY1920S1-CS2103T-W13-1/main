@@ -32,14 +32,14 @@ public interface Logic {
     ReadOnlyModuleBook getModuleBook();
 
     /**
-     * Returns an unmodifiable view of the filtered list of persons
+     * Returns an unmodifiable view of the filtered list of modules
      */
-    ObservableList<Module> getFilteredPersonList();
+    ObservableList<Module> getFilteredModuleList();
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' Module book file path.
      */
-    Path getAddressBookFilePath();
+    Path getModuleBookFilePath();
 
     /**
      * Returns the user prefs' GUI settings.

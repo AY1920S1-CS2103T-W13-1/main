@@ -1,13 +1,8 @@
 package seedu.address.model.util;
 
-import java.util.Arrays;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import seedu.address.model.ModuleBook;
 import seedu.address.model.ReadOnlyModuleBook;
 import seedu.address.model.module.Module;
-import seedu.address.model.tag.Tag;
 
 /**
  * Contains utility methods for populating {@code ModuleBook} with sample data.
@@ -20,21 +15,11 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyModuleBook getSampleAddressBook() {
-        ModuleBook sampleAb = new ModuleBook();
+    public static ReadOnlyModuleBook getSampleModuleBook() {
+        ModuleBook sampleMb = new ModuleBook();
         for (Module sampleModule : getSampleModules()) {
-            sampleAb.addModule(sampleModule);
+            sampleMb.addModule(sampleModule);
         }
-        return sampleAb;
+        return sampleMb;
     }
-
-    /**
-     * Returns a tag set containing the list of strings given.
-     */
-    public static Set<Tag> getTagSet(String... strings) {
-        return Arrays.stream(strings)
-                .map(Tag::new)
-                .collect(Collectors.toSet());
-    }
-
 }

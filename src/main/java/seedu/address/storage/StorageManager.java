@@ -12,7 +12,7 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 
 /**
- * Manages storage of AddressBook data in local storage.
+ * Manages storage of ModuleBook data in local storage.
  */
 public class StorageManager implements Storage {
 
@@ -45,33 +45,33 @@ public class StorageManager implements Storage {
     }
 
 
-    // ================ AddressBook methods ==============================
+    // ================ ModuleBook methods ==============================
 
     @Override
-    public Path getAddressBookFilePath() {
-        return moduleBookStorage.getAddressBookFilePath();
+    public Path getModuleBookFilePath() {
+        return moduleBookStorage.getModuleBookFilePath();
     }
 
     @Override
-    public Optional<ReadOnlyModuleBook> readAddressBook() throws DataConversionException, IOException {
-        return readAddressBook(moduleBookStorage.getAddressBookFilePath());
+    public Optional<ReadOnlyModuleBook> readModuleBook() throws DataConversionException, IOException {
+        return readModuleBook(moduleBookStorage.getModuleBookFilePath());
     }
 
     @Override
-    public Optional<ReadOnlyModuleBook> readAddressBook(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyModuleBook> readModuleBook(Path filePath) throws DataConversionException, IOException {
         logger.fine("Attempting to read data from file: " + filePath);
-        return moduleBookStorage.readAddressBook(filePath);
+        return moduleBookStorage.readModuleBook(filePath);
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyModuleBook addressBook) throws IOException {
-        saveAddressBook(addressBook, moduleBookStorage.getAddressBookFilePath());
+    public void saveModuleBook(ReadOnlyModuleBook moduleBook) throws IOException {
+        saveModuleBook(moduleBook, moduleBookStorage.getModuleBookFilePath());
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyModuleBook addressBook, Path filePath) throws IOException {
+    public void saveModuleBook(ReadOnlyModuleBook moduleBook, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        moduleBookStorage.saveAddressBook(addressBook, filePath);
+        moduleBookStorage.saveModuleBook(moduleBook, filePath);
     }
 
 }

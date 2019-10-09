@@ -14,9 +14,9 @@ import seedu.address.model.ReadOnlyModuleBook;
 import seedu.address.model.module.Module;
 
 /**
- * An Immutable AddressBook that is serializable to JSON format.
+ * An Immutable ModuleBook that is serializable to JSON format.
  */
-@JsonRootName(value = "addressbook")
+@JsonRootName(value = "modulebook")
 class JsonSerializableModuleBook {
 
     public static final String MESSAGE_DUPLICATE_MODULES = "Module list contains duplicate Module(s).";
@@ -24,37 +24,37 @@ class JsonSerializableModuleBook {
     private final List<JsonAdaptedModule> modules = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given modules.
+     * Constructs a {@code JsonSerializableModuleBook} with the given modules.
      */
     @JsonCreator
-    public JsonSerializableModuleBook(@JsonProperty("persons") List<JsonAdaptedModule> modules) {
+    public JsonSerializableModuleBook(@JsonProperty("modules") List<JsonAdaptedModule> modules) {
         this.modules.addAll(modules);
     }
 
     /**
-     * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
+     * Converts a given {@code ReadOnlyModuleBook} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
+     * @param source future changes to this will not affect the created {@code JsonSerializableModuleBook}.
      */
     public JsonSerializableModuleBook(ReadOnlyModuleBook source) {
         modules.addAll(source.getModuleList().stream().map(JsonAdaptedModule::new).collect(Collectors.toList()));
     }
 
     /**
-     * Converts this address book into the model's {@code AddressBook} object.
+     * Converts this module book into the model's {@code ModuleBook} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
     public ModuleBook toModelType() throws IllegalValueException {
-        ModuleBook addressBook = new ModuleBook();
+        ModuleBook moduleBook = new ModuleBook();
         for (JsonAdaptedModule jsonAdaptedModule : modules) {
             Module module = jsonAdaptedModule.toModelType();
-            if (addressBook.hasModule(module)) {
+            if (moduleBook.hasModule(module)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_MODULES);
             }
-            addressBook.addModule(module);
+            moduleBook.addModule(module);
         }
-        return addressBook;
+        return moduleBook;
     }
 
 }
