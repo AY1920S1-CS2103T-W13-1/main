@@ -75,17 +75,6 @@ public class ModuleBook implements ReadOnlyModuleBook {
     }
 
     /**
-     * Replaces the given module {@code target} in the list with {@code editedmodule}.
-     * {@code target} must exist in the module book.
-     * The module identity of {@code editedmodule} must not be the same as another existing module in the module book.
-     */
-    public void setModule(Module target, Module editedModule) {
-        requireNonNull(editedModule);
-
-        modules.setModule(target, editedModule);
-    }
-
-    /**
      * Removes {@code key} from this {@code ModuleBook}.
      * {@code key} must exist in the module book.
      */

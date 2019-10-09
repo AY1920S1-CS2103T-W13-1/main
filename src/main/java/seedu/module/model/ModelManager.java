@@ -105,13 +105,6 @@ public class ModelManager implements Model {
         updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
     }
 
-    @Override
-    public void setModule(Module target, Module editedModule) {
-        requireAllNonNull(target, editedModule);
-
-        moduleBook.setModule(target, editedModule);
-    }
-
     //=========== Filtered module List Accessors =============================================================
 
     /**
