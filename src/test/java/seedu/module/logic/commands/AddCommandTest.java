@@ -37,7 +37,8 @@
 
 //         CommandResult commandResult = new AddCommand(validModule).execute(modelStub);
 
-//         assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validModule), commandResult.getFeedbackToUser());
+//         assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validModule),
+//              commandResult.getFeedbackToUser());
 //         assertEquals(Arrays.asList(validModule), modelStub.personsAdded);
 //     }
 
@@ -47,7 +48,8 @@
 //         AddCommand addCommand = new AddCommand(validModule);
 //         ModelStub modelStub = new ModelStubWithPerson(validModule);
 
-//         assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_MODULE, () -> addCommand.execute(modelStub));
+//         assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_MODULE,
+//            () -> addCommand.execute(modelStub));
 //     }
 
 //     @Test
