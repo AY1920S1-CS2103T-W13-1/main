@@ -6,7 +6,7 @@ import java.util.Objects;
  * Represents an Archived Module. An Archived Module is an Object containing data on a module
  * provided by the institution. Should be read-only.
  */
-public class ArchivedModule {
+public class ArchivedModule implements Module{
 
     // Identity field
     private final String moduleCode;

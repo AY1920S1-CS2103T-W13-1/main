@@ -3,9 +3,9 @@ package seedu.module.model.module;
 import java.util.Objects;
 
 /**
- * Represents a Module in the ModuleList.
+ * Represents a TrackedModule in the ModuleList.
  */
-public class TrackedModule {
+public class TrackedModule implements Module{
 
     // Identity field
     private final String moduleCode;
