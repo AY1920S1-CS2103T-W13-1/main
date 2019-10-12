@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.module.commons.core.GuiSettings;
 import seedu.module.commons.core.LogsCenter;
+import seedu.module.model.module.ArchivedModule;
 import seedu.module.model.module.Module;
 
 /**
@@ -22,6 +23,7 @@ public class ModelManager implements Model {
     private final ModuleBook moduleBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Module> filteredModules;
+    private final FilteredList<ArchivedModule> filteredArchivedModules;
 
     /**
      * Initializes a ModelManager with the given moduleBook and userPrefs.
@@ -35,6 +37,7 @@ public class ModelManager implements Model {
         this.moduleBook = new ModuleBook(moduleBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredModules = new FilteredList<>(this.moduleBook.getModuleList());
+        filteredArchivedModules = new FilteredList<>(this.moduleBook.getArchivedModuleList());
     }
 
     public ModelManager() {
@@ -121,6 +124,24 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredModules.setPredicate(predicate);
     }
+
+    //=========== Filtered ArchivedModule List Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code ArchivedModule} backed by the internal list of.
+     * {@code versionedModuleBook}
+     */
+    @Override
+    public ObservableList<ArchivedModule> getFilteredArchivedModuleList() {
+        return filteredArchivedModules;
+    }
+
+    @Override
+    public void updateFilteredArchivedModuleList(Predicate<ArchivedModule> predicate) {
+        requireNonNull(predicate);
+        filteredArchivedModules.setPredicate(predicate);
+    }
+
 
     @Override
     public boolean equals(Object obj) {

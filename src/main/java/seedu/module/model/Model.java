@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.module.commons.core.GuiSettings;
+import seedu.module.model.module.ArchivedModule;
 import seedu.module.model.module.Module;
 
 /**
@@ -77,6 +78,18 @@ public interface Model {
      * Returns an unmodifiable view of the filtered module list
      */
     ObservableList<Module> getFilteredModuleList();
+
+    /**
+     * Returns an unmodifiable view of the filtered module list within the archive list.
+     */
+    ObservableList<ArchivedModule> getFilteredArchivedModuleList();
+
+    /**
+     * Updates the filter of the filtered archived module list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredArchivedModuleList(Predicate<ArchivedModule> predicate);
 
     /**
      * Updates the filter of the filtered module list to filter by the given {@code predicate}.

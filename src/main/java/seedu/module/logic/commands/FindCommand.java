@@ -4,33 +4,34 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.module.commons.core.Messages;
 import seedu.module.model.Model;
-import seedu.module.model.module.NameContainsKeywordsPredicate;
+import seedu.module.model.module.ArchivedNameContainsKeywordsPredicate;
 
 /**
- * Finds and lists all modules in Module book with names that contain any of the argument keywords.
+ * Finds and lists all modules in Module book ArchivedModuleList with names that contain any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all Modules whose names contain any of "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all Modules in the archive of all modules with"
+            + " names that contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " cs2103";
 
-    private final NameContainsKeywordsPredicate predicate;
+    private final ArchivedNameContainsKeywordsPredicate predicate;
 
-    public FindCommand(NameContainsKeywordsPredicate predicate) {
+    public FindCommand(ArchivedNameContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.updateFilteredModuleList(predicate);
+        model.updateFilteredArchivedModuleList(predicate);
         return new CommandResult(
-                String.format(Messages.MESSAGE_MODULES_LISTED_OVERVIEW, model.getFilteredModuleList().size()));
+                String.format(Messages.MESSAGE_MODULES_LISTED_OVERVIEW, model.getFilteredArchivedModuleList().size()));
     }
 
     @Override
