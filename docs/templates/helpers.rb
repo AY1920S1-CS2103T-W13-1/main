@@ -10,10 +10,10 @@ unless defined? Slim::Include
   fail 'asciidoctor: FAILED: HTML5/Slim backend needs Slim >= 2.1.0!'
 end
 
-# Add custom functions to this trackedModule that you want to use in your Slim
+# Add custom functions to this module that you want to use in your Slim
 # templates. Within the template you can invoke them as top-level functions
 # just like in Haml.
-trackedModule Slim::Helpers
+module Slim::Helpers
 
   # URIs of external assets.
   FONT_AWESOME_URI     = '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'

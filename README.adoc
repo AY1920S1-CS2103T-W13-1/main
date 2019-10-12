@@ -14,8 +14,8 @@ ifndef::env-github[]
 image::docs/images/Ui.png[width="600"]
 endif::[]
 
-* ModuleBook is a trackedModule planning application. It has a GUI but most of the user interactions happen using a CLI (Command Line Interface).
-* ModuleBook helps to track deadlines and tasks, sends reminders, as well as information on trackedModules to help students plan their timetables.
+* ModuleBook is a module planning application. It has a GUI but most of the user interactions happen using a CLI (Command Line Interface).
+* ModuleBook helps to track deadlines and tasks, sends reminders, as well as information on modules to help students plan their timetables.
 * Our target audience are currently NUS computing students, but we intend to expand our scope in future versions.
 
 == Site Map
@@ -30,7 +30,7 @@ endif::[]
 
 * We would like to acknowledge the original source of the code, AddressBook-Level3 project created by SE-EDU initiative at https://se-education.org
 
-* We would also like to acknowledge https://nusmods.com["NUSmods"] for providing sample trackedModule data from NUS
+* We would also like to acknowledge https://nusmods.com["NUSmods"] for providing sample module data from NUS
 
 * Libraries used: https://openjfx.io/[JavaFX], https://github.com/FasterXML/jackson[Jackson], https://github.com/junit-team/junit5[JUnit5]
 

@@ -100,7 +100,7 @@ link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
 
 .  `Logic` uses the `AddressBookParser` class to parse the user command.
 .  This results in a `Command` object which is executed by the `LogicManager`.
-.  The command execution can affect the `Model` (e.g. adding a trackedModule).
+.  The command execution can affect the `Model` (e.g. adding a module).
 .  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 .  In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
@@ -173,18 +173,18 @@ Step 1. The user launches the application for the first time. The `VersionedAddr
 
 image::UndoRedoState0.png[]
 
-Step 2. The user executes `delete 5` command to delete the 5th trackedModule in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
+Step 2. The user executes `delete 5` command to delete the 5th module in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
 
 image::UndoRedoState1.png[]
 
-Step 3. The user executes `add n/David ...` to add a new trackedModule. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
+Step 3. The user executes `add n/David ...` to add a new module. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
 
 image::UndoRedoState2.png[]
 
 [NOTE]
 If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
 
-Step 4. The user now decides that adding the trackedModule was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
+Step 4. The user now decides that adding the module was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
 
 image::UndoRedoState3.png[]
 
@@ -222,7 +222,7 @@ image::CommitActivityDiagram.png[]
 ** Pros: Easy to implement.
 ** Cons: May have performance issues in terms of memory usage.
 * **Alternative 2:** Individual command knows how to undo/redo by itself.
-** Pros: Will use less memory (e.g. for `delete`, just save the trackedModule being deleted).
+** Pros: Will use less memory (e.g. for `delete`, just save the module being deleted).
 ** Cons: We must ensure that the implementation of each individual command are correct.
 
 ===== Aspect: Data structure to support the undo/redo commands
@@ -285,7 +285,7 @@ Refer to the guide <<DevOps#, here>>.
 * prefers typing over mouse input
 * is reasonably comfortable using CLI apps
 
-*Value proposition*: manage trackedModules faster and with less hassle than the traditional web apps deployed by the institution
+*Value proposition*: manage modules faster and with less hassle than the traditional web apps deployed by the institution
 
 [appendix]
 == User Stories
@@ -297,33 +297,33 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |Priority |As a ... |I want to ... |So that I can...
 |`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
 
-|`* * *` |user |track a trackedModule I'm currently taking |
+|`* * *` |user |track a module I'm currently taking |
 
-|`* * *` |user |untrack a trackedModule |remove entries that I no longer need
+|`* * *` |user |untrack a module |remove entries that I no longer need
 
-|`* * *` |user |find a trackedModule |locate details of trackedModules that NUS provides
+|`* * *` |user |find a module |locate details of modules that NUS provides
 
-|`* * *` |curious student |view a trackedModule's details |check out if I want to take the trackedModule
+|`* * *` |curious student |view a module's details |check out if I want to take the module
 
 |`* * *` |busy student |manage deadlines |keep track of my assignments and tasks
 
-|`* * *` |organized student |manage my grades |know roughly how well I'm doing in the trackedModule
+|`* * *` |organized student |manage my grades |know roughly how well I'm doing in the module
 
-|`* *` |new student |schedule my trackedModules |plan how to approach my future focus areas
+|`* *` |new student |schedule my modules |plan how to approach my future focus areas
 
-|`* *` |graduating student |check what trackedModules I need to complete |
+|`* *` |graduating student |check what modules I need to complete |
 
-|`* *` |computing student |plan my focus area trackedModules |choose a specialization
+|`* *` |computing student |plan my focus area modules |choose a specialization
 
 |`* *` |competitive student |calculate my GPA |
 
-|`* *` |busy student |prioritize certain trackedModules (and their deadlines) |manage my time better
+|`* *` |busy student |prioritize certain modules (and their deadlines) |manage my time better
 
-|`* *` |organized student |manage files related to a trackedModule |add and tag files
+|`* *` |organized student |manage files related to a module |add and tag files
 
-|`* *` |student |catalog past trackedModules |access the content conveniently
+|`* *` |student |catalog past modules |access the content conveniently
 
-|`*` |student |generate a sample trackedModule planner |plan my trackedModules
+|`*` |student |generate a sample module planner |plan my modules
 
 |`*` |hardworking student |access past exam papers |
 
@@ -341,20 +341,20 @@ _{More to be added}_
 
 *MSS*
 
-1.  User requests to find a trackedModule with incomplete keyword (e.g. 'CS2')
-2.  ModuleBook shows a list of trackedModules matching the keyword (e.g. 'CS2030, CS2040, CS2100, CS2101, etc.')
-3.  User requests to track a trackedModule
-4.  ModuleBook tracks the trackedModule
+1.  User requests to find a module with incomplete keyword (e.g. 'CS2')
+2.  ModuleBook shows a list of modules matching the keyword (e.g. 'CS2030, CS2040, CS2100, CS2101, etc.')
+3.  User requests to track a module
+4.  ModuleBook tracks the module
 +
 Use case ends.
 
 [discrete]
-=== Use case: Add a deadline for a tracked trackedModule
+=== Use case: Add a deadline for a tracked module
 
 *MSS*
 
-1.  User requests to view the specific tracked trackedModule
-2.  ModuleBook displays the trackedModule details
+1.  User requests to view the specific tracked module
+2.  ModuleBook displays the module details
 3.  User requests to add a deadline
 4.  ModuleBook adds the deadline
 +
@@ -363,10 +363,10 @@ Use case ends.
 *Extensions*
 
 [none]
-* 2a. The trackedModule is not currently tracked
+* 2a. The module is not currently tracked
 [none]
-** 2a1. User requests to track the trackedModule
-** 2a2. The trackedModule is now tracked
+** 2a1. User requests to track the module
+** 2a2. The module is now tracked
 
 +
 Use case resumes at step 3
@@ -412,7 +412,7 @@ Cons:
 
 * A lot of GUI navigation involved
 * Cannot add user-generated deadlines
-* Cannot view past trackedModule details or content
+* Cannot view past module details or content
 
 '''
 
@@ -420,12 +420,12 @@ NUSMods
 
 Pros:
 
-* Easy to use and powerful trackedModule search feature
+* Easy to use and powerful module search feature
 * Modules come with schedules for tutorials, lectures, etc
 
 Cons:
 
-* Not applicable for managing trackedModules (such as deadlines, grades)
+* Not applicable for managing modules (such as deadlines, grades)
 
 [appendix]
 == Instructions for Manual Testing
@@ -451,15 +451,15 @@ These instructions only provide a starting point for testers to work on; testers
 
 _{ more test cases ... }_
 
-=== Deleting a trackedModule
+=== Deleting a module
 
-. Deleting a trackedModule while all trackedModules are listed
+. Deleting a module while all modules are listed
 
-.. Prerequisites: List all trackedModules using the `list` command. Multiple trackedModules in the list.
+.. Prerequisites: List all modules using the `list` command. Multiple modules in the list.
 .. Test case: `delete 1` +
    Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 .. Test case: `delete 0` +
-   Expected: No trackedModule is deleted. Error details shown in the status message. Status bar remains the same.
+   Expected: No module is deleted. Error details shown in the status message. Status bar remains the same.
 .. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size) _{give more}_ +
    Expected: Similar to previous.
 
