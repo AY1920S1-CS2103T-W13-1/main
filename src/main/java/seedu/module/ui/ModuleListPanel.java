@@ -8,7 +8,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.module.commons.core.LogsCenter;
-import seedu.module.model.module.TrackedModule;
+import seedu.module.model.module.Module;
 
 /**
  * Panel containing the list of modules.
@@ -18,20 +18,20 @@ public class ModuleListPanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(ModuleListPanel.class);
 
     @FXML
-    private ListView<TrackedModule> moduleListView;
+    private ListView<Module> moduleListView;
 
-    public ModuleListPanel(ObservableList<TrackedModule> trackedModuleList) {
+    public ModuleListPanel(ObservableList<Module> displayedList) {
         super(FXML);
-        moduleListView.setItems(trackedModuleList);
+        moduleListView.setItems(displayedList);
         moduleListView.setCellFactory(listView -> new ModuleListViewCell());
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Module} using a {@code ModuleCard}.
      */
-    class ModuleListViewCell extends ListCell<TrackedModule> {
+    class ModuleListViewCell extends ListCell<Module> {
         @Override
-        protected void updateItem(TrackedModule trackedModule, boolean empty) {
+        protected void updateItem(Module trackedModule, boolean empty) {
             super.updateItem(trackedModule, empty);
 
             if (empty || trackedModule == null) {

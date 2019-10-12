@@ -25,6 +25,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<TrackedModule> filteredTrackedModules;
     private final FilteredList<ArchivedModule> filteredArchivedModules;
+    private ObservableList<? extends Module> displayedList;
 
     /**
      * Initializes a ModelManager with the given moduleBook and userPrefs.
@@ -39,6 +40,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredTrackedModules = new FilteredList<>(this.moduleBook.getModuleList());
         filteredArchivedModules = new FilteredList<>(this.moduleBook.getArchivedModuleList());
+        displayedList = filteredTrackedModules;
     }
 
     public ModelManager() {
@@ -143,6 +145,29 @@ public class ModelManager implements Model {
         filteredArchivedModules.setPredicate(predicate);
     }
 
+    //=========== Displayed List Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Module} based on command.
+     */
+    @Override
+    public ObservableList<Module> getDisplayedList() {
+        return (ObservableList<Module>) displayedList;
+    }
+
+    @Override
+    public void changeDisplayedList(String list) {
+        switch (list) {
+        case "ArchivedList":
+            this.displayedList = filteredArchivedModules;
+            break;
+        case "TrackedList":
+            this.displayedList = filteredTrackedModules;
+            break;
+        default:
+            break;
+        }
+    }
 
     @Override
     public boolean equals(Object obj) {

@@ -98,4 +98,15 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredModuleList(Predicate<TrackedModule> predicate);
+
+    /**
+     * Returns an unmodifiable view of the current shown list.
+     */
+    ObservableList<Module> getDisplayedList();
+
+    /**
+     * Changes the current list to be shown.
+     */
+    void changeDisplayedList(String list);
 }
+

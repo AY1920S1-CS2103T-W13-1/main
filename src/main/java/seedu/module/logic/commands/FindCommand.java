@@ -30,6 +30,7 @@ public class FindCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredArchivedModuleList(predicate);
+        model.changeDisplayedList("ArchivedList");
         return new CommandResult(
                 String.format(Messages.MESSAGE_MODULES_LISTED_OVERVIEW, model.getFilteredArchivedModuleList().size()));
     }
