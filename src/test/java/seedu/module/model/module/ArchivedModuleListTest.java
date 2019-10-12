@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.module.testutil.ArchivedModuleBuilder;
 
-public class ArchivedTrackedModuleListTest {
+public class ArchivedModuleListTest {
 
     private final ArchivedModuleList archivedModuleList = new ArchivedModuleList();
     private final ArchivedModule archivedModule = new ArchivedModuleBuilder().build();

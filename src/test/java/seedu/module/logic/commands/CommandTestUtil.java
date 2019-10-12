@@ -66,14 +66,14 @@ public class CommandTestUtil {
      * Updates {@code model}'s filtered list to show only the module at the given {@code targetIndex} in the
      * {@code model}'s address book.
      */
-    public static void showModuleAtIndex(Model model, Index targetIndex) {
-        assertTrue(targetIndex.getZeroBased() < model.getFilteredModuleList().size());
+    //public static void showModuleAtIndex(Model model, Index targetIndex) {
+        //assertTrue(targetIndex.getZeroBased() < model.getFilteredModuleList().size());
 
-        TrackedModule trackedModule = model.getFilteredModuleList().get(targetIndex.getZeroBased());
-        final String[] splitName = trackedModule.getTitle().split("\\s+");
-        model.updateFilteredModuleList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        //TrackedModule trackedModule = model.getFilteredModuleList().get(targetIndex.getZeroBased());
+        //final String[] splitName = trackedModule.getTitle().split("\\s+");
+        //model.updateFilteredModuleList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
-        assertEquals(1, model.getFilteredModuleList().size());
-    }
+        //assertEquals(1, model.getFilteredModuleList().size());
+    //}
 
 }
