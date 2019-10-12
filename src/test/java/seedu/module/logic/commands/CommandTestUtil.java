@@ -1,19 +1,15 @@
 package seedu.module.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.module.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import seedu.module.commons.core.index.Index;
 import seedu.module.logic.commands.exceptions.CommandException;
 import seedu.module.model.Model;
 import seedu.module.model.ModuleBook;
 import seedu.module.model.module.TrackedModule;
-import seedu.module.model.module.NameContainsKeywordsPredicate;
 
 /**
  * Contains helper methods for testing commands.
@@ -67,13 +63,13 @@ public class CommandTestUtil {
      * {@code model}'s address book.
      */
     //public static void showModuleAtIndex(Model model, Index targetIndex) {
-        //assertTrue(targetIndex.getZeroBased() < model.getFilteredModuleList().size());
+    //assertTrue(targetIndex.getZeroBased() < model.getFilteredModuleList().size());
 
-        //TrackedModule trackedModule = model.getFilteredModuleList().get(targetIndex.getZeroBased());
-        //final String[] splitName = trackedModule.getTitle().split("\\s+");
-        //model.updateFilteredModuleList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+    //TrackedModule trackedModule = model.getFilteredModuleList().get(targetIndex.getZeroBased());
+    //final String[] splitName = trackedModule.getTitle().split("\\s+");
+    //model.updateFilteredModuleList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
-        //assertEquals(1, model.getFilteredModuleList().size());
+    //assertEquals(1, model.getFilteredModuleList().size());
     //}
 
 }
