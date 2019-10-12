@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.module.commons.core.GuiSettings;
 import seedu.module.commons.core.LogsCenter;
 import seedu.module.model.module.ArchivedModule;
+import seedu.module.model.module.Module;
 import seedu.module.model.module.TrackedModule;
 
 /**
@@ -137,7 +138,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredArchivedModuleList(Predicate<ArchivedModule> predicate) {
+    public void updateFilteredArchivedModuleList(Predicate<Module> predicate) {
         requireNonNull(predicate);
         filteredArchivedModules.setPredicate(predicate);
     }

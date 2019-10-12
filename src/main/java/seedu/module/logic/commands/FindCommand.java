@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.module.commons.core.Messages;
 import seedu.module.model.Model;
-import seedu.module.model.module.ArchivedNameContainsKeywordsPredicate;
+import seedu.module.model.module.NameContainsKeywordsPredicate;
 
 /**
  * Finds and lists all modules in Module book ArchivedModuleList with names that contain any of the argument keywords.
@@ -20,9 +20,9 @@ public class FindCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " cs2103";
 
-    private final ArchivedNameContainsKeywordsPredicate predicate;
+    private final NameContainsKeywordsPredicate predicate;
 
-    public FindCommand(ArchivedNameContainsKeywordsPredicate predicate) {
+    public FindCommand(NameContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
