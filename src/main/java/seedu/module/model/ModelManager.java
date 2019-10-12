@@ -111,7 +111,7 @@ public class ModelManager implements Model {
     //=========== Filtered module List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code module} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code module} backed by the internal list of.
      * {@code versionedModuleBook}
      */
     @Override

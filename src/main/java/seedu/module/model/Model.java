@@ -13,7 +13,7 @@ import seedu.module.model.module.Module;
  */
 public interface Model {
     /**
-     * {@code Predicate} that always evaluate to true
+     * {@code Predicate} that always evaluate to true.
      */
     Predicate<Module> PREDICATE_SHOW_ALL_MODULES = unused -> true;
 
@@ -53,7 +53,7 @@ public interface Model {
     void setModuleBook(ReadOnlyModuleBook moduleBook);
 
     /**
-     * Returns the ModuleBook
+     * Returns the ModuleBook.
      */
     ReadOnlyModuleBook getModuleBook();
 
@@ -75,7 +75,7 @@ public interface Model {
     void addModule(Module module);
 
     /**
-     * Returns an unmodifiable view of the filtered module list
+     * Returns an unmodifiable view of the filtered module list.
      */
     ObservableList<Module> getFilteredModuleList();
 
