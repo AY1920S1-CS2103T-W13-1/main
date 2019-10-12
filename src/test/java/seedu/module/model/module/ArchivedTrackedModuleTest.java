@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.module.testutil.ArchivedModuleBuilder;
 
-public class ArchivedModuleTest {
+public class ArchivedTrackedModuleTest {
     @Test
     public void isSameArchivedModule() {
         // same values -> returns true

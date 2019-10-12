@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.module.model.module.Module;
+import seedu.module.model.module.TrackedModule;
 
 /**
  * An UI component that displays information of a {@code Module}.
@@ -21,7 +21,7 @@ public class ModuleCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Module module;
+    public final TrackedModule trackedModule;
 
     @FXML
     private HBox cardPane;
@@ -34,13 +34,13 @@ public class ModuleCard extends UiPart<Region> {
     @FXML
     private Label id;
 
-    public ModuleCard(Module module, int displayedIndex) {
+    public ModuleCard(TrackedModule trackedModule, int displayedIndex) {
         super(FXML);
-        this.module = module;
+        this.trackedModule = trackedModule;
         id.setText(displayedIndex + ". ");
-        moduleCode.setText(module.getModuleCode());
-        title.setText(module.getTitle());
-        description.setText(module.getDescription());
+        moduleCode.setText(trackedModule.getModuleCode());
+        title.setText(trackedModule.getTitle());
+        description.setText(trackedModule.getDescription());
     }
 
     @Override
@@ -58,6 +58,6 @@ public class ModuleCard extends UiPart<Region> {
         // state check
         ModuleCard card = (ModuleCard) other;
         return id.getText().equals(card.id.getText())
-                && module.equals(card.module);
+                && trackedModule.equals(card.trackedModule);
     }
 }

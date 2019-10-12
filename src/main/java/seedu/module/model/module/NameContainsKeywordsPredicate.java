@@ -8,7 +8,7 @@ import seedu.module.commons.util.StringUtil;
 /**
  * Tests that a {@code Module}'s moduleCode matches any of the keywords given.
  */
-public class NameContainsKeywordsPredicate implements Predicate<Module> {
+public class NameContainsKeywordsPredicate implements Predicate<TrackedModule> {
     private final List<String> keywords;
 
     public NameContainsKeywordsPredicate(List<String> keywords) {
@@ -16,9 +16,9 @@ public class NameContainsKeywordsPredicate implements Predicate<Module> {
     }
 
     @Override
-    public boolean test(Module module) {
+    public boolean test(TrackedModule trackedModule) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(module.getModuleCode(), keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(trackedModule.getModuleCode(), keyword));
     }
 
     @Override

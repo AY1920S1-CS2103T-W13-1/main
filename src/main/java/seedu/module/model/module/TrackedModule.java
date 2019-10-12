@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * Represents a Module in the ModuleList.
  */
-public class Module {
+public class TrackedModule {
 
     // Identity field
     private final String moduleCode;
@@ -15,7 +15,7 @@ public class Module {
     /**
      * Every field must be present and not null.
      */
-    public Module(String moduleCode, String title, String description) {
+    public TrackedModule(String moduleCode, String title, String description) {
         this.moduleCode = moduleCode;
         this.title = title;
         this.description = description;
@@ -37,13 +37,13 @@ public class Module {
      * Returns true if both modules of the same name have the same identity field.
      * This defines a weaker notion of equality between two modules.
      */
-    public boolean isSameModule(Module otherModule) {
-        if (otherModule == this) {
+    public boolean isSameModule(TrackedModule otherTrackedModule) {
+        if (otherTrackedModule == this) {
             return true;
         }
 
-        return otherModule != null
-                && otherModule.getModuleCode().equals(getModuleCode());
+        return otherTrackedModule != null
+                && otherTrackedModule.getModuleCode().equals(getModuleCode());
     }
 
     /**
@@ -56,14 +56,14 @@ public class Module {
             return true;
         }
 
-        if (!(other instanceof Module)) {
+        if (!(other instanceof TrackedModule)) {
             return false;
         }
 
-        Module otherModule = (Module) other;
-        return otherModule.getModuleCode().equals(getModuleCode())
-                && otherModule.getTitle().equals(getTitle())
-                && otherModule.getDescription().equals(getDescription());
+        TrackedModule otherTrackedModule = (TrackedModule) other;
+        return otherTrackedModule.getModuleCode().equals(getModuleCode())
+                && otherTrackedModule.getTitle().equals(getTitle())
+                && otherTrackedModule.getDescription().equals(getDescription());
     }
 
     @Override

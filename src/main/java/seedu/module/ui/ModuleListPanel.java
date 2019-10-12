@@ -8,7 +8,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.module.commons.core.LogsCenter;
-import seedu.module.model.module.Module;
+import seedu.module.model.module.TrackedModule;
 
 /**
  * Panel containing the list of modules.
@@ -18,27 +18,27 @@ public class ModuleListPanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(ModuleListPanel.class);
 
     @FXML
-    private ListView<Module> moduleListView;
+    private ListView<TrackedModule> moduleListView;
 
-    public ModuleListPanel(ObservableList<Module> moduleList) {
+    public ModuleListPanel(ObservableList<TrackedModule> trackedModuleList) {
         super(FXML);
-        moduleListView.setItems(moduleList);
+        moduleListView.setItems(trackedModuleList);
         moduleListView.setCellFactory(listView -> new ModuleListViewCell());
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Module} using a {@code ModuleCard}.
      */
-    class ModuleListViewCell extends ListCell<Module> {
+    class ModuleListViewCell extends ListCell<TrackedModule> {
         @Override
-        protected void updateItem(Module module, boolean empty) {
-            super.updateItem(module, empty);
+        protected void updateItem(TrackedModule trackedModule, boolean empty) {
+            super.updateItem(trackedModule, empty);
 
-            if (empty || module == null) {
+            if (empty || trackedModule == null) {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new ModuleCard(module, getIndex() + 1).getRoot());
+                setGraphic(new ModuleCard(trackedModule, getIndex() + 1).getRoot());
             }
         }
     }

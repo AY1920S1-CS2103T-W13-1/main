@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.module.commons.core.GuiSettings;
 import seedu.module.model.module.ArchivedModule;
-import seedu.module.model.module.Module;
+import seedu.module.model.module.TrackedModule;
 
 /**
  * The API of the Model component.
@@ -15,7 +15,7 @@ public interface Model {
     /**
      * {@code Predicate} that always evaluate to true.
      */
-    Predicate<Module> PREDICATE_SHOW_ALL_MODULES = unused -> true;
+    Predicate<TrackedModule> PREDICATE_SHOW_ALL_MODULES = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -60,24 +60,24 @@ public interface Model {
     /**
      * Returns true if a Module with the same identity as {@code Module} exists in the module book.
      */
-    boolean hasModule(Module module);
+    boolean hasModule(TrackedModule trackedModule);
 
     /**
      * Deletes the given module.
      * The module must exist in the module book.
      */
-    void deleteModule(Module target);
+    void deleteModule(TrackedModule target);
 
     /**
      * Adds the given module.
      * {@code module} must not already exist in the module book.
      */
-    void addModule(Module module);
+    void addModule(TrackedModule trackedModule);
 
     /**
      * Returns an unmodifiable view of the filtered module list.
      */
-    ObservableList<Module> getFilteredModuleList();
+    ObservableList<TrackedModule> getFilteredModuleList();
 
     /**
      * Returns an unmodifiable view of the filtered module list within the archive list.
@@ -96,5 +96,5 @@ public interface Model {
      *
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredModuleList(Predicate<Module> predicate);
+    void updateFilteredModuleList(Predicate<TrackedModule> predicate);
 }

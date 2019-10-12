@@ -9,7 +9,7 @@ import seedu.module.model.module.ArchivedModule;
 import seedu.module.model.module.ArchivedModuleList;
 
 
-class JsonArchivedModuleListTest {
+class JsonArchivedTrackedModuleListTest {
     private static final String VALID_ARCHIVED_MODULES_FILE_PATH = "data/archivedModules.json";
     private static final String INVALID_ARCHIVED_MODULES_FILE_PATH = "data/doesntexist.json";
     // To trigger URISyntaxException

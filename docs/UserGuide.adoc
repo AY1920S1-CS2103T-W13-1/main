@@ -18,9 +18,9 @@ By: `AY1920S1-Team W13-1`      Since: `Aug 2019`      Licence: `MIT`
 
 == Introduction
 
-ModuleBook is a standalone application that tracks and manages modules from National University of Singapore (NUS). The application contains many features useful for module management, such as deadline tracking, lesson scheduling and grade calculator.
+ModuleBook is a standalone application that tracks and manages trackedModules from National University of Singapore (NUS). The application contains many features useful for trackedModule management, such as deadline tracking, lesson scheduling and grade calculator.
 
-ModuleBook is for NUS students who *want a desktop app for managing modules*. More importantly, ModuleBook is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ModuleBook can manage your tasks more efficiently than traditional GUI apps. Jump to the <<Quick Start>> to get started. Enjoy!
+ModuleBook is for NUS students who *want a desktop app for managing trackedModules*. More importantly, ModuleBook is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ModuleBook can manage your tasks more efficiently than traditional GUI apps. Jump to the <<Quick Start>> to get started. Enjoy!
 
 == Quick Start
 
@@ -35,9 +35,9 @@ image::Ui.png[width="790"]
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Some example commands you can try:
 
-* *`list`* : lists all modules
-* **`add`**`cs2103t` : adds a module with module code `cs2103t` to be tracked by ModuleBook.
-* **`delete`**`cs2103t` : deletes module with code `cs2103t`
+* *`list`* : lists all trackedModules
+* **`add`**`cs2103t` : adds a trackedModule with trackedModule code `cs2103t` to be tracked by ModuleBook.
+* **`delete`**`cs2103t` : deletes trackedModule with code `cs2103t`
 * *`exit`* : exits the app
 
 .  Refer to <<Features>> for details of each command.
@@ -58,9 +58,9 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 Format: `help`
 
-=== Adding a module: `add`
+=== Adding a trackedModule: `add`
 
-Adds a module to be tracked +
+Adds a trackedModule to be tracked +
 Format: `add MODULE_CODE`
 
 [TIP]
@@ -72,51 +72,51 @@ Examples:
 * `add cs2103t`
 * `add manual MODULE_CODE (not in database)`
 
-=== View the module: `view`
+=== View the trackedModule: `view`
 
-View a tracked module and enters module viewing mode. In module viewing, a different set of commands are available [see <<Module-View>>].
+View a tracked trackedModule and enters trackedModule viewing mode. In trackedModule viewing, a different set of commands are available [see <<Module-View>>].
 
 Format: `view MODULE_CODE`
 
 Example: `view cs1231`
 
 
-=== Listing all modules : `list`
+=== Listing all trackedModules : `list`
 
-Shows a list of all current tracked modules. +
+Shows a list of all current tracked trackedModules. +
 Format: `list`
 
 
 ////
 === Editing a person : `edit`
 
-Edits an existing module in the address book. +
+Edits an existing trackedModule in the address book. +
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
 
 ****
-* Edits the module at the specified `INDEX`. The index refers to the index number shown in the displayed module list. The index *must be a positive integer* 1, 2, 3, ...
+* Edits the trackedModule at the specified `INDEX`. The index refers to the index number shown in the displayed trackedModule list. The index *must be a positive integer* 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the module will be removed i.e adding of tags is not cumulative.
-* You can remove all the module's tags by typing `t/` without specifying any tags after it.
+* When editing tags, the existing tags of the trackedModule will be removed i.e adding of tags is not cumulative.
+* You can remove all the trackedModule's tags by typing `t/` without specifying any tags after it.
 ****
 
 Examples:
 
 * `edit 1 p/91234567 e/johndoe@example.com` +
-Edits the phone number and email address of the 1st module to be `91234567` and `johndoe@example.com` respectively.
+Edits the phone number and email address of the 1st trackedModule to be `91234567` and `johndoe@example.com` respectively.
 * `edit 2 n/Betsy Crower t/` +
-Edits the name of the 2nd module to be `Betsy Crower` and clears all existing tags.
+Edits the name of the 2nd trackedModule to be `Betsy Crower` and clears all existing tags.
 
-=== Locating modules by name: `find`
+=== Locating trackedModules by name: `find`
 
-Finds modules whose names contain any of the given keywords. +
+Finds trackedModules whose names contain any of the given keywords. +
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
 ****
 * The search is case insensitive. e.g `computing` will match `Computing`
 * The order of the keywords does not matter. e.g. `software engineering` will match `engineering software`
-* Only module code and module title are searched.
+* Only trackedModule code and trackedModule title are searched.
 * Only full words will be matched e.g. `computer` will not match `computers`
 //* Modules matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 ****
@@ -129,19 +129,19 @@ Returns `cs2100` and `cs2105`
 Returns any person having names `Betsy`, `Tim`, or `John`
 
 // tag::delete[]
-=== Deleting a module : `delete`
+=== Deleting a trackedModule : `delete`
 
-Untrack the specified module from ModuleBook. +
+Untrack the specified trackedModule from ModuleBook. +
 Format: `delete MODULE_CODE`
 
 ****
-* Deletes module associated with specified `MODULE_CODE`.
+* Deletes trackedModule associated with specified `MODULE_CODE`.
 ****
 
 Examples:
 
 * `delete cs2100` +
-  Removes module CS2100 from tracked module list.
+  Removes trackedModule CS2100 from tracked trackedModule list.
 
 ////
 * `find Betsy` +
@@ -184,11 +184,11 @@ _{explain how the user can enable/disable data encryption}_
 
 == Module-View
 
-Program enters module-view when `view` is called. In this mode, a different set of features are implemented.
+Program enters trackedModule-view when `view` is called. In this mode, a different set of features are implemented.
 
 === Delete
 
-Remove current viewed module. Returns to normal view.
+Remove current viewed trackedModule. Returns to normal view.
 
 === Grade Manager
 
@@ -200,16 +200,16 @@ User can add and manage deadlines
 
 === File Manager `[coming in v2.0]`
 
-Users can add files related to the module, and open them.
+Users can add files related to the trackedModule, and open them.
 
 === CAP Calculator
 
-Calculates the cumulative GPA of all tracked modules.
+Calculates the cumulative GPA of all tracked trackedModules.
 *To be implemented*
 
 === Back
 
-Exits module-view and return to module list
+Exits trackedModule-view and return to trackedModule list
 
 == FAQ
 

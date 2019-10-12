@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.module.model.module.ArchivedModule;
 
-public class JsonAdaptedArchivedModuleTest {
+public class JsonAdaptedArchivedTrackedModuleTest {
     private static final String VALID_MODULECODE = "CS2103T";
     private static final String VALID_TITLE = "Software Engineering";
     private static final String VALID_DESCRIPTION = "Lorem Ipsum";

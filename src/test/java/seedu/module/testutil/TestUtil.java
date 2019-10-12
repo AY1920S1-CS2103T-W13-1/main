@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 import seedu.module.commons.core.index.Index;
 import seedu.module.model.Model;
-import seedu.module.model.module.Module;
+import seedu.module.model.module.TrackedModule;
 
 /**
  * A utility class for test cases.
@@ -49,7 +49,7 @@ public class TestUtil {
     /**
      * Returns the person in the {@code model}'s person list at {@code index}.
      */
-    public static Module getPerson(Model model, Index index) {
+    public static TrackedModule getPerson(Model model, Index index) {
         return model.getFilteredModuleList().get(index.getZeroBased());
     }
 }

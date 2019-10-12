@@ -8,7 +8,7 @@ import seedu.module.logic.commands.CommandResult;
 import seedu.module.logic.commands.exceptions.CommandException;
 import seedu.module.logic.parser.exceptions.ParseException;
 import seedu.module.model.ReadOnlyModuleBook;
-import seedu.module.model.module.Module;
+import seedu.module.model.module.TrackedModule;
 
 /**
  * API of the Logic component
@@ -34,7 +34,7 @@ public interface Logic {
     /**
      * Returns an unmodifiable view of the filtered list of modules
      */
-    ObservableList<Module> getFilteredModuleList();
+    ObservableList<TrackedModule> getFilteredModuleList();
 
     /**
      * Returns the user prefs' Module book file path.
