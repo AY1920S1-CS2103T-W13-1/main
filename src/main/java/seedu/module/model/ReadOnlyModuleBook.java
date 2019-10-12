@@ -2,6 +2,7 @@ package seedu.module.model;
 
 import javafx.collections.ObservableList;
 import seedu.module.model.module.ArchivedModule;
+import seedu.module.model.module.ArchivedModuleList;
 import seedu.module.model.module.Module;
 
 /**
@@ -16,5 +17,7 @@ public interface ReadOnlyModuleBook {
     ObservableList<Module> getModuleList();
 
     ObservableList<ArchivedModule> getArchivedModuleList();
+
+    ArchivedModuleList getRawArchivedModuleList();
 
 }

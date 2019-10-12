@@ -68,6 +68,7 @@ public class ModuleBook implements ReadOnlyModuleBook {
         requireNonNull(newData);
 
         setModules(newData.getModuleList());
+        setArchivedModules(newData.getRawArchivedModuleList());
     }
 
     //// module-level operations
@@ -109,8 +110,14 @@ public class ModuleBook implements ReadOnlyModuleBook {
         return modules.asUnmodifiableObservableList();
     }
 
+    @Override
     public ObservableList<ArchivedModule> getArchivedModuleList() {
         return archivedModules.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ArchivedModuleList getRawArchivedModuleList() {
+        return this.archivedModules;
     }
 
     @Override

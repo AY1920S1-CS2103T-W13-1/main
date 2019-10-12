@@ -159,7 +159,8 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return moduleBook.equals(other.moduleBook)
                 && userPrefs.equals(other.userPrefs)
-                && filteredModules.equals(other.filteredModules);
+                && filteredModules.equals(other.filteredModules)
+                && filteredArchivedModules.equals(other.filteredArchivedModules);
     }
 
 }
