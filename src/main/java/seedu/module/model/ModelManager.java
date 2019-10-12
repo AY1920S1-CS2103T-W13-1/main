@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.module.commons.core.GuiSettings;
@@ -25,7 +26,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<TrackedModule> filteredTrackedModules;
     private final FilteredList<ArchivedModule> filteredArchivedModules;
-    private ObservableList<? extends Module> displayedList;
+    private ObservableList<Module> displayedList = FXCollections.observableArrayList();
 
     /**
      * Initializes a ModelManager with the given moduleBook and userPrefs.
@@ -40,7 +41,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredTrackedModules = new FilteredList<>(this.moduleBook.getModuleList());
         filteredArchivedModules = new FilteredList<>(this.moduleBook.getArchivedModuleList());
-        displayedList = filteredTrackedModules;
+        changeDisplayedList("TrackedList");
     }
 
     public ModelManager() {
@@ -159,10 +160,16 @@ public class ModelManager implements Model {
     public void changeDisplayedList(String list) {
         switch (list) {
         case "ArchivedList":
-            this.displayedList = filteredArchivedModules;
+            this.displayedList.clear();
+            for (Module i : filteredArchivedModules) {
+                displayedList.add(i);
+            }
             break;
         case "TrackedList":
-            this.displayedList = filteredTrackedModules;
+            this.displayedList.clear();
+            for (Module i : filteredTrackedModules) {
+                displayedList.add(i);
+            }
             break;
         default:
             break;
