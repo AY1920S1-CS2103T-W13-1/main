@@ -72,7 +72,7 @@ public class MainApp extends Application {
      * or an empty module book will be used instead if errors occur when reading {@code storage}'s module book.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        ReadOnlyModuleBook initialData = storage.readModuleBook(); 
+        ReadOnlyModuleBook initialData = storage.readModuleBook();
 
         return new ModelManager(initialData, userPrefs);
     }
