@@ -36,6 +36,11 @@ public class ModuleBook implements ReadOnlyModuleBook {
     public ModuleBook() {
     }
 
+    public ModuleBook(ArchivedModuleList archivedModules) {
+        this();
+        this.archivedModules = archivedModules;
+    }
+
     /**
      * Creates an ModuleBook using the modules in the {@code toBeCopied}
      */
