@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 
 import seedu.module.commons.core.index.Index;
 import seedu.module.model.Model;
-import seedu.module.model.module.Module;
 import seedu.module.model.module.TrackedModule;
 
 /**

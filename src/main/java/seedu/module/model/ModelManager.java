@@ -41,7 +41,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredTrackedModules = new FilteredList<>(this.moduleBook.getModuleList());
         filteredArchivedModules = new FilteredList<>(this.moduleBook.getArchivedModuleList());
-        changeDisplayedList("TrackedList");
+        displayTrackedList();
     }
 
     public ModelManager() {
@@ -157,22 +157,18 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void changeDisplayedList(String list) {
-        switch (list) {
-        case "ArchivedList":
-            this.displayedList.clear();
-            for (Module i : filteredArchivedModules) {
-                displayedList.add(i);
-            }
-            break;
-        case "TrackedList":
-            this.displayedList.clear();
-            for (Module i : filteredTrackedModules) {
-                displayedList.add(i);
-            }
-            break;
-        default:
-            break;
+    public void displayArchivedList() {
+        this.displayedList.clear();
+        for (Module i : filteredArchivedModules) {
+            displayedList.add(i);
+        }
+    }
+
+    @Override
+    public void displayTrackedList() {
+        this.displayedList.clear();
+        for (Module i : filteredTrackedModules) {
+            displayedList.add(i);
         }
     }
 

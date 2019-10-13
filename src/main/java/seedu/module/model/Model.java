@@ -105,8 +105,13 @@ public interface Model {
     ObservableList<Module> getDisplayedList();
 
     /**
-     * Changes the current list to be shown.
+     * Changes the current list to be shown to the ArchivedModuleList.
      */
-    void changeDisplayedList(String list);
+    void displayArchivedList();
+
+    /**
+     * Changes the current list to be shown to the TrackedModuleList.
+     */
+    void displayTrackedList();
 }
 
