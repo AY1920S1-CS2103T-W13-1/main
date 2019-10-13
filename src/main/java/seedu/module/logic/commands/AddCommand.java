@@ -50,6 +50,8 @@ public class AddCommand extends Command {
         }
 
         model.addModule(toAdd);
+        model.displayTrackedList();
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
