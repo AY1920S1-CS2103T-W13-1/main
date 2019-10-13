@@ -47,7 +47,7 @@ class JsonSerializableModuleBook {
      * @throws IllegalValueException if there were any data constraints violated.
      */
     public ModuleBook toModelType(ArchivedModuleList archivedModules) throws IllegalValueException {
-        ModuleBook moduleBook = new ModuleBook();
+        ModuleBook moduleBook = new ModuleBook(archivedModules);
         for (JsonAdaptedModule jsonAdaptedModule : modules) {
             TrackedModule trackedModule = jsonAdaptedModule.toModelType(archivedModules);
             if (moduleBook.hasModule(trackedModule)) {
