@@ -1,6 +1,7 @@
 package seedu.module.model.util;
 
 import seedu.module.model.ModuleBook;
+import seedu.module.model.module.ArchivedModule;
 import seedu.module.model.module.TrackedModule;
 
 /**
@@ -9,8 +10,10 @@ import seedu.module.model.module.TrackedModule;
 public class SampleDataUtil {
     public static TrackedModule[] getSampleModules() {
         return new TrackedModule[]{
-            new TrackedModule("CS2030", "Introduction to Java", "much java"),
-            new TrackedModule("CS2103T", "SOFTENG", "much cancer")
+                new TrackedModule(
+                        new ArchivedModule("CS2030", "Introduction to Java", "Much java")),
+                new TrackedModule(
+                        new ArchivedModule("CS2103T", "SoftEng", "Much coding"))
         };
     }
 
