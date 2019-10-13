@@ -1,14 +1,19 @@
 package seedu.module.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.module.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import seedu.module.commons.core.index.Index;
 import seedu.module.logic.commands.exceptions.CommandException;
 import seedu.module.model.Model;
 import seedu.module.model.ModuleBook;
+import seedu.module.model.module.Module;
+import seedu.module.model.module.NameContainsKeywordsPredicate;
 import seedu.module.model.module.TrackedModule;
 
 /**
@@ -51,7 +56,7 @@ public class CommandTestUtil {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
         ModuleBook expectedAddressBook = new ModuleBook(actualModel.getModuleBook());
-        List<TrackedModule> expectedFilteredList = new ArrayList<>(actualModel.getFilteredModuleList());
+        List<Module> expectedFilteredList = new ArrayList<>(actualModel.getFilteredModuleList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
         assertEquals(expectedAddressBook, actualModel.getModuleBook());
@@ -62,14 +67,14 @@ public class CommandTestUtil {
      * Updates {@code model}'s filtered list to show only the module at the given {@code targetIndex} in the
      * {@code model}'s address book.
      */
-    //public static void showModuleAtIndex(Model model, Index targetIndex) {
-    //assertTrue(targetIndex.getZeroBased() < model.getFilteredModuleList().size());
+    public static void showModuleAtIndex(Model model, Index targetIndex) {
+    assertTrue(targetIndex.getZeroBased() < model.getFilteredModuleList().size());
 
-    //TrackedModule trackedModule = model.getFilteredModuleList().get(targetIndex.getZeroBased());
-    //final String[] splitName = trackedModule.getTitle().split("\\s+");
-    //model.updateFilteredModuleList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+    Module trackedModule = model.getFilteredModuleList().get(targetIndex.getZeroBased());
+    final String[] splitName = trackedModule.getTitle().split("\\s+");
+    model.updateFilteredModuleList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
-    //assertEquals(1, model.getFilteredModuleList().size());
-    //}
+    assertEquals(1, model.getFilteredModuleList().size());
+    }
 
 }

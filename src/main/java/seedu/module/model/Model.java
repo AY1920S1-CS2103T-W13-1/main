@@ -16,7 +16,7 @@ public interface Model {
     /**
      * {@code Predicate} that always evaluate to true.
      */
-    Predicate<TrackedModule> PREDICATE_SHOW_ALL_MODULES = unused -> true;
+    Predicate<Module> PREDICATE_SHOW_ALL_MODULES = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -97,7 +97,7 @@ public interface Model {
      *
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredModuleList(Predicate<TrackedModule> predicate);
+    void updateFilteredModuleList(Predicate<Module> predicate);
 
     /**
      * Returns an unmodifiable view of the current shown list.

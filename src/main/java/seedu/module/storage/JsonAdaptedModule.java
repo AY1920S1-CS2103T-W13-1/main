@@ -29,7 +29,7 @@ class JsonAdaptedModule {
     }
 
     /**
-     * Converts a given {@code Module} into this class for Jackson use.
+     * Converts a given {@code TrackedModule} into this class for Jackson use.
      */
     public JsonAdaptedModule(TrackedModule source) {
         moduleCode = source.getModuleCode();
