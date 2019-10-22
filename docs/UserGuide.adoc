@@ -37,15 +37,9 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 * *`list`* : lists all modules.
 * **`add`**`cs2103t` : adds a module with module code `cs2103t` to be tracked by ModuleBook.
-<<<<<<< HEAD
 * **`delete`**`1` : deletes module at index 1.
-* **`deadline`**`1`**`d/`**`complete homework` : adds deadline to module.
-* *`exit`* : exits the app.
-=======
-* **`delete`**`cs2103t` : deletes module with code `cs2103t`
 * **`deadline`**`cs2103t`**`d/complete UG and DG`**`t/time` : adds deadline to module with code 'cs2103t'
 * *`exit`* : exits the app
->>>>>>> 620bb54b759560eab1ccadef93c7e11c61e88d97
 
 .  Refer to <<Features>> for details of each command.
 
@@ -110,12 +104,7 @@ Format: `view <MODULE_CODE>`
 Example: `view cs1231`
 
 === Return from module view: `back`
-
-<<<<<<< HEAD
-Adds deadline to tracked module.
-=======
 Returns from the module view.
->>>>>>> 620bb54b759560eab1ccadef93c7e11c61e88d97
 
 Format: `back`
 
