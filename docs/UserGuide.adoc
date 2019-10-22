@@ -37,9 +37,15 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 * *`list`* : lists all modules.
 * **`add`**`cs2103t` : adds a module with module code `cs2103t` to be tracked by ModuleBook.
+<<<<<<< HEAD
 * **`delete`**`1` : deletes module at index 1.
 * **`deadline`**`1`**`d/`**`complete homework` : adds deadline to module.
 * *`exit`* : exits the app.
+=======
+* **`delete`**`cs2103t` : deletes module with code `cs2103t`
+* **`deadline`**`cs2103t`**`d/complete UG and DG`**`t/time` : adds deadline to module with code 'cs2103t'
+* *`exit`* : exits the app
+>>>>>>> 620bb54b759560eab1ccadef93c7e11c61e88d97
 
 .  Refer to <<Features>> for details of each command.
 
@@ -95,21 +101,136 @@ Examples:
 
 * `add cs2103t`
 
-=== View the module: `view`
+=== Viewing a module: `view`
 
-View a tracked module and enters module viewing mode. In module viewing, a different set of commands are available [see <<Module-View>>].
+Views a module and enters the module view. Can be a tracked module or an archived module.
 
-Format: `view MODULE_CODE`
+Format: `view <MODULE_CODE>`
 
 Example: `view cs1231`
 
-=== Add deadline to the module: `deadline`
+=== Return from module view: `back`
 
+<<<<<<< HEAD
 Adds deadline to tracked module.
+=======
+Returns from the module view.
+>>>>>>> 620bb54b759560eab1ccadef93c7e11c61e88d97
 
-Format: `deadline MODULE_LIST_NUMBER d/ deadline description`
+Format: `back`
 
-Example: `deadline 1 d/ finish homework`
+=== Manage deadline tasks: `deadline`
+
+==== `add`
+
+Format: `deadline MODULE_CODE a/add d/DESCRIPTION t/TIME`
+
+Adds deadline task consisting of description and time to the respective module.
+If deadline list is empty, creates a list. Else, adds to the end of the list.
+
+Example: `deadline cs2103t a/add d/finish Ug and Dg t/22/10/2019 2359`
+
+==== `edit`
+
+===== 3.4.2.1. Edit Description
+
+Format: `deadline MODULE_CODE a/edit l/TASK_NUMBER_IN_LIST d/NEW_DESCRIPTION`
+
+Edits description from the deadline task numbered in deadline list for the respective module.
+
+Example: `deadline cs2103t a/edit l/2 d/finish increments`
+
+===== 3.4.2.2. Edit Time
+
+Format: `deadline MODULE_CODE a/edit l/TASK_NUMBER_IN_LIST t/NEW_TIME`
+
+Edits time from the deadline task numbered in deadline list for the respective module.
+
+Example: `deadline cs2103t a/edit l/2 t/29/10/2018 2359`
+
+==== `done`
+
+Format: `deadline MODULE_CODE a/done l/TASK_NUMBER_IN_LIST`
+
+Marks the deadline task numbered in deadline list
+as *done* with a tick on the checkbox for the respective module.
+
+Example: `deadline cs2103t a/done l/2`
+
+==== `in Progress`
+
+Format: `deadline MODULE_CODE a/inProgress l/TASK_NUMBER_IN_LIST`
+
+Marks the deadline task numbered in deadline list
+as *in-progress* with a dash on the checkbox for the respective module.
+
+Example: `deadline cs2103t a/inProgress l/2`
+
+==== `priority`
+
+===== 3.4.5.1. High Priority
+
+Format: `deadline MODULE_CODE a/highPriority l/TASK_NUMBER_IN_LIST`
+
+Tags the deadline task numbered in deadline list
+as *High-Priority* for the respective module.
+
+Example: `deadline cs2103t a/highPriority l/2`
+
+===== 3.4.5.2. Medium Priority
+
+Format: `deadline MODULE_CODE a/mediumPriority l/TASK_NUMBER_IN_LIST`
+
+Tags deadline task numbered in deadline list
+as *Medium-Priority* for the respective module.
+
+Example: `deadline cs2103t a/mediumPriority l/2`
+
+===== 3.4.5.3. Low Priority
+
+Format: `deadline MODULE_CODE a/lowPriority l/TASK_NUMBER_IN_LIST`
+
+Tags deadline task numbered in deadline list
+as *Low-Priority* for the respective module.
+
+Example: `deadline cs2103t a/lowPriority l/2`
+
+==== `sort`
+
+===== 3.4.6.3. Sort by Time
+
+Format: `deadline MODULE_CODE a/sort by/time`
+
+Sorts deadline tasks according to time, latest deadline at the top and later ones below.
+
+Example: `deadline cs2103t a/sort by/time`
+
+===== 3.4.6.3. Sort by Priority
+
+Format: `deadline MODULE_CODE a/sort by/priority`
+
+Sorts deadline tasks according to priority, highest priority at the top, followed
+by medium priority and lastly low priority at the bottom.
+
+Example: `deadline cs2103t a/sort by/priority`
+
+==== `delete`
+
+===== 3.4.7.1 Delete entire list
+
+Format: `deadline MODULE_CODE a/deleteList`
+
+Deletes deadline list for the respective module.
+
+Example: `deadline cs2103t a/deleteList`
+
+===== 3.4.7.1 Delete specific deadline task from list
+
+Format: `deadline MODULE_CODE a/delete l/TASK_NUMBER_IN_LIST`
+
+Deletes deadline task numbered from the respective module.
+
+Example: `deadline cs2103t a/delete l/2`
 
 === Listing all tracked modules : `list`
 
@@ -166,6 +287,23 @@ Multiple users can use the same application on the same computer.
 
 _{explain how the user can enable/disable data encryption}_
 // end::dataencryption[]
+
+== Glossary
+
+=== Common Application terms
+
+**Home view** - The state of the application that displays the home page in the main panel.
+
+**Module view** - The state of the application that displays the specified module in the main panel.
+
+=== Common Module terms
+
+**Archived** - A module that the institution provides. Can be viewed and tracked.
+
+**Tracked** - A module that is tracked. References an archived module. Can be viewed.
+
+
+
 ////
 
 
