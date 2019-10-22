@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>ModuleBook - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">ModuleBook</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-W13-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>ModuleBook - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">ModuleBook</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-W13-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>ModuleBook - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>Team AY1920S1-W13-1</code>      Since: <code>Sep 2019</code>      Licence: <code>MIT</code></p>
@@ -23,8 +23,9 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#module-view-feature">3.1. Module View Feature</a></li>
-<li><a href="#logging">3.2. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.3. Configuration</a></li>
+<li><a href="#proposed-search-filtering-feature">3.2. [Proposed] Search filtering feature</a></li>
+<li><a href="#logging">3.3. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -148,13 +149,13 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code>.</p>
+<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>add CS2103T</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram">
 </div>
-<div class="title">Figure 3. Component interactions for <code>delete 1</code> command</div>
+<div class="title">Figure 3. Component interactions for <code>add CS2103T</code> command</div>
 </div>
 <div class="paragraph">
 <p>The sections below give more details of each component.</p>
@@ -206,7 +207,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>ModuleBookParser</code> class to parse the user command.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
@@ -223,13 +224,13 @@ The following class plays an important role at the architecture level:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("add CS2103T")</code> API call.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
+<img src="images/AddSequenceDiagram.png" alt="AddSequenceDiagram">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>Add CS2103T</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -238,7 +239,7 @@ The following class plays an important role at the architecture level:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The lifeline for <code>DeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+The lifeline for <code>AddCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </td>
 </tr>
 </table>
@@ -435,14 +436,154 @@ The <code>BackCommand</code> mostly follows the same sequence as described above
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.2. Logging</a></h3>
+<h3 id="proposed-search-filtering-feature"><a class="link" href="#proposed-search-filtering-feature">3.2. [Proposed] Search filtering feature</a></h3>
+<div class="sect3">
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.2.1. Proposed Implementation</a></h4>
+<div class="paragraph">
+<p>The search filtering feature would be an enhancement to the current available search feature. Using different categories of predicates
+to narrow down the search space of the archived module list. The user should be able to able to combine different categories
+of search to find modules that passes all the user defined filters. This can be achieved through the use of <code>FilteredList</code>
+which can be updated incrementally with each filter applied. This would require additional classes that searches their individual fields
+for the keywords. For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DescriptionContainsKeywordsPredicate#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> description matches any of the keywords given.</p>
+</li>
+<li>
+<p><code>PrerequisiteContainsKeywordsPredicate()#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> prerequisites matches any of the keywords given.</p>
+</li>
+<li>
+<p><code>PreclusionContainsKeywordsPredicate()#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> preclusions matches any of the keywords given.</p>
+</li>
+<li>
+<p><code>ModuleCreditContainsKeywordsPredicate()#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> credits matches any of the keywords given.</p>
+</li>
+<li>
+<p><code>PreclusionContainsKeywordsPredicate()#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> preclusions matches any of the keywords given.</p>
+</li>
+<li>
+<p><code>SemesterContainsKeywordsPredicate()#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> semester matches any of the keywords given.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The user should be able to use any combination of filters and the order of input should not matter. Examples of valid find commands:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>find module\cs2</code> : Should display a list of modules with module code containing "cs2"</p>
+</li>
+<li>
+<p><code>find module\cs2 prereq\ cs2040</code> : Should display a list of modules with module code containing "cs" and with prerequisite of "cs2040"</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the find operation wold work:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindSequenceDiagram.png" alt="FindSequenceDiagram">
+</div>
+<div class="title">Figure 9. Proposed sequence diagram for search filtering.</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>FindCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As represented in Fig 9, when a <code>FindCommandParser</code> is constructed by <code>ModuleBookParser#parseCommand</code>, the <code>FindCommandParser</code> would construct a list
+of <code>Predicate&lt;module&gt;</code> based on the parsed arguments, which is used to construct a <code>FindCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>During the execution of <code>FindCommand#execute()</code>, each predicate is applied one by one to the <code>FilteredList</code>, the contents of the <code>FilteredList</code> are copied
+before the next predicate is applied.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Should one of the predicate result an empty <code>Filtered List</code>, it is possible to skip the rest of the predicates.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Finally, a <code>FilteredList</code> of <code>Modules</code> that passes all of the filters will be displayed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-requirements"><a class="link" href="#aspect-requirements">Aspect: Requirements.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Module field requirements:</strong> Information from the <code>archivedModules.json</code> would have to be abstracted out
+as individual fields in the <code>ArchivedModule</code> object.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>pros: Added fields can be used for future developments.</p>
+</li>
+<li>
+<p>cons: Can potentially slow down <code>Module</code> construction and operations due to increased size for each <code>Module</code> object.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-incremental-development"><a class="link" href="#aspect-incremental-development">Aspect: Incremental development.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Adding new search filters:</strong> Developing and integrating new filters.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>pros: Filters can be developed independently and incrementally, filters can be integrated based on priority.</p>
+</li>
+<li>
+<p>pros: Can be further adapted to search fields from <code>Deadline</code> and <code>Links</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.3, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -473,7 +614,7 @@ The <code>BackCommand</code> mostly follows the same sequence as described above
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.3. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -966,4 +1107,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-22 11:35:12 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-22 14:36:58 UTC</div></div></div></body></html>
