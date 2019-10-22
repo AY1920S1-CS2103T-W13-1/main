@@ -22,8 +22,9 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#logging">3.1. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.2. Configuration</a></li>
+<li><a href="#module-view-feature">3.1. Module View Feature</a></li>
+<li><a href="#logging">3.2. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.3. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -317,14 +318,131 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.1. Logging</a></h3>
+<h3 id="module-view-feature"><a class="link" href="#module-view-feature">3.1. Module View Feature</a></h3>
+<div class="paragraph">
+<p>The module view feature allows users to view a module to access extra information about the module. The user can view (and unview) a module using the <code>view</code> (and <code>back</code>) commands.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The module view feature is facilitated by <code>displayedModule</code> in <code>ModelManager</code>. The following describes how the <code>displayedModule</code> is modified and read to the <code>Ui</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user enters a view command in the <code>Ui</code>.</p>
+</li>
+<li>
+<p><code>LogicManager</code> parses the user input, constructs and executes the <code>ViewCommand</code>.</p>
+</li>
+<li>
+<p>The <code>ViewCommand</code> attempts to find the matching module from the list of Tracked Modules, else it attempts to find the matching module from the list of Archived Modules, else it throws an exception.</p>
+</li>
+<li>
+<p>The <code>ViewCommand</code> sets the <code>displayedModule</code> in the <code>Model</code> and returns the <code>CommandResult</code> to the <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The <code>LogicManager</code> returns the <code>CommandResult</code> to the <code>Ui</code>.</p>
+</li>
+<li>
+<p>The <code>Ui</code> gets the <code>displayedModule</code> from <code>LogicManager</code> and updates the Ui to display the module.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the module view feature is executed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ModuleViewSequenceDiagram.png" alt="ModuleViewSequenceDiagram">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>BackCommand</code> mostly follows the same sequence as described above, except that it sets the displayed module to <code>null</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>ViewCommand</code> attempts to find the module from the <code>Model</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ModuleViewSequenceDiagram_FindModule.png" alt="ModuleViewSequenceDiagram FindModule">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="updating-the-ui"><a class="link" href="#updating-the-ui">Updating the Ui</a></h5>
+<div class="paragraph">
+<p><strong>Current Implementation</strong>: New field in the <code>CommandResult</code> that the Ui will check to determine if it needs to update.</p>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Simple and easy to control what command updates the Ui.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>More difficult to maintain over the course of the project. New Ui elements require new fields to update the Ui.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Alternate Implementation</strong>: Every command updates the Ui.</p>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maintainance free.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Potentially inefficient.</p>
+</li>
+<li>
+<p>Possible side effects from certain commands.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.2. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.2, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.3, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -355,7 +473,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.2. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.3. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -848,4 +966,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-22 08:14:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-22 09:49:36 UTC</div></div></div></body></html>
