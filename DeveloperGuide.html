@@ -24,8 +24,9 @@
 <ul class="sectlevel2">
 <li><a href="#module-view-feature">3.1. Module View Feature</a></li>
 <li><a href="#proposed-search-filtering-feature">3.2. [Proposed] Search filtering feature</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#deadline-feature">3.3. Deadline Feature</a></li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -307,7 +308,7 @@ The lifeline for <code>AddCommandParser</code> should end at the destroy marker 
 <div class="sect2">
 <h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
+<p>Classes used by multiple components are in the <code>seedu.module.commons</code> package.</p>
 </div>
 </div>
 </div>
@@ -576,14 +577,117 @@ as individual fields in the <code>ArchivedModule</code> object.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="deadline-feature"><a class="link" href="#deadline-feature">3.3. Deadline Feature</a></h3>
+<div class="paragraph">
+<p>Deadline allows users to manage deadline tasks for a module.
+Users can add, edit, mark as done or in-progress, tag priority,
+sort and delete deadline tasks.</p>
+</div>
+<div class="sect3">
+<h4 id="add-deadline"><a class="link" href="#add-deadline">3.3.1. Add Deadline</a></h4>
+<div class="sect4">
+<h5 id="3-3-3-1-implementation"><a class="link" href="#3-3-3-1-implementation">3.3.3.1. Implementation</a></h5>
+<div class="paragraph">
+<p>The format to add deadline command is as follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>deadline 2 a/add d/description t/dateAndTime</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The add deadline mechanism is facilitated by <code>AddDeadlineCommand</code> and <code>AddDeadlineCommandParser</code>.
+It takes in the following input from the user: <code>MODULE_CODE</code>, <code>DESCRIPTION</code>, <code>DATE_AND_TIME</code>,
+which will construct individual Deadline object to be added to the deadline list.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario of how add deadline mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user executes:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>deadline 2 a/add d/do homework t/2/12/2019 1645</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Step 2. <code>LogicManager</code> would use <code>ModuleBookParser#parseCommand()</code> to parse input from the user.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. <code>ModuleBookParser</code> would determine which command is being used and creates the respective parser.
+In this case, <code>DeadlineCommandParser</code> is being created from the COMMAND.WORD: <code>deadline</code> and
+the user’s input would be passed in as a parameter.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. <code>DeadlineCommandParser</code> would then determine which action is being used and creates the respective parser.
+In this case, <code>AddDeadlineCommandParser</code> is created and user&#8217;s input would be parsed in as a ArgumentMultimap parameter.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. <code>AddDeadlineCommandParser</code> would do a validation check on the user’s input before creating
+and returning a <code>AddDeadlineCommand</code> with <code>index</code> and <code>Deadline</code> as its attribute.</p>
+</div>
+<div class="paragraph">
+<p>Step 6. <code>LogicManager</code> would execute <code>AddDeadlineCommand#execute()</code>,
+checks whether there is an existing module,
+then adds the <code>TrackedModule</code> into the <code>Model</code> which is handled by the <code>ModelManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 7. <code>AddDeadlineCommand</code> would return a <code>CommandResult</code>
+to the <code>LogicManager</code> which would then be returned back to the user.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the add deadline operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddDeadlineSequenceDiagram.png" alt="AddDeadlineSequenceDiagram">
+</div>
+<div class="title">Figure 10. Add Deadline Command Sequence Diagram</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="3-3-3-2-design-considerations"><a class="link" href="#3-3-3-2-design-considerations">3.3.3.2. Design Considerations</a></h5>
+<div class="paragraph">
+<p>Aspect: Data Structure used to support add command</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1(Current choice) : Use of ArrayList to store deadline tasks of each module.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Other commands (eg. edit, sort, delete) can be easily supported
+by a list operations.</p>
+</li>
+<li>
+<p>Pros: One and only one list is created for each TrackedModule.</p>
+</li>
+<li>
+<p>Cons: More difficult to maintain over the course of the project.
+New commands(eg. done, priority) need to edit and maintain the list constantly.</p>
+</li>
+<li>
+<p>Cons: Potential side effects from certain commands.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -614,7 +718,7 @@ as individual fields in the <code>ArchivedModule</code> object.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1107,4 +1211,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 05:51:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 15:28:37 UTC</div></div></div></body></html>
