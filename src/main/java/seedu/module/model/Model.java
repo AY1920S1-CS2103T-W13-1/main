@@ -132,5 +132,17 @@ public interface Model {
      * The module identity of {@code editedModule} must not be the same as another existing module in the module book.
      */
     void setModule(TrackedModule target, TrackedModule editedModule);
+
+    /**
+     * Finds and returns an Optional<ArchivedModule> from filteredArchivedModules based on the predicate.
+     */
+    Optional<ArchivedModule> findArchivedModule(Predicate<Module> predicate);
+
+    /**
+     * Finds and returns an Optional<TrackedModule> from filteredTrackedModules based on the predicate.
+     */
+    Optional<TrackedModule> findTrackedModule(Predicate<Module> predicate);
+
+
 }
 

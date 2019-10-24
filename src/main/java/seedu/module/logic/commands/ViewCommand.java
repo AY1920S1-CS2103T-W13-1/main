@@ -2,11 +2,13 @@ package seedu.module.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import seedu.module.logic.commands.exceptions.CommandException;
 import seedu.module.model.Model;
 import seedu.module.model.module.Module;
+import seedu.module.model.module.TrackedModule;
 
 /**
  * Views a Module identified by the module code. The viewed module could either be a tracked module
@@ -39,15 +41,16 @@ public class ViewCommand extends Command {
 
         model.updateFilteredArchivedModuleList(Model.PREDICATE_SHOW_ALL_MODULES);
 
-        Module toDisplay = model.getFilteredModuleList().stream()
-            .filter(findModulePredicate)
-            .map(module -> (Module) module)
-            .findFirst()
-            .or(() -> model.getFilteredArchivedModuleList().stream()
-                .filter(findModulePredicate)
-                .findFirst())
-            .orElseThrow(()
-                -> new CommandException(MESSAGE_MODULE_NOT_FOUND));
+        Module toDisplay;
+
+        Optional<TrackedModule> trackedModule = model.findTrackedModule(findModulePredicate);
+
+        if (!trackedModule.isPresent()) {
+            toDisplay = model.findArchivedModule(findModulePredicate).orElseThrow(()
+                    -> new CommandException(MESSAGE_MODULE_NOT_FOUND));
+        } else {
+            toDisplay = trackedModule.get();
+        }
 
         model.setDisplayedModule(toDisplay);
         return new CommandResult(String.format(MESSAGE_VIEW_MODULE_SUCCESS, moduleCode),

@@ -1,11 +1,14 @@
 package seedu.module.logic.commands;
 
-import static java.util.Objects.requireNonNull;
-
 import seedu.module.logic.commands.exceptions.CommandException;
 import seedu.module.model.Model;
-import seedu.module.model.module.NameContainsKeywordsPredicate;
+import seedu.module.model.module.ArchivedModule;
+import seedu.module.model.module.Module;
 import seedu.module.model.module.TrackedModule;
+
+import java.util.function.Predicate;
+
+import static java.util.Objects.requireNonNull;
 
 /**
  * Adds module to be tracked.
@@ -26,24 +29,23 @@ public class AddCommand extends Command {
 
     private TrackedModule toAdd;
 
-    private final NameContainsKeywordsPredicate predicate;
+    private final Predicate<Module> predicate;
 
     /**
      * Creates an AddCommand to add the specified {@code Module}
      */
-    public AddCommand(NameContainsKeywordsPredicate predicate) {
+    public AddCommand(Predicate<Module> predicate) {
         this.predicate = predicate;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        model.updateFilteredArchivedModuleList(predicate);
-        try {
-            toAdd = new TrackedModule(model.getFilteredArchivedModuleList().get(0));
-        } catch (IndexOutOfBoundsException e) {
-            throw new CommandException(MESSAGE_MODULE_NOT_FOUND);
-        }
+
+        ArchivedModule archivedModule = model.findArchivedModule(predicate).orElseThrow(()
+                -> new CommandException(MESSAGE_MODULE_NOT_FOUND));
+
+        toAdd = new TrackedModule(archivedModule);
 
         if (model.hasModule(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_MODULE);

@@ -1,12 +1,12 @@
 package seedu.module.logic.parser;
 
-import static seedu.module.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
-import java.util.Arrays;
-
 import seedu.module.logic.commands.AddCommand;
 import seedu.module.logic.parser.exceptions.ParseException;
-import seedu.module.model.module.NameContainsKeywordsPredicate;
+import seedu.module.model.module.Module;
+
+import java.util.function.Predicate;
+
+import static seedu.module.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -26,9 +26,9 @@ public class AddCommandParser implements Parser<AddCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Arrays.asList(trimmedArgs));
+        Predicate<Module> findModulePredicate = module -> module.getModuleCode().equals(trimmedArgs.toUpperCase());
 
-        return new AddCommand(predicate);
+        return new AddCommand(findModulePredicate);
     }
 
 }

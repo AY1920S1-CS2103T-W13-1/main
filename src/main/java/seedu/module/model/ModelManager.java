@@ -143,6 +143,18 @@ public class ModelManager implements Model {
         filteredTrackedModules.setPredicate(predicate);
     }
 
+    /**
+     * Finds and returns an Optional<ArchivedModule> from filteredArchivedModules based on the predicate.
+     * Returns an empty Optional if the module is not found.
+     */
+    @Override
+    public Optional<TrackedModule> findTrackedModule(Predicate<Module> predicate) {
+        Optional<TrackedModule> foundModule = filteredTrackedModules.stream()
+                .filter(predicate)
+                .findFirst();
+        return foundModule;
+    }
+
     //=========== Filtered ArchivedModule List Accessors =============================================================
 
     /**
@@ -158,6 +170,18 @@ public class ModelManager implements Model {
     public void updateFilteredArchivedModuleList(Predicate<Module> predicate) {
         requireNonNull(predicate);
         filteredArchivedModules.setPredicate(predicate);
+    }
+
+    /**
+     * Finds and returns an Optional<ArchivedModule> from filteredArchivedModules based on the predicate.
+     * Returns an empty Optional if the module is not found.
+     */
+    @Override
+    public Optional<ArchivedModule> findArchivedModule(Predicate<Module> predicate) {
+        Optional<ArchivedModule> foundModule = filteredArchivedModules.stream()
+                .filter(predicate)
+                .findFirst();
+        return foundModule;
     }
 
     //=========== Displayed List Accessors =============================================================
