@@ -41,16 +41,12 @@ public class ViewCommand extends Command {
 
         model.updateFilteredArchivedModuleList(Model.PREDICATE_SHOW_ALL_MODULES);
 
-        Module toDisplay;
-
         Optional<TrackedModule> trackedModule = model.findTrackedModule(findModulePredicate);
 
-        if (!trackedModule.isPresent()) {
-            toDisplay = model.findArchivedModule(findModulePredicate).orElseThrow(()
-                -> new CommandException(MESSAGE_MODULE_NOT_FOUND));
-        } else {
-            toDisplay = trackedModule.get();
-        }
+        Module toDisplay = model.findTrackedModule(findModulePredicate)
+                .map(module -> (Module) module)
+                .or(() -> model.findArchivedModule(findModulePredicate))
+                .orElseThrow(() -> new CommandException(MESSAGE_MODULE_NOT_FOUND));
 
         model.setDisplayedModule(toDisplay);
         return new CommandResult(String.format(MESSAGE_VIEW_MODULE_SUCCESS, moduleCode),
