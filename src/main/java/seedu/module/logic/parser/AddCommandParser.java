@@ -2,9 +2,7 @@ package seedu.module.logic.parser;
 
 import seedu.module.logic.commands.AddCommand;
 import seedu.module.logic.parser.exceptions.ParseException;
-import seedu.module.model.module.Module;
-
-import java.util.function.Predicate;
+import seedu.module.model.module.SameModuleCodePredicate;
 
 import static seedu.module.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
@@ -26,9 +24,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        Predicate<Module> findModulePredicate = module -> module.getModuleCode().equals(trimmedArgs.toUpperCase());
-
-        return new AddCommand(findModulePredicate);
+        return new AddCommand(new SameModuleCodePredicate(trimmedArgs));
     }
 
 }

@@ -1,14 +1,15 @@
 package seedu.module.model;
 
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.function.Predicate;
-
 import javafx.collections.ObservableList;
 import seedu.module.commons.core.GuiSettings;
 import seedu.module.model.module.ArchivedModule;
 import seedu.module.model.module.Module;
+import seedu.module.model.module.SameModuleCodePredicate;
 import seedu.module.model.module.TrackedModule;
+
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
  * The API of the Model component.
@@ -122,6 +123,7 @@ public interface Model {
 
     /**
      * Sets the active module that will be viewed by the user.
+     *
      * @param toDisplay the module to be displayed
      */
     void setDisplayedModule(Module toDisplay);
@@ -136,12 +138,12 @@ public interface Model {
     /**
      * Finds and returns an Optional<ArchivedModule> from filteredArchivedModules based on the predicate.
      */
-    Optional<ArchivedModule> findArchivedModule(Predicate<Module> predicate);
+    Optional<ArchivedModule> findArchivedModule(SameModuleCodePredicate predicate);
 
     /**
      * Finds and returns an Optional<TrackedModule> from filteredTrackedModules based on the predicate.
      */
-    Optional<TrackedModule> findTrackedModule(Predicate<Module> predicate);
+    Optional<TrackedModule> findTrackedModule(SameModuleCodePredicate predicate);
 
 
 }

@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 import seedu.module.logic.commands.exceptions.CommandException;
 import seedu.module.model.Model;
 import seedu.module.model.module.Module;
+import seedu.module.model.module.SameModuleCodePredicate;
 import seedu.module.model.module.TrackedModule;
 
 /**
@@ -30,14 +31,14 @@ public class ViewCommand extends Command {
     private final String moduleCode;
 
     public ViewCommand(String moduleCode) {
-        this.moduleCode = moduleCode.toUpperCase();
+        this.moduleCode = moduleCode;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        Predicate<Module> findModulePredicate = module -> module.getModuleCode().equals(moduleCode);
+        SameModuleCodePredicate findModulePredicate = new SameModuleCodePredicate(moduleCode);
 
         model.updateFilteredArchivedModuleList(Model.PREDICATE_SHOW_ALL_MODULES);
 

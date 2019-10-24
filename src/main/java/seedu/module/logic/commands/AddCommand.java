@@ -3,10 +3,8 @@ package seedu.module.logic.commands;
 import seedu.module.logic.commands.exceptions.CommandException;
 import seedu.module.model.Model;
 import seedu.module.model.module.ArchivedModule;
-import seedu.module.model.module.Module;
+import seedu.module.model.module.SameModuleCodePredicate;
 import seedu.module.model.module.TrackedModule;
-
-import java.util.function.Predicate;
 
 import static java.util.Objects.requireNonNull;
 
@@ -27,20 +25,20 @@ public class AddCommand extends Command {
     public static final String MESSAGE_DUPLICATE_MODULE = "This module already exists in the module book";
     public static final String MESSAGE_MODULE_NOT_FOUND = "This module is not found within the archive.";
 
-    private TrackedModule toAdd;
-
-    private final Predicate<Module> predicate;
+    private final SameModuleCodePredicate predicate;
 
     /**
      * Creates an AddCommand to add the specified {@code Module}
      */
-    public AddCommand(Predicate<Module> predicate) {
+    public AddCommand(SameModuleCodePredicate predicate) {
         this.predicate = predicate;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        TrackedModule toAdd;
 
         ArchivedModule archivedModule = model.findArchivedModule(predicate).orElseThrow(()
                 -> new CommandException(MESSAGE_MODULE_NOT_FOUND));
@@ -61,6 +59,6 @@ public class AddCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddCommand // instanceof handles nulls
-                && toAdd.equals(((AddCommand) other).toAdd));
+                && predicate.equals(((AddCommand) other).predicate));
     }
 }
