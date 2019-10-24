@@ -27,6 +27,7 @@
 <li><a href="#deadline-feature">3.3. Deadline Feature</a></li>
 <li><a href="#logging">3.4. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
+<li><a href="#link-management-feature">3.6. Link Management Feature</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -737,6 +738,103 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="link-management-feature"><a class="link" href="#link-management-feature">3.6. Link Management Feature</a></h3>
+<div class="paragraph">
+<p>The link management feature allows users to add and manage a set of website links that will be associated with a given module.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.6.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The link management feature is facilitated by the <code>link</code> class.</p>
+</div>
+<div class="paragraph">
+<p>Each <code>link</code> object is stored in an <code>ArrayList&lt;Link&gt;</code>, which in turn is stored in its corresponding <code>TrackedModule</code>.</p>
+</div>
+<div class="paragraph">
+<p>The link feature currently supports add, delete, edit and launch commands.</p>
+</div>
+<div class="paragraph">
+<p>An example usage scenario of an <strong>add link</strong> operation is given below and the behavior of the link management feature is shown.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user launches the application with an existing save file. <code>ModuleBook</code> is initialized with existing <code>TrackedModule</code>.</p>
+</li>
+<li>
+<p>The user inputs <code>link MODULE_INDEX a/add n/LINK_NAME l/LINK_URL</code> to add a link with name <code>LINK_NAME</code>, linked to <code>LINK_URL</code> to the <code>TrackedModule</code> with the corresponding <code>MODULE_INDEX</code>.</p>
+</li>
+<li>
+<p><code>LogicManager</code> receives user input and parses it using <code>ModuleBookParser#parseCommand()</code>.  <code>ModuleBookParser</code> reads the <code>COMMAND_WORD</code> and identifies the input as a <code>Link</code> related command and passes the input to <code>LinkCommandParser</code>.</p>
+</li>
+<li>
+<p><code>LinkCommandParser</code> determines the <code>add</code> action required through the <code>a/</code> prefix argument. It then proceeds to pass the relevant input to  <code>AddLinkCommandParser</code>.</p>
+</li>
+<li>
+<p><code>AddLinkCommandParser</code> checks for the validity of <code>LINK_URL</code> given by the user and creates the relevant <code>Link</code> and <code>AddLinkCommand</code> objects.</p>
+</li>
+<li>
+<p><code>AddLinkCommand</code> calls <code>Model#get(MODULE_INDEX)</code> to find the required module. If it does not exist or is not currently tracked, <code>AddLinkCommand</code> throws a <code>CommandException</code>. Otherwise, it then proceeds to call <code>TrackedModule#hasLinkTitle(LINK_NAME)</code> to check for an existing <code>Link</code> object with the same <code>LINK_NAME</code>.</p>
+</li>
+<li>
+<p>If such a <code>Link</code> object exists, <code>AddLinkCommand</code> aborts and throws a <code>CommandException</code>. Otherwise, the created <code>Link</code> will be added to the specified <code>TrackedModule</code>.</p>
+</li>
+<li>
+<p>If the operation is successful, a <code>CommandResult</code> with the success message will be returned.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddLinkCommandSequenceDiagram.png" alt="AddLinkCommandSequenceDiagram">
+</div>
+<div class="title">Figure 13. Sequence diagram for add link operation</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddLinkCommandSequenceDiagramExtension.png" alt="AddLinkCommandSequenceDiagramExtension">
+</div>
+<div class="title">Figure 14. Reference of add link to module function from sequence diagram shown above</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.6.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>Aspect: Data structure used for link management</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): All <code>TrackedModule</code> maintain a <code>ArrayList&lt;Link&gt;</code>. Adding <code>Link</code> objects will add to this <code>ArrayList</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and edit for beginner programmers.</p>
+</li>
+<li>
+<p>Cons: Accessing and editing existing <code>Link</code> might be less efficient. If number of <code>Link</code> objects maintained increases, <code>ArrayList</code> may not be optimal.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Use <code>HashSet&lt;Link&gt;</code> to maintain <code>Link</code> in each <code>TrackedModule</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduces access time, since <code>Link</code> objects can be obtained by giving <code>LINK_TITLE</code>, rather than searching the list linearly for a matching object.</p>
+</li>
+<li>
+<p>Cons: Difficult to add features. Future implmentations may add a <code>Priority</code> feature to <code>Link</code> objects. <code>HashSet</code> does not support any form of sorting and thus may pose a problem.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1225,4 +1323,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 04:08:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 04:13:48 UTC</div></div></div></body></html>
