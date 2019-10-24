@@ -2,13 +2,10 @@ package seedu.module.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.Optional;
-
 import seedu.module.logic.commands.exceptions.CommandException;
 import seedu.module.model.Model;
 import seedu.module.model.module.Module;
 import seedu.module.model.module.SameModuleCodePredicate;
-import seedu.module.model.module.TrackedModule;
 
 /**
  * Views a Module identified by the module code. The viewed module could either be a tracked module
