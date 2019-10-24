@@ -1,7 +1,18 @@
 package seedu.module.logic.parser;
 
-import org.junit.jupiter.api.Disabled;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.module.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.module.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.module.testutil.Assert.assertThrows;
+import static seedu.module.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.module.logic.commands.AddCommand;
 import seedu.module.logic.commands.BackCommand;
 import seedu.module.logic.commands.DeleteCommand;
@@ -16,21 +27,10 @@ import seedu.module.model.module.NameContainsKeywordsPredicate;
 import seedu.module.model.module.SameModuleCodePredicate;
 import seedu.module.testutil.ArchivedModuleBuilder;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.module.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.module.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.module.testutil.Assert.assertThrows;
-import static seedu.module.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-
 public class ModuleBookParserTest {
 
     private final ModuleBookParser parser = new ModuleBookParser();
-    
+
     @Test
     public void parseCommand_add() throws Exception {
         ArchivedModule archivedModule = new ArchivedModuleBuilder().build();

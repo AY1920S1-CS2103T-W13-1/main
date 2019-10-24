@@ -3,7 +3,6 @@ package seedu.module.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Optional;
-import java.util.function.Predicate;
 
 import seedu.module.logic.commands.exceptions.CommandException;
 import seedu.module.model.Model;
@@ -48,14 +47,14 @@ public class ViewCommand extends Command {
 
         if (!trackedModule.isPresent()) {
             toDisplay = model.findArchivedModule(findModulePredicate).orElseThrow(()
-                    -> new CommandException(MESSAGE_MODULE_NOT_FOUND));
+                -> new CommandException(MESSAGE_MODULE_NOT_FOUND));
         } else {
             toDisplay = trackedModule.get();
         }
 
         model.setDisplayedModule(toDisplay);
         return new CommandResult(String.format(MESSAGE_VIEW_MODULE_SUCCESS, moduleCode),
-            false, true, false);
+                false, true, false);
     }
 
     @Override

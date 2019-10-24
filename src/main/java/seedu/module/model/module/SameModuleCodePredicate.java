@@ -1,8 +1,8 @@
 package seedu.module.model.module;
 
-import seedu.module.commons.util.StringUtil;
-
 import java.util.function.Predicate;
+
+import seedu.module.commons.util.StringUtil;
 
 /**
  * Tests that a {@code Module}'s moduleCode matches the moduleCode given.

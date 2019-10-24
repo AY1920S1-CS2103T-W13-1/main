@@ -1,5 +1,13 @@
 package seedu.module.model;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.module.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.logging.Logger;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -9,14 +17,6 @@ import seedu.module.model.module.ArchivedModule;
 import seedu.module.model.module.Module;
 import seedu.module.model.module.SameModuleCodePredicate;
 import seedu.module.model.module.TrackedModule;
-
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.logging.Logger;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.module.commons.util.CollectionUtil.requireAllNonNull;
 
 /**
  * Represents the in-memory model of the module book data.
@@ -145,7 +145,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Finds and returns an Optional<ArchivedModule> from filteredArchivedModules based on the predicate.
+     * Finds and returns an {@literal Optional<TrackedModule>} from filteredArchivedModules based on the predicate.
      * Returns an empty Optional if the module is not found.
      */
     @Override
@@ -174,7 +174,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Finds and returns an Optional<ArchivedModule> from filteredArchivedModules based on the predicate.
+     * Finds and returns an {@literal Optional<ArchivedModule>} from filteredArchivedModules based on the predicate.
      * Returns an empty Optional if the module is not found.
      */
     @Override

@@ -1,7 +1,14 @@
 package seedu.module.logic.commands;
 
+import static seedu.module.logic.commands.AddCommand.MESSAGE_DUPLICATE_MODULE;
+import static seedu.module.logic.commands.AddCommand.MESSAGE_MODULE_NOT_FOUND;
+import static seedu.module.logic.commands.AddCommand.MESSAGE_SUCCESS;
+import static seedu.module.logic.commands.CommandTestUtil.assertCommandFailure;
+import static seedu.module.logic.commands.CommandTestUtil.assertCommandSuccess;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import seedu.module.model.Model;
 import seedu.module.model.ModelManager;
 import seedu.module.model.ModuleBook;
@@ -10,12 +17,6 @@ import seedu.module.model.module.ArchivedModuleList;
 import seedu.module.model.module.SameModuleCodePredicate;
 import seedu.module.model.module.TrackedModule;
 import seedu.module.testutil.ArchivedModuleBuilder;
-
-import static seedu.module.logic.commands.AddCommand.MESSAGE_DUPLICATE_MODULE;
-import static seedu.module.logic.commands.AddCommand.MESSAGE_MODULE_NOT_FOUND;
-import static seedu.module.logic.commands.AddCommand.MESSAGE_SUCCESS;
-import static seedu.module.logic.commands.CommandTestUtil.assertCommandFailure;
-import static seedu.module.logic.commands.CommandTestUtil.assertCommandSuccess;
 
 public class AddCommandTest {
     private final String moduleCode = "CS2103T";

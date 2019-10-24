@@ -1,15 +1,15 @@
 package seedu.module.model;
 
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.function.Predicate;
+
 import javafx.collections.ObservableList;
 import seedu.module.commons.core.GuiSettings;
 import seedu.module.model.module.ArchivedModule;
 import seedu.module.model.module.Module;
 import seedu.module.model.module.SameModuleCodePredicate;
 import seedu.module.model.module.TrackedModule;
-
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.function.Predicate;
 
 /**
  * The API of the Model component.
@@ -136,12 +136,12 @@ public interface Model {
     void setModule(TrackedModule target, TrackedModule editedModule);
 
     /**
-     * Finds and returns an Optional<ArchivedModule> from filteredArchivedModules based on the predicate.
+     * Finds and returns an  {@literal Optional<ArchivedModule>} from filteredArchivedModules based on the predicate.
      */
     Optional<ArchivedModule> findArchivedModule(SameModuleCodePredicate predicate);
 
     /**
-     * Finds and returns an Optional<TrackedModule> from filteredTrackedModules based on the predicate.
+     * Finds and returns an {@literal Optional<TrackedModule>} from filteredTrackedModules based on the predicate.
      */
     Optional<TrackedModule> findTrackedModule(SameModuleCodePredicate predicate);
 

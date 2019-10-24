@@ -1,12 +1,12 @@
 package seedu.module.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import seedu.module.logic.commands.exceptions.CommandException;
 import seedu.module.model.Model;
 import seedu.module.model.module.ArchivedModule;
 import seedu.module.model.module.SameModuleCodePredicate;
 import seedu.module.model.module.TrackedModule;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * Adds module to be tracked.
@@ -41,7 +41,7 @@ public class AddCommand extends Command {
         TrackedModule toAdd;
 
         ArchivedModule archivedModule = model.findArchivedModule(predicate).orElseThrow(()
-                -> new CommandException(MESSAGE_MODULE_NOT_FOUND));
+            -> new CommandException(MESSAGE_MODULE_NOT_FOUND));
 
         toAdd = new TrackedModule(archivedModule);
 

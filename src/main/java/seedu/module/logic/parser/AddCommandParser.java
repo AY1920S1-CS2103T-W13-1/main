@@ -1,10 +1,10 @@
 package seedu.module.logic.parser;
 
+import static seedu.module.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import seedu.module.logic.commands.AddCommand;
 import seedu.module.logic.parser.exceptions.ParseException;
 import seedu.module.model.module.SameModuleCodePredicate;
-
-import static seedu.module.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 /**
  * Parses input arguments and creates a new AddCommand object
