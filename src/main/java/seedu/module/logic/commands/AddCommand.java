@@ -38,12 +38,10 @@ public class AddCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        TrackedModule toAdd;
-
         ArchivedModule archivedModule = model.findArchivedModule(predicate).orElseThrow(()
             -> new CommandException(MESSAGE_MODULE_NOT_FOUND));
 
-        toAdd = new TrackedModule(archivedModule);
+        TrackedModule toAdd = new TrackedModule(archivedModule);
 
         if (model.hasModule(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_MODULE);

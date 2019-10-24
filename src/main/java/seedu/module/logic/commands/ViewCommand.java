@@ -41,8 +41,6 @@ public class ViewCommand extends Command {
 
         model.updateFilteredArchivedModuleList(Model.PREDICATE_SHOW_ALL_MODULES);
 
-        Optional<TrackedModule> trackedModule = model.findTrackedModule(findModulePredicate);
-
         Module toDisplay = model.findTrackedModule(findModulePredicate)
                 .map(module -> (Module) module)
                 .or(() -> model.findArchivedModule(findModulePredicate))
