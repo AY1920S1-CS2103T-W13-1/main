@@ -1,19 +1,7 @@
 package seedu.module.logic.parser;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.module.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.module.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.module.testutil.Assert.assertThrows;
-import static seedu.module.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
 import seedu.module.logic.commands.AddCommand;
 import seedu.module.logic.commands.BackCommand;
 import seedu.module.logic.commands.DeleteCommand;
@@ -25,22 +13,31 @@ import seedu.module.logic.commands.ViewCommand;
 import seedu.module.logic.parser.exceptions.ParseException;
 import seedu.module.model.module.ArchivedModule;
 import seedu.module.model.module.NameContainsKeywordsPredicate;
+import seedu.module.model.module.SameModuleCodePredicate;
 import seedu.module.testutil.ArchivedModuleBuilder;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.module.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.module.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.module.testutil.Assert.assertThrows;
+import static seedu.module.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 public class ModuleBookParserTest {
 
     private final ModuleBookParser parser = new ModuleBookParser();
-
-    // TODO: Fix this test
-    @Disabled("Cannot determine equality of AddCommand")
+    
     @Test
     public void parseCommand_add() throws Exception {
         ArchivedModule archivedModule = new ArchivedModuleBuilder().build();
-        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(
-            List.of(archivedModule.getModuleCode()));
+        SameModuleCodePredicate predicate = new SameModuleCodePredicate(archivedModule.getModuleCode());
 
         AddCommand command = (AddCommand) parser.parseCommand(AddCommand.COMMAND_WORD
-            + " " + archivedModule.getModuleCode());
+                + " " + archivedModule.getModuleCode());
         assertEquals(new AddCommand(predicate), command);
     }
 
@@ -85,7 +82,7 @@ public class ModuleBookParserTest {
         ArchivedModule archivedModule = new ArchivedModuleBuilder().build();
 
         ViewCommand command = (ViewCommand) parser.parseCommand(ViewCommand.COMMAND_WORD
-            + " " + archivedModule.getModuleCode());
+                + " " + archivedModule.getModuleCode());
         assertEquals(new ViewCommand(archivedModule.getModuleCode()), command);
     }
 
@@ -98,7 +95,7 @@ public class ModuleBookParserTest {
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
         assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-             HelpCommand.MESSAGE_USAGE), ()
+                HelpCommand.MESSAGE_USAGE), ()
                 -> parser.parseCommand(""));
     }
 
