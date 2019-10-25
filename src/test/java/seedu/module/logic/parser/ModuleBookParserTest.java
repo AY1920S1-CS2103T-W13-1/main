@@ -25,7 +25,9 @@ import seedu.module.logic.parser.exceptions.ParseException;
 import seedu.module.model.module.ArchivedModule;
 import seedu.module.model.module.NameContainsKeywordsPredicate;
 import seedu.module.model.module.SameModuleCodePredicate;
+import seedu.module.model.module.TrackedModule;
 import seedu.module.testutil.ArchivedModuleBuilder;
+import seedu.module.testutil.TrackedModuleBuilder;
 
 public class ModuleBookParserTest {
 
@@ -41,12 +43,14 @@ public class ModuleBookParserTest {
         assertEquals(new AddCommand(predicate), command);
     }
 
-    // TODO: Adapt this test to ModuleBook
     @Test
     public void parseCommand_delete() throws Exception {
+        TrackedModule trackedModule = new TrackedModuleBuilder().build();
+        SameModuleCodePredicate predicate = new SameModuleCodePredicate(trackedModule.getModuleCode());
+
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
-        assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
+                DeleteCommand.COMMAND_WORD + " " + trackedModule.getModuleCode());
+        assertEquals(new DeleteCommand(predicate), command);
     }
 
     @Test
