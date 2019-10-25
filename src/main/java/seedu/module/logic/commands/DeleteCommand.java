@@ -20,7 +20,8 @@ public class DeleteCommand extends Command {
             + "Example: " + COMMAND_WORD + " CS2103T";
 
     public static final String MESSAGE_DELETE_MODULE_SUCCESS = "Deleted module: %1$s";
-    public static final String MESSAGE_MODULE_NOT_FOUND = "This module is not found within the list of tracked modules.";
+    public static final String MESSAGE_MODULE_NOT_FOUND =
+            "This module is not found within the list of tracked modules.";
 
     private final SameModuleCodePredicate predicate;
 
@@ -32,7 +33,7 @@ public class DeleteCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         TrackedModule trackedModuleToDelete = model.findTrackedModule(predicate).orElseThrow(()
-                -> new CommandException(MESSAGE_MODULE_NOT_FOUND));
+            -> new CommandException(MESSAGE_MODULE_NOT_FOUND));
 
         model.deleteModule(trackedModuleToDelete);
         model.displayTrackedList();
