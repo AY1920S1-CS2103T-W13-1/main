@@ -2,7 +2,6 @@ package seedu.module.logic.commands;
 
 import static seedu.module.logic.commands.CommandTestUtil.assertCommandSuccess;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.function.Predicate;
 
@@ -17,7 +16,6 @@ import seedu.module.model.module.ArchivedModule;
 import seedu.module.model.module.ArchivedModuleList;
 import seedu.module.model.module.Module;
 import seedu.module.model.module.predicate.ModuleCodeContainsKeywordsPredicate;
-import seedu.module.model.module.predicate.SameModuleCodePredicate;
 import seedu.module.testutil.ArchivedModuleBuilder;
 
 public class FindCommandTest {
@@ -41,13 +39,13 @@ public class FindCommandTest {
         model.setModuleBook(moduleBook);
         expectedModel.setModuleBook(moduleBook);
 
-        ArrayList<String> moduleKeyword = new ArrayList<>(){
+        ArrayList<String> moduleKeyword = new ArrayList<>() {
             {
                 add("cs");
             }
         };
 
-        ArrayList<Predicate<Module>> listOfPredicates = new ArrayList<>(){
+        ArrayList<Predicate<Module>> listOfPredicates = new ArrayList<>() {
             {
                 add(new ModuleCodeContainsKeywordsPredicate(moduleKeyword));
             }
@@ -68,13 +66,13 @@ public class FindCommandTest {
         ModuleBook moduleBook = new ModuleBook(listOfArchivedModules);
         model.setModuleBook(moduleBook);
 
-        ArrayList<String> moduleKeyword = new ArrayList<>(){
+        ArrayList<String> moduleKeyword = new ArrayList<>() {
             {
                 add("ma");
             }
         };
 
-        ArrayList<Predicate<Module>> listOfPredicates = new ArrayList<>(){
+        ArrayList<Predicate<Module>> listOfPredicates = new ArrayList<>() {
             {
                 add(new ModuleCodeContainsKeywordsPredicate(moduleKeyword));
             }
