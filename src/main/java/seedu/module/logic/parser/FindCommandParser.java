@@ -9,6 +9,7 @@ import java.util.function.Predicate;
 import seedu.module.logic.commands.FindCommand;
 import seedu.module.logic.parser.exceptions.ParseException;
 import seedu.module.model.module.Module;
+import seedu.module.model.module.predicate.DescriptionContainsKeywordsPredicate;
 import seedu.module.model.module.predicate.ModuleCodeContainsKeywordsPredicate;
 
 /**
@@ -19,6 +20,7 @@ public class FindCommandParser implements Parser<FindCommand> {
     private final ArrayList<String> prefixes = new ArrayList<>() {
         {
             add("module\\");
+            add("desc\\");
         }
     };
 
@@ -98,6 +100,11 @@ public class FindCommandParser implements Parser<FindCommand> {
             case "module\\":
                 list.remove(0);
                 listOfPredicates.add(new ModuleCodeContainsKeywordsPredicate(list));
+                break;
+            case "desc\\":
+                list.remove(0);
+                listOfPredicates.add(new DescriptionContainsKeywordsPredicate(String.join(" ", list)));
+                break;
             }
         }
 
