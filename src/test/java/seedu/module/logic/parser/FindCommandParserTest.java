@@ -7,6 +7,8 @@ import static seedu.module.logic.parser.CommandParserTestUtil.assertParseFailure
 import static seedu.module.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -26,16 +28,9 @@ import seedu.module.model.module.predicate.ModuleCodeContainsKeywordsPredicate;
 public class FindCommandParserTest {
     private static String VALID_STRING = "module\\ cs";
     private FindCommandParser parser = new FindCommandParser();
-    private ArrayList<String> validModuleArguments = new ArrayList<>() {
-        {
-            add("cs");
-        }
-    };
-    private ArrayList<Predicate<Module>> validPredicateList = new ArrayList<>() {
-        {
-            add(new ModuleCodeContainsKeywordsPredicate(validModuleArguments));
-        }
-    };
+    private List<String> validModuleArguments = Arrays.asList("cs");
+    private List<Predicate<Module>> validPredicateList =
+            Arrays.asList(new ModuleCodeContainsKeywordsPredicate(validModuleArguments));
 
 
     @Test

@@ -2,7 +2,8 @@ package seedu.module.logic.commands;
 
 import static seedu.module.logic.commands.CommandTestUtil.assertCommandSuccess;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -39,17 +40,10 @@ public class FindCommandTest {
         model.setModuleBook(moduleBook);
         expectedModel.setModuleBook(moduleBook);
 
-        ArrayList<String> moduleKeyword = new ArrayList<>() {
-            {
-                add("cs");
-            }
-        };
+        List<String> moduleKeyword = Arrays.asList("cs");
 
-        ArrayList<Predicate<Module>> listOfPredicates = new ArrayList<>() {
-            {
-                add(new ModuleCodeContainsKeywordsPredicate(moduleKeyword));
-            }
-        };
+        List<Predicate<Module>> listOfPredicates =
+                Arrays.asList(new ModuleCodeContainsKeywordsPredicate(moduleKeyword));
 
         CommandResult expectedCommandResult = new CommandResult(String.format(Messages.MESSAGE_MODULES_LISTED_OVERVIEW,
                 expectedModel.getFilteredArchivedModuleList().size()),
@@ -66,17 +60,10 @@ public class FindCommandTest {
         ModuleBook moduleBook = new ModuleBook(listOfArchivedModules);
         model.setModuleBook(moduleBook);
 
-        ArrayList<String> moduleKeyword = new ArrayList<>() {
-            {
-                add("ma");
-            }
-        };
+        List<String> moduleKeyword = Arrays.asList("ma");
 
-        ArrayList<Predicate<Module>> listOfPredicates = new ArrayList<>() {
-            {
-                add(new ModuleCodeContainsKeywordsPredicate(moduleKeyword));
-            }
-        };
+        List<Predicate<Module>> listOfPredicates =
+                Arrays.asList(new ModuleCodeContainsKeywordsPredicate(moduleKeyword));
 
         CommandResult expectedCommandResult = new CommandResult(String.format(Messages.MESSAGE_MODULES_LISTED_OVERVIEW,
                 0),

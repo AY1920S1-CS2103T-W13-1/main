@@ -2,7 +2,7 @@ package seedu.module.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.module.commons.core.Messages;
@@ -24,9 +24,9 @@ public class FindCommand extends Command {
             + "Parameters:[field]\\ KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " module\\ cs2103 ma1521";
 
-    private final ArrayList<Predicate<Module>> listOfPredicates;
+    private final List<Predicate<Module>> listOfPredicates;
 
-    public FindCommand(ArrayList<Predicate<Module>> listOfPredicates) {
+    public FindCommand(List<Predicate<Module>> listOfPredicates) {
         this.listOfPredicates = listOfPredicates;
     }
 
