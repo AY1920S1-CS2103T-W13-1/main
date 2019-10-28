@@ -25,10 +25,9 @@ import seedu.module.logic.commands.ViewCommand;
 import seedu.module.logic.parser.exceptions.ParseException;
 import seedu.module.model.module.ArchivedModule;
 import seedu.module.model.module.Module;
-import seedu.module.model.module.predicate.ModuleCodeContainsKeywordsPredicate;
-import seedu.module.model.module.predicate.NameContainsKeywordsPredicate;
-import seedu.module.model.module.predicate.SameModuleCodePredicate;
 import seedu.module.model.module.TrackedModule;
+import seedu.module.model.module.predicate.ModuleCodeContainsKeywordsPredicate;
+import seedu.module.model.module.predicate.SameModuleCodePredicate;
 import seedu.module.testutil.ArchivedModuleBuilder;
 import seedu.module.testutil.TrackedModuleBuilder;
 
@@ -61,7 +60,7 @@ public class ModuleBookParserTest {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + " 3") instanceof ExitCommand);
     }
-    
+
     @Test
     public void parseCommand_find() throws Exception {
         List<String> keywords = Arrays.asList("module\\", "cs2030", "ma1521");

@@ -26,7 +26,7 @@ import seedu.module.model.module.predicate.ModuleCodeContainsKeywordsPredicate;
  * therefore should be covered by the ParserUtilTest.
  */
 public class FindCommandParserTest {
-    private static String VALID_STRING = "module\\ cs";
+    private static final String VALID_STRING = "module\\ cs";
     private FindCommandParser parser = new FindCommandParser();
     private List<String> validModuleArguments = Arrays.asList("cs");
     private List<Predicate<Module>> validPredicateList =
@@ -76,7 +76,7 @@ public class FindCommandParserTest {
     }
 
     @Test
-    public void parseList_InvalidArgs_throwsParseException() {
+    public void parseList_invalidArgs_throwsParseException() {
         String[] keywords = {"INVALID INPUT"};
         assertThrows(ParseException.class, () -> parser.parseList(keywords));
     }
@@ -88,7 +88,7 @@ public class FindCommandParserTest {
     }
 
     @Test
-    public void parseListOfLists_validArgs_returnsListOfLists() {
+    public void parseListOfLists_validArgs_returnsListOfLists() throws ParseException {
         ArrayList<ArrayList<String>> inputList = new ArrayList<>();
         ArrayList<String> correctModule = new ArrayList<>() {
             {
@@ -106,14 +106,15 @@ public class FindCommandParserTest {
                 add("ma");
             }
         };
-        ModuleCodeContainsKeywordsPredicate correctModulePredicate = new ModuleCodeContainsKeywordsPredicate(moduleArguments);
+        ModuleCodeContainsKeywordsPredicate correctModulePredicate =
+                new ModuleCodeContainsKeywordsPredicate(moduleArguments);
         correctList.add(correctModulePredicate);
 
         assertEquals(correctList, parser.parseListOfLists(inputList));
     }
 
     @Test
-    public void parseListOfLists_validArgsUpperCase_returnsListOfLists() {
+    public void parseListOfLists_validArgsUpperCase_returnsListOfLists() throws ParseException {
         ArrayList<ArrayList<String>> inputList = new ArrayList<>();
         ArrayList<String> correctModule = new ArrayList<>() {
             {
@@ -131,7 +132,8 @@ public class FindCommandParserTest {
                 add("ma");
             }
         };
-        ModuleCodeContainsKeywordsPredicate correctModulePredicate = new ModuleCodeContainsKeywordsPredicate(moduleArguments);
+        ModuleCodeContainsKeywordsPredicate correctModulePredicate =
+                new ModuleCodeContainsKeywordsPredicate(moduleArguments);
         correctList.add(correctModulePredicate);
 
         assertEquals(correctList, parser.parseListOfLists(inputList));

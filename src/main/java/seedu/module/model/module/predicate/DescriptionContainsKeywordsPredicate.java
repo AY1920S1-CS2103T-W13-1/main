@@ -1,6 +1,5 @@
 package seedu.module.model.module.predicate;
 
-import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.module.model.module.Module;

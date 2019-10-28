@@ -89,8 +89,10 @@ public class FindCommandParser implements Parser<FindCommand> {
     /**
      * Parses the given {@code ArrayList<ArrayList<Strings>>} of argument and returns a
      * {@code ArrayList<Predicate<Module>>} representing the predicates for each filter.
+     *
+     * @throws ParseException if prefix is not defined in prefixes.
      */
-    ArrayList<Predicate<Module>> parseListOfLists(ArrayList<ArrayList<String>> listOfLists) {
+    ArrayList<Predicate<Module>> parseListOfLists(ArrayList<ArrayList<String>> listOfLists) throws ParseException {
         assert !listOfLists.isEmpty() : "listOfList is empty.";
 
         ArrayList<Predicate<Module>> listOfPredicates = new ArrayList<>();
@@ -105,6 +107,8 @@ public class FindCommandParser implements Parser<FindCommand> {
                 list.remove(0);
                 listOfPredicates.add(new DescriptionContainsKeywordsPredicate(String.join(" ", list)));
                 break;
+            default:
+                throw new ParseException("parseListOfList received unknown prefix.");
             }
         }
 
