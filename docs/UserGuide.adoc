@@ -61,13 +61,19 @@ Format: `help`
 
 === Finding a module: `find`
 
-Find modules with the the given keyword. +
-Format: `find MODULE_CODE`
+Find modules with the the given prefix and keyword. +
+Format: `find PREFIX\ KEYWORD ...`
 
 ****
-* The search is case insensitive. e.g `cs2103t` will match `CS2103T`.
-* Only module code is searched.
-* Only full words will be matched e.g. `cs2103` will not match `cs2103t`.
+* Prefixes: (case sensitive)
+** `module\` : Find all modules with module code that contains the given keyword(s).
+*** Example: `find module\ cs ma st` will list all modules with module code containing `cs` or `ma` or `st`.
+** `desc\` : Find all modules with description that contains the given keyword or sentence.
+*** Example: `find desc\ software engineering` will list all modules with description containing `"software engineering"`.
+* The prefixes can be used together in any order to filter modules that passes all the search requirements.
+** Example: `find module\ cs2 cs3 desc\ software engineering` will show all modules with module code containing `cs2`
+or `cs3` with description containing `"software engineering"`.
+* The keywords are case insensitive. e.g `cs2103t` will match `CS2103T`.
 ****
 
 [TIP]
@@ -341,8 +347,8 @@ e.g. `add cs2101`
 * *Delete* : `delete MODULE_CODE` +
 e.g. `delete cs2101`
 * *Exit* : `exit`
-* *Find* : `find MODULE_CODE` +
-e.g. `find cs2101`
+* *Find* : `find PREFIx\ KEYWORD(s) ...` +
+e.g. `find module\ cs2 cs3 desc\ software engineering`
 * *Help* : `help`
 * *List* : `list`
 * *View* `view MODULE_CODE` +
