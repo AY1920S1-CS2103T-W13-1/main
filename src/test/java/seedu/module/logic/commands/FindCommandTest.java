@@ -18,7 +18,7 @@
 // import seedu.module.model.Model;
 // import seedu.module.model.ModelManager;
 // import seedu.module.model.UserPrefs;
-// import seedu.module.model.module.NameContainsKeywordsPredicate;
+// import seedu.module.model.module.predicate.NameContainsKeywordsPredicate;
 
 // /**
 //  * Contains integration tests (interaction with the Model) for {@code FindCommand}.

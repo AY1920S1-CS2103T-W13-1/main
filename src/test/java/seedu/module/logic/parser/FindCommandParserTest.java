@@ -9,7 +9,7 @@
 // import org.junit.jupiter.api.Test;
 
 // import seedu.module.logic.commands.FindCommand;
-// import seedu.module.model.module.NameContainsKeywordsPredicate;
+// import seedu.module.model.module.predicate.NameContainsKeywordsPredicate;
 
 // public class FindCommandParserTest {
 

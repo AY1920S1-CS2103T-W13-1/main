@@ -15,7 +15,7 @@ import seedu.module.commons.core.GuiSettings;
 import seedu.module.commons.core.LogsCenter;
 import seedu.module.model.module.ArchivedModule;
 import seedu.module.model.module.Module;
-import seedu.module.model.module.SameModuleCodePredicate;
+import seedu.module.model.module.predicate.SameModuleCodePredicate;
 import seedu.module.model.module.TrackedModule;
 
 /**

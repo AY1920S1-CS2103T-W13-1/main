@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.module.commons.core.Messages;
 import seedu.module.model.Model;
-import seedu.module.model.module.NameContainsKeywordsPredicate;
+import seedu.module.model.module.predicate.NameContainsKeywordsPredicate;
 
 /**
  * Finds and lists all modules in Module book ArchivedModuleList with names that contain any of the argument keywords.
