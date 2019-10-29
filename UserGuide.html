@@ -525,52 +525,55 @@ by medium priority and lastly low priority at the bottom.</p>
 </div>
 <div class="sect2">
 <h3 id="manage-links-in-modules-code-link-code"><a class="link" href="#manage-links-in-modules-code-link-code">3.10. Manage links in modules: <code>link</code></a></h3>
+<div class="paragraph">
+<p>Link commands are only available when viewing a module and only valid on currently displayed tracked modules.</p>
+</div>
 <div class="sect3">
 <h4 id="code-add-code-2"><a class="link" href="#code-add-code-2">3.10.1. <code>add</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>link MODULE_CODE a/add t/LINK_TITLE l/LINK_URL</code></p>
+<p>Format: <code>link add n/LINK_TITLE l/LINK_URL</code></p>
 </div>
 <div class="paragraph">
 <p>Adds link provided to the respective module.</p>
 </div>
 <div class="paragraph">
-<p>Example: <code>link cs1231 a/add t/course website l/https://www.comp.nus.edu.sg/~cs1231/</code></p>
+<p>Example: <code>link add n/course website l/https://www.comp.nus.edu.sg/~cs1231/</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="code-edit-code-2"><a class="link" href="#code-edit-code-2">3.10.2. <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>link MODULE_CODE a/edit t/LINK_TITLE [nt/EDITED_TITLE nl/EDITED_LINK]</code></p>
+<p>Format: <code>link edit n/LINK_TITLE [nt/EDITED_TITLE nl/EDITED_LINK]</code></p>
 </div>
 <div class="paragraph">
 <p>Edits the link identified by its current title for the respective module.</p>
 </div>
 <div class="paragraph">
-<p>Example: <code>link cs1231 a/edit t/course website nt/module website</code></p>
+<p>Example: <code>link edit t/course website nt/module website</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="code-go-code"><a class="link" href="#code-go-code">3.10.3. <code>go</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>link MODULE_CODE a/go t/LINK_TITLE</code></p>
+<p>Format: <code>link go n/LINK_TITLE</code></p>
 </div>
 <div class="paragraph">
 <p>Launches the link in the user system&#8217;s default browser.</p>
 </div>
 <div class="paragraph">
-<p>Example: <code>link cs1231 a/go t/module website</code></p>
+<p>Example: <code>link go n/module website</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="code-delete-code-2"><a class="link" href="#code-delete-code-2">3.10.4. <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>link MODULE_CODE a/delete t/LINK_TITLE</code></p>
+<p>Format: <code>link delete n/LINK_TITLE</code></p>
 </div>
 <div class="paragraph">
 <p>Deletes the link with the given link title in the respective module.</p>
 </div>
 <div class="paragraph">
-<p>Example: <code>link cs1231 a/delete t/module website</code></p>
+<p>Example: <code>link delete n/module website</code></p>
 </div>
 </div>
 </div>
@@ -663,4 +666,4 @@ e.g. <code>delete cs2101</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 15:42:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 15:44:47 UTC</div></div></div></body></html>
