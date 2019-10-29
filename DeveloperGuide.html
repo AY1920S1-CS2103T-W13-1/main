@@ -23,7 +23,7 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#module-view-feature">3.1. Module View Feature</a></li>
-<li><a href="#proposed-search-filtering-feature">3.2. [Proposed] Search filtering feature</a></li>
+<li><a href="#search-filtering-feature">3.2. Search filtering feature</a></li>
 <li><a href="#deadline-feature">3.3. Deadline Feature</a></li>
 <li><a href="#logging">3.4. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
@@ -452,29 +452,26 @@ The <code>BackCommand</code> mostly follows the same sequence as described above
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-search-filtering-feature"><a class="link" href="#proposed-search-filtering-feature">3.2. [Proposed] Search filtering feature</a></h3>
+<h3 id="search-filtering-feature"><a class="link" href="#search-filtering-feature">3.2. Search filtering feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.2.1. Proposed Implementation</a></h4>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
 <div class="paragraph">
-<p>The search filtering feature would be an enhancement to the current available search feature. Using different categories of predicates
-to narrow down the search space of the archived module list. The user should be able to able to combine different categories
-of search to find modules that passes all the user defined filters. This can be achieved through the use of <code>FilteredList</code>
-which can be updated incrementally with each filter applied. This would require additional classes that searches their individual fields
-for the keywords. For example:</p>
+<p>The search filtering feature Uses different categories of predicates
+to narrow down the search space of the archived module list. The user is able to able to combine different categories
+of search to find modules that passes all the user defined filters. This can be achieved through the use of <code>Predicate</code>
+which can be chained with additional predicates and applied to a <code>FilteredList</code>. This requires additional predicate classes that searches their individual fields
+for the keywords.:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>DescriptionContainsKeywordsPredicate#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> description matches any of the keywords given.</p>
+<p><code>ModuleCodeContainsKeywordsPredicate#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> module code matches any of the keywords given.</p>
+</li>
+<li>
+<p><code>DescriptionContainsKeywordsPredicate#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> description matches the keyword or sentence given.</p>
 </li>
 <li>
 <p><code>PrerequisiteContainsKeywordsPredicate()#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> prerequisites matches any of the keywords given.</p>
-</li>
-<li>
-<p><code>PreclusionContainsKeywordsPredicate()#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> preclusions matches any of the keywords given.</p>
-</li>
-<li>
-<p><code>ModuleCreditContainsKeywordsPredicate()#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> credits matches any of the keywords given.</p>
 </li>
 <li>
 <p><code>PreclusionContainsKeywordsPredicate()#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> preclusions matches any of the keywords given.</p>
@@ -485,17 +482,17 @@ for the keywords. For example:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The user should be able to use any combination of filters and the order of input should not matter. Examples of valid find commands:</p>
+<p>The user is able to use any combination of filters and the order of input should not matter. Examples of valid find commands:</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>find module\cs2</code> : Should display a list of modules with module code containing "cs2"</p>
+<p><code>find module\ cs2</code> : Should display a list of modules with module code containing "cs2"</p>
 </li>
 <li>
-<p><code>find module\cs2 prereq\ cs2040</code> : Should display a list of modules with module code containing "cs" and with prerequisite of "cs2040"</p>
+<p><code>find module\ cs2 prereq\ cs2040</code> : Should display a list of modules with module code containing "cs" and with prerequisite of "cs2040"</p>
 </li>
 </ul>
 </div>
@@ -527,20 +524,7 @@ The lifeline for <code>FindCommand</code> should end at the destroy marker (X) b
 of <code>Predicate&lt;module&gt;</code> based on the parsed arguments, which is used to construct a <code>FindCommand</code>.</p>
 </div>
 <div class="paragraph">
-<p>During the execution of <code>FindCommand#execute()</code>, each predicate is applied one by one to the <code>FilteredList</code>, the contents of the <code>FilteredList</code> are copied
-before the next predicate is applied.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Should one of the predicate result an empty <code>Filtered List</code>, it is possible to skip the rest of the predicates.
-</td>
-</tr>
-</table>
+<p>During the execution of <code>FindCommand#execute()</code>, each predicate is chained and applied to the <code>FilteredList</code>.</p>
 </div>
 <div class="paragraph">
 <p>Finally, a <code>FilteredList</code> of <code>Modules</code> that passes all of the filters will be displayed.</p>
@@ -744,7 +728,7 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 <p>The link management feature allows users to add and manage a set of website links that will be associated with a given module.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">3.6.1. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">3.6.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The link management feature is facilitated by the <code>link</code> class.</p>
 </div>
@@ -1319,4 +1303,4 @@ Expected: No module is deleted. Error details shown in the status message. Statu
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-28 15:27:19 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 07:57:57 UTC</div></div></div></body></html>
