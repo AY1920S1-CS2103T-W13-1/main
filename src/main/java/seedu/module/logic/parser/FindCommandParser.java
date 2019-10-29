@@ -4,9 +4,7 @@ import static seedu.module.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.module.commons.core.Messages.MESSAGE_INVALID_SEARCH_FIELD;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import seedu.module.logic.commands.FindCommand;
 import seedu.module.logic.parser.exceptions.ParseException;
@@ -137,8 +135,8 @@ public class FindCommandParser implements Parser<FindCommand> {
                         throw new ParseException("Please input valid semester numbers: 1 - 4");
                     }
                 }
-            listOfPredicates.add(new SemesterContainsKeywordsPredicate(listOfInt));
-            break;
+                listOfPredicates.add(new SemesterContainsKeywordsPredicate(listOfInt));
+                break;
             default:
                 throw new ParseException("parseListOfList received unknown prefix.");
             }
