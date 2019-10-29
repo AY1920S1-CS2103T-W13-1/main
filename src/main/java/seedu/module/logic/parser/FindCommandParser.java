@@ -11,6 +11,7 @@ import seedu.module.logic.parser.exceptions.ParseException;
 import seedu.module.model.module.Module;
 import seedu.module.model.module.predicate.DescriptionContainsKeywordsPredicate;
 import seedu.module.model.module.predicate.ModuleCodeContainsKeywordsPredicate;
+import seedu.module.model.module.predicate.PrerequisiteContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object.
@@ -21,6 +22,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         {
             add("module\\");
             add("desc\\");
+            add("prereq\\");
         }
     };
 
@@ -106,6 +108,10 @@ public class FindCommandParser implements Parser<FindCommand> {
             case "desc\\":
                 list.remove(0);
                 listOfPredicates.add(new DescriptionContainsKeywordsPredicate(String.join(" ", list)));
+                break;
+            case "prereq\\":
+                list.remove(0);
+                listOfPredicates.add(new PrerequisiteContainsKeywordsPredicate(list));
                 break;
             default:
                 throw new ParseException("parseListOfList received unknown prefix.");
