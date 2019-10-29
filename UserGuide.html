@@ -14,33 +14,30 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help: <code>help</code></a></li>
-<li><a href="#finding-a-module-code-find-code">3.2. Finding a module: <code>find</code></a></li>
-<li><a href="#adding-a-module-code-add-code">3.3. Adding a module: <code>add</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.2. Exiting the program: <code>exit</code></a></li>
+<li><a href="#listing-all-tracked-modules-code-list-code">3.3. Listing all tracked modules : <code>list</code></a></li>
 <li><a href="#viewing-a-module-code-view-code">3.4. Viewing a module: <code>view</code></a></li>
 <li><a href="#return-from-module-view-code-back-code">3.5. Return from module view: <code>back</code></a></li>
-<li><a href="#manage-deadline-tasks-code-deadline-code">3.6. Manage deadline tasks: <code>deadline</code></a></li>
-<li><a href="#manage-links-in-modules-code-link-code">3.7. Manage links in modules: <code>link</code></a></li>
-<li><a href="#listing-all-modules-code-list-code">3.8. Listing all modules : <code>list</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.9. Exiting the program: <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.10. Saving the data</a></li>
-<li><a href="#multiple-user-profiles-code-coming-in-v2-0-code">3.11. Multiple User Profiles <code>[coming in v2.0]</code></a></li>
+<li><a href="#finding-an-archived-module-code-find-code">3.6. Finding an archived module: <code>find</code></a></li>
+<li><a href="#adding-a-module-code-add-code">3.7. Adding a module: <code>add</code></a></li>
+<li><a href="#deleting-a-module-code-delete-code">3.8. Deleting a module: <code>delete</code></a></li>
+<li><a href="#manage-deadline-tasks-code-deadline-code">3.9. Manage deadline tasks: <code>deadline</code></a></li>
+<li><a href="#manage-links-in-modules-code-link-code">3.10. Manage links in modules: <code>link</code></a></li>
+<li><a href="#saving-the-data">3.11. Saving the data</a></li>
+<li><a href="#grade-manager-code-coming-soon-code">3.12. Grade Manager <code>[Coming Soon]</code></a></li>
+<li><a href="#file-manager-code-coming-in-v2-0-code">3.13. File Manager <code>[Coming in v2.0]</code></a></li>
+<li><a href="#cap-calculator-code-coming-in-v2-0-code">3.14. CAP Calculator <code>[Coming in v2.0]</code></a></li>
 </ul>
 </li>
-<li><a href="#module-view">4. Module-View</a>
+<li><a href="#command-summary">4. Command Summary</a>
 <ul class="sectlevel2">
-<li><a href="#delete">4.1. Delete</a></li>
-<li><a href="#grade-manager">4.2. Grade Manager</a></li>
-<li><a href="#deadline-manager">4.3. Deadline Manager</a></li>
-<li><a href="#file-manager-code-coming-in-v2-0-code">4.4. File Manager <code>[coming in v2.0]</code></a></li>
-<li><a href="#cap-calculator">4.5. CAP Calculator</a></li>
-<li><a href="#back">4.6. Back</a></li>
+<li><a href="#list-view">4.1. List View</a></li>
 </ul>
 </li>
-<li><a href="#faq">5. FAQ</a></li>
-<li><a href="#command-summary">6. Command Summary</a>
+<li><a href="#glossary">5. Glossary</a>
 <ul class="sectlevel2">
-<li><a href="#list-view">6.1. List View</a></li>
-<li><a href="#module-view-2">6.2. Module-View</a></li>
+<li><a href="#common-application-terms">5.1. Common Application terms</a></li>
+<li><a href="#common-module-terms">5.2. Common Module terms</a></li>
 </ul>
 </li>
 </ul>
@@ -112,6 +109,18 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect1">
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See <a href="#glossary">Section 5, &#8220;Glossary&#8221;</a> for more information on terms such as <code>Tracked</code> Module and <code>Archived</code> Module.
+</td>
+</tr>
+</table>
+</div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
@@ -136,9 +145,44 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="finding-a-module-code-find-code"><a class="link" href="#finding-a-module-code-find-code">3.2. Finding a module: <code>find</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.2. Exiting the program: <code>exit</code></a></h3>
 <div class="paragraph">
-<p>Find modules with the the given prefix and keyword.<br>
+<p>Exits the program.<br>
+Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-all-tracked-modules-code-list-code"><a class="link" href="#listing-all-tracked-modules-code-list-code">3.3. Listing all tracked modules : <code>list</code></a></h3>
+<div class="paragraph">
+<p>Shows a list of all current tracked modules.<br>
+Format: <code>list</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-a-module-code-view-code"><a class="link" href="#viewing-a-module-code-view-code">3.4. Viewing a module: <code>view</code></a></h3>
+<div class="paragraph">
+<p>Views a module and enters the module view. Can be a tracked module or an archived module.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>view &lt;MODULE_CODE&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>view cs1231</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="return-from-module-view-code-back-code"><a class="link" href="#return-from-module-view-code-back-code">3.5. Return from module view: <code>back</code></a></h3>
+<div class="paragraph">
+<p>Returns from the module view.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>back</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-an-archived-module-code-find-code"><a class="link" href="#finding-an-archived-module-code-find-code">3.6. Finding an archived module: <code>find</code></a></h3>
+<div class="paragraph">
+<p>Find archived modules with the the given prefix and keyword.<br>
 Format: <code>find PREFIX\ KEYWORD &#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
@@ -234,7 +278,7 @@ Modules are imported from NUSMods database.
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-module-code-add-code"><a class="link" href="#adding-a-module-code-add-code">3.3. Adding a module: <code>add</code></a></h3>
+<h3 id="adding-a-module-code-add-code"><a class="link" href="#adding-a-module-code-add-code">3.7. Adding a module: <code>add</code></a></h3>
 <div class="paragraph">
 <p>Adds a module to be tracked.<br>
 Format: <code>add MODULE_CODE</code></p>
@@ -280,30 +324,43 @@ Modules are imported from NUSMods database.
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-a-module-code-view-code"><a class="link" href="#viewing-a-module-code-view-code">3.4. Viewing a module: <code>view</code></a></h3>
+<h3 id="deleting-a-module-code-delete-code"><a class="link" href="#deleting-a-module-code-delete-code">3.8. Deleting a module: <code>delete</code></a></h3>
 <div class="paragraph">
-<p>Views a module and enters the module view. Can be a tracked module or an archived module.</p>
+<p>Untracks a module.<br>
+Format: <code>delete MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The delete is case insensitive. e.g <code>cs2103t</code> will match <code>CS2103T</code>.</p>
+</li>
+<li>
+<p>Only module code is searched for module to be added.</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>cs2103</code> will not match <code>cs2103t</code>.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p>Format: <code>view &lt;MODULE_CODE&gt;</code></p>
+<p>Examples:</p>
 </div>
-<div class="paragraph">
-<p>Example: <code>view cs1231</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete cs2103t</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="return-from-module-view-code-back-code"><a class="link" href="#return-from-module-view-code-back-code">3.5. Return from module view: <code>back</code></a></h3>
-<div class="paragraph">
-<p>Returns from the module view.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>back</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="manage-deadline-tasks-code-deadline-code"><a class="link" href="#manage-deadline-tasks-code-deadline-code">3.6. Manage deadline tasks: <code>deadline</code></a></h3>
+<h3 id="manage-deadline-tasks-code-deadline-code"><a class="link" href="#manage-deadline-tasks-code-deadline-code">3.9. Manage deadline tasks: <code>deadline</code></a></h3>
 <div class="sect3">
-<h4 id="code-add-code"><a class="link" href="#code-add-code">3.6.1. <code>add</code></a></h4>
+<h4 id="code-add-code"><a class="link" href="#code-add-code">3.9.1. <code>add</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>deadline MODULE_CODE a/add d/DESCRIPTION t/TIME</code></p>
 </div>
@@ -316,9 +373,9 @@ If deadline list is empty, creates a list. Else, adds to the end of the list.</p
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-edit-code"><a class="link" href="#code-edit-code">3.6.2. <code>edit</code></a></h4>
+<h4 id="code-edit-code"><a class="link" href="#code-edit-code">3.9.2. <code>edit</code></a></h4>
 <div class="sect4">
-<h5 id="3-4-2-1-edit-description"><a class="link" href="#3-4-2-1-edit-description">3.4.2.1. Edit Description</a></h5>
+<h5 id="edit-description"><a class="link" href="#edit-description">Edit Description</a></h5>
 <div class="paragraph">
 <p>Format: <code>deadline MODULE_CODE a/edit l/TASK_NUMBER_IN_LIST d/NEW_DESCRIPTION</code></p>
 </div>
@@ -330,7 +387,7 @@ If deadline list is empty, creates a list. Else, adds to the end of the list.</p
 </div>
 </div>
 <div class="sect4">
-<h5 id="3-4-2-2-edit-time"><a class="link" href="#3-4-2-2-edit-time">3.4.2.2. Edit Time</a></h5>
+<h5 id="edit-time"><a class="link" href="#edit-time">Edit Time</a></h5>
 <div class="paragraph">
 <p>Format: <code>deadline MODULE_CODE a/edit l/TASK_NUMBER_IN_LIST t/NEW_TIME</code></p>
 </div>
@@ -343,7 +400,7 @@ If deadline list is empty, creates a list. Else, adds to the end of the list.</p
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-done-code"><a class="link" href="#code-done-code">3.6.3. <code>done</code></a></h4>
+<h4 id="code-done-code"><a class="link" href="#code-done-code">3.9.3. <code>done</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>deadline MODULE_CODE a/done l/TASK_NUMBER_IN_LIST</code></p>
 </div>
@@ -356,7 +413,7 @@ as <strong>done</strong> with a tick on the checkbox for the respective module.<
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-in-progress-code"><a class="link" href="#code-in-progress-code">3.6.4. <code>in Progress</code></a></h4>
+<h4 id="code-in-progress-code"><a class="link" href="#code-in-progress-code">3.9.4. <code>in Progress</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>deadline MODULE_CODE a/inProgress l/TASK_NUMBER_IN_LIST</code></p>
 </div>
@@ -369,9 +426,9 @@ as <strong>in-progress</strong> with a dash on the checkbox for the respective m
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-priority-code"><a class="link" href="#code-priority-code">3.6.5. <code>priority</code></a></h4>
+<h4 id="code-priority-code"><a class="link" href="#code-priority-code">3.9.5. <code>priority</code></a></h4>
 <div class="sect4">
-<h5 id="3-4-5-1-high-priority"><a class="link" href="#3-4-5-1-high-priority">3.4.5.1. High Priority</a></h5>
+<h5 id="high-priority"><a class="link" href="#high-priority">High Priority</a></h5>
 <div class="paragraph">
 <p>Format: <code>deadline MODULE_CODE a/highPriority l/TASK_NUMBER_IN_LIST</code></p>
 </div>
@@ -384,7 +441,7 @@ as <strong>High-Priority</strong> for the respective module.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="3-4-5-2-medium-priority"><a class="link" href="#3-4-5-2-medium-priority">3.4.5.2. Medium Priority</a></h5>
+<h5 id="medium-priority"><a class="link" href="#medium-priority">Medium Priority</a></h5>
 <div class="paragraph">
 <p>Format: <code>deadline MODULE_CODE a/mediumPriority l/TASK_NUMBER_IN_LIST</code></p>
 </div>
@@ -397,7 +454,7 @@ as <strong>Medium-Priority</strong> for the respective module.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="3-4-5-3-low-priority"><a class="link" href="#3-4-5-3-low-priority">3.4.5.3. Low Priority</a></h5>
+<h5 id="low-priority"><a class="link" href="#low-priority">Low Priority</a></h5>
 <div class="paragraph">
 <p>Format: <code>deadline MODULE_CODE a/lowPriority l/TASK_NUMBER_IN_LIST</code></p>
 </div>
@@ -411,9 +468,9 @@ as <strong>Low-Priority</strong> for the respective module.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-sort-code"><a class="link" href="#code-sort-code">3.6.6. <code>sort</code></a></h4>
+<h4 id="code-sort-code"><a class="link" href="#code-sort-code">3.9.6. <code>sort</code></a></h4>
 <div class="sect4">
-<h5 id="3-4-6-3-sort-by-time"><a class="link" href="#3-4-6-3-sort-by-time">3.4.6.3. Sort by Time</a></h5>
+<h5 id="sort-by-time"><a class="link" href="#sort-by-time">Sort by Time</a></h5>
 <div class="paragraph">
 <p>Format: <code>deadline MODULE_CODE a/sort by/time</code></p>
 </div>
@@ -425,7 +482,7 @@ as <strong>Low-Priority</strong> for the respective module.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="3-4-6-3-sort-by-priority"><a class="link" href="#3-4-6-3-sort-by-priority">3.4.6.3. Sort by Priority</a></h5>
+<h5 id="sort-by-priority"><a class="link" href="#sort-by-priority">Sort by Priority</a></h5>
 <div class="paragraph">
 <p>Format: <code>deadline MODULE_CODE a/sort by/priority</code></p>
 </div>
@@ -439,9 +496,9 @@ by medium priority and lastly low priority at the bottom.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-delete-code"><a class="link" href="#code-delete-code">3.6.7. <code>delete</code></a></h4>
+<h4 id="code-delete-code"><a class="link" href="#code-delete-code">3.9.7. <code>delete</code></a></h4>
 <div class="sect4">
-<h5 id="3-4-7-1-delete-entire-list"><a class="link" href="#3-4-7-1-delete-entire-list">3.4.7.1 Delete entire list</a></h5>
+<h5 id="delete-entire-list"><a class="link" href="#delete-entire-list">Delete entire list</a></h5>
 <div class="paragraph">
 <p>Format: <code>deadline MODULE_CODE a/deleteList</code></p>
 </div>
@@ -453,7 +510,7 @@ by medium priority and lastly low priority at the bottom.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="3-4-7-1-delete-specific-deadline-task-from-list"><a class="link" href="#3-4-7-1-delete-specific-deadline-task-from-list">3.4.7.1 Delete specific deadline task from list</a></h5>
+<h5 id="delete-specific-deadline-task-from-list"><a class="link" href="#delete-specific-deadline-task-from-list">Delete specific deadline task from list</a></h5>
 <div class="paragraph">
 <p>Format: <code>deadline MODULE_CODE a/delete l/TASK_NUMBER_IN_LIST</code></p>
 </div>
@@ -467,9 +524,9 @@ by medium priority and lastly low priority at the bottom.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="manage-links-in-modules-code-link-code"><a class="link" href="#manage-links-in-modules-code-link-code">3.7. Manage links in modules: <code>link</code></a></h3>
+<h3 id="manage-links-in-modules-code-link-code"><a class="link" href="#manage-links-in-modules-code-link-code">3.10. Manage links in modules: <code>link</code></a></h3>
 <div class="sect3">
-<h4 id="code-add-code-2"><a class="link" href="#code-add-code-2">3.7.1. <code>add</code></a></h4>
+<h4 id="code-add-code-2"><a class="link" href="#code-add-code-2">3.10.1. <code>add</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>link MODULE_CODE a/add t/LINK_TITLE l/LINK_URL</code></p>
 </div>
@@ -481,7 +538,7 @@ by medium priority and lastly low priority at the bottom.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-edit-code-2"><a class="link" href="#code-edit-code-2">3.7.2. <code>edit</code></a></h4>
+<h4 id="code-edit-code-2"><a class="link" href="#code-edit-code-2">3.10.2. <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>link MODULE_CODE a/edit t/LINK_TITLE [nt/EDITED_TITLE nl/EDITED_LINK]</code></p>
 </div>
@@ -493,7 +550,7 @@ by medium priority and lastly low priority at the bottom.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-go-code"><a class="link" href="#code-go-code">3.7.3. <code>go</code></a></h4>
+<h4 id="code-go-code"><a class="link" href="#code-go-code">3.10.3. <code>go</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>link MODULE_CODE a/go t/LINK_TITLE</code></p>
 </div>
@@ -505,7 +562,7 @@ by medium priority and lastly low priority at the bottom.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-delete-code-2"><a class="link" href="#code-delete-code-2">3.7.4. <code>delete</code></a></h4>
+<h4 id="code-delete-code-2"><a class="link" href="#code-delete-code-2">3.10.4. <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>link MODULE_CODE a/delete t/LINK_TITLE</code></p>
 </div>
@@ -518,112 +575,44 @@ by medium priority and lastly low priority at the bottom.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-modules-code-list-code"><a class="link" href="#listing-all-modules-code-list-code">3.8. Listing all modules : <code>list</code></a></h3>
-<div class="paragraph">
-<p>Shows a list of all current tracked modules.<br>
-Format: <code>list</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.9. Exiting the program: <code>exit</code></a></h3>
-<div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.10. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.11. Saving the data</a></h3>
 <div class="paragraph">
 <p>ModuleBook data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="multiple-user-profiles-code-coming-in-v2-0-code"><a class="link" href="#multiple-user-profiles-code-coming-in-v2-0-code">3.11. Multiple User Profiles <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p>Multiple users can use the same application on the same computer.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="module-view"><a class="link" href="#module-view">4. Module-View</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Program enters module-view when <code>view</code> is called. In this mode, a different set of features are implemented.</p>
-</div>
-<div class="sect2">
-<h3 id="delete"><a class="link" href="#delete">4.1. Delete</a></h3>
-<div class="paragraph">
-<p>Remove current viewed module. Returns to normal view.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="grade-manager"><a class="link" href="#grade-manager">4.2. Grade Manager</a></h3>
+<h3 id="grade-manager-code-coming-soon-code"><a class="link" href="#grade-manager-code-coming-soon-code">3.12. Grade Manager <code>[Coming Soon]</code></a></h3>
 <div class="paragraph">
 <p>Tracks grades inputted by the user.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deadline-manager"><a class="link" href="#deadline-manager">4.3. Deadline Manager</a></h3>
-<div class="paragraph">
-<p>User can add and manage deadlines</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="file-manager-code-coming-in-v2-0-code"><a class="link" href="#file-manager-code-coming-in-v2-0-code">4.4. File Manager <code>[coming in v2.0]</code></a></h3>
+<h3 id="file-manager-code-coming-in-v2-0-code"><a class="link" href="#file-manager-code-coming-in-v2-0-code">3.13. File Manager <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Users can add files related to the module, and open them.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="cap-calculator"><a class="link" href="#cap-calculator">4.5. CAP Calculator</a></h3>
+<h3 id="cap-calculator-code-coming-in-v2-0-code"><a class="link" href="#cap-calculator-code-coming-in-v2-0-code">3.14. CAP Calculator <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p>Calculates the cumulative GPA of all tracked modules.
-<strong>To be implemented</strong></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="back"><a class="link" href="#back">4.6. Back</a></h3>
-<div class="paragraph">
-<p>Exits module-view and return to module list</p>
+<p>Calculates the cumulative GPA of all tracked modules.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">4. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="list-view"><a class="link" href="#list-view">6.1. List View</a></h3>
+<h3 id="list-view"><a class="link" href="#list-view">4.1. List View</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add MODULE_CODE</code><br>
-e.g. <code>add cs2101</code></p>
-</li>
-<li>
-<p><strong>Delete</strong> : <code>delete MODULE_CODE</code><br>
-e.g. <code>delete cs2101</code></p>
+<p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
 <p><strong>Exit</strong> : <code>exit</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>find PREFIx\ KEYWORD(s) &#8230;&#8203;</code><br>
-e.g. <code>find module\ cs2 cs3 desc\ software engineering prereq\ cs2030 sem\ 1 2</code></p>
-</li>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
 <p><strong>List</strong> : <code>list</code></p>
@@ -632,33 +621,46 @@ e.g. <code>find module\ cs2 cs3 desc\ software engineering prereq\ cs2030 sem\ 1
 <p><strong>View</strong> <code>view MODULE_CODE</code><br>
 e.g. <code>view cs2100</code></p>
 </li>
+<li>
+<p><strong>Back</strong> <code>back</code></p>
+</li>
+<li>
+<p><strong>Find</strong> : <code>find PREFIx\ KEYWORD(s) &#8230;&#8203;</code><br>
+e.g. <code>find module\ cs2 cs3 desc\ software engineering prereq\ cs2030 sem\ 1 2</code></p>
+</li>
+<li>
+<p><strong>Add</strong> <code>add MODULE_CODE</code><br>
+e.g. <code>add cs2101</code></p>
+</li>
+<li>
+<p><strong>Delete</strong> : <code>delete MODULE_CODE</code><br>
+e.g. <code>delete cs2101</code></p>
+</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="glossary"><a class="link" href="#glossary">5. Glossary</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="common-application-terms"><a class="link" href="#common-application-terms">5.1. Common Application terms</a></h3>
+<div class="paragraph">
+<p><strong>Home view</strong> - The state of the application that displays the home page in the main panel.</p>
+</div>
+<div class="paragraph">
+<p><strong>Module view</strong> - The state of the application that displays the specified module in the main panel.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="module-view-2"><a class="link" href="#module-view-2">6.2. Module-View</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Back</strong></p>
-</li>
-<li>
-<p><strong>CAP Calculator</strong></p>
-</li>
-<li>
-<p><strong>Deadline Manager</strong></p>
-</li>
-<li>
-<p><strong>Delete</strong></p>
-</li>
-<li>
-<p><strong>File Manager</strong></p>
-</li>
-<li>
-<p><strong>Grade Manager</strong></p>
-</li>
-</ul>
+<h3 id="common-module-terms"><a class="link" href="#common-module-terms">5.2. Common Module terms</a></h3>
+<div class="paragraph">
+<p><strong>Archived</strong> - A module that the institution provides. Can be viewed and tracked.</p>
+</div>
+<div class="paragraph">
+<p><strong>Tracked</strong> - A module that is tracked. References an archived module. Can be viewed.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 15:26:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-29 15:42:16 UTC</div></div></div></body></html>
