@@ -4,7 +4,9 @@ import static seedu.module.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.module.commons.core.Messages.MESSAGE_INVALID_SEARCH_FIELD;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import seedu.module.logic.commands.FindCommand;
 import seedu.module.logic.parser.exceptions.ParseException;
@@ -13,6 +15,7 @@ import seedu.module.model.module.predicate.DescriptionContainsKeywordsPredicate;
 import seedu.module.model.module.predicate.ModuleCodeContainsKeywordsPredicate;
 import seedu.module.model.module.predicate.PreclusionContainsKeywordsPredicate;
 import seedu.module.model.module.predicate.PrerequisiteContainsKeywordsPredicate;
+import seedu.module.model.module.predicate.SemesterContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object.
@@ -25,6 +28,7 @@ public class FindCommandParser implements Parser<FindCommand> {
             add("desc\\");
             add("prereq\\");
             add("preclu\\");
+            add("sem\\");
         }
     };
 
@@ -119,6 +123,22 @@ public class FindCommandParser implements Parser<FindCommand> {
                 list.remove(0);
                 listOfPredicates.add(new PreclusionContainsKeywordsPredicate(list));
                 break;
+            case "sem\\":
+                list.remove(0);
+                ArrayList<Integer> listOfInt = new ArrayList<>();
+                for (String semester : list) {
+                    try {
+                        int intSem = Integer.valueOf(semester);
+                        if (intSem > 4 || intSem < 1) {
+                            throw new ParseException("Please input valid semester numbers: 1 - 4");
+                        }
+                        listOfInt.add(intSem);
+                    } catch (NumberFormatException e) {
+                        throw new ParseException("Please input valid semester numbers: 1 - 4");
+                    }
+                }
+            listOfPredicates.add(new SemesterContainsKeywordsPredicate(listOfInt));
+            break;
             default:
                 throw new ParseException("parseListOfList received unknown prefix.");
             }
