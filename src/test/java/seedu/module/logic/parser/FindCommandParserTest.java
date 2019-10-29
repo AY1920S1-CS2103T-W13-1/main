@@ -26,7 +26,7 @@ import seedu.module.model.module.predicate.ModuleCodeContainsKeywordsPredicate;
  * therefore should be covered by the ParserUtilTest.
  */
 public class FindCommandParserTest {
-    private static final String VALID_STRING = "module\\ cs";
+    private static final String VALID_STRING = "mod\\ cs";
     private FindCommandParser parser = new FindCommandParser();
     private List<String> validModuleArguments = Arrays.asList("cs");
     private List<Predicate<Module>> validPredicateList =
@@ -35,11 +35,11 @@ public class FindCommandParserTest {
 
     @Test
     public void parseList_validArgs_returnsListOfLists() throws ParseException {
-        String[] keywords = {"module\\", "cs"};
+        String[] keywords = {"mod\\", "cs"};
         ArrayList<ArrayList<String>> correctList = new ArrayList<>();
         ArrayList<String> correctModule = new ArrayList<>() {
             {
-                add("module\\");
+                add("mod\\");
                 add("cs");
             }
         };
@@ -49,11 +49,11 @@ public class FindCommandParserTest {
 
     @Test
     public void parseList_invalidArgsAndValidArgs_returnsListOfLists() throws ParseException {
-        String[] keywords = {"INVALID TEXT", "INVALID TEXT 2", "module\\", "cs"};
+        String[] keywords = {"INVALID TEXT", "INVALID TEXT 2", "mod\\", "cs"};
         ArrayList<ArrayList<String>> correctList = new ArrayList<>();
         ArrayList<String> correctModule = new ArrayList<>() {
             {
-                add("module\\");
+                add("mod\\");
                 add("cs");
             }
         };
@@ -63,12 +63,12 @@ public class FindCommandParserTest {
 
     @Test
     public void parseList_validArgsWithNonsenseFields_returnsListOfLists() throws ParseException {
-        String[] keywords = {"module\\", "mod\\"};
+        String[] keywords = {"mod\\", "modINVALID\\"};
         ArrayList<ArrayList<String>> correctList = new ArrayList<>();
         ArrayList<String> correctModule = new ArrayList<>() {
             {
-                add("module\\");
                 add("mod\\");
+                add("modINVALID\\");
             }
         };
         correctList.add(correctModule);
@@ -83,7 +83,7 @@ public class FindCommandParserTest {
 
     @Test
     public void parseList_emptyFields_throwsParseException() {
-        String[] keywords = {"module\\"};
+        String[] keywords = {"mod\\"};
         assertThrows(ParseException.class, () -> parser.parseList(keywords));
     }
 
@@ -92,7 +92,7 @@ public class FindCommandParserTest {
         ArrayList<ArrayList<String>> inputList = new ArrayList<>();
         ArrayList<String> correctModule = new ArrayList<>() {
             {
-                add("module\\");
+                add("mod\\");
                 add("cs");
                 add("ma");
             }
@@ -118,7 +118,7 @@ public class FindCommandParserTest {
         ArrayList<ArrayList<String>> inputList = new ArrayList<>();
         ArrayList<String> correctModule = new ArrayList<>() {
             {
-                add("module\\");
+                add("mod\\");
                 add("CS");
                 add("MA");
             }

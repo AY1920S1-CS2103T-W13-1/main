@@ -63,7 +63,7 @@ public class ModuleBookParserTest {
 
     @Test
     public void parseCommand_find() throws Exception {
-        List<String> keywords = Arrays.asList("module\\", "cs2030", "ma1521");
+        List<String> keywords = Arrays.asList("mod\\", "cs2030", "ma1521");
         FindCommand command = (FindCommand) parser.parseCommand(
                 FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
 
