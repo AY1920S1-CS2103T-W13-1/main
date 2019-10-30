@@ -29,6 +29,11 @@
                <Text fx:id="description" styleClass="text-bright" text="\$description" />
             </children>
          </TextFlow>
+         <HBox alignment="CENTER_LEFT" spacing="5" VBox.vgrow="ALWAYS">
+             <children>
+               <Label fx:id="deadline" styleClass="label-bright" text="\$deadline" />
+             </children>
+         </HBox>
          <HBox alignment="BOTTOM_LEFT">
             <children>
                <Label styleClass="label-bright" text="Links: " />
