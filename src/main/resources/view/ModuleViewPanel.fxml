@@ -30,9 +30,9 @@
             </children>
          </TextFlow>
          <HBox alignment="CENTER_LEFT" spacing="5" VBox.vgrow="ALWAYS">
-             <children>
+            <children>
                <Label fx:id="deadline" styleClass="label-bright" text="\$deadline" />
-             </children>
+            </children>
          </HBox>
          <HBox alignment="BOTTOM_LEFT">
             <children>
