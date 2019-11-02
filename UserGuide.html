@@ -185,6 +185,18 @@ Format: <code>list</code></p>
 <p>Find archived modules with the the given prefix and keyword.<br>
 Format: <code>find PREFIX\ KEYWORD &#8230;&#8203;</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+It is possible to use any number or combination of filters. Prefixes not present will not be considered in the search.
+</td>
+</tr>
+</table>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
@@ -194,17 +206,27 @@ Format: <code>find PREFIX\ KEYWORD &#8230;&#8203;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>mod\</code> : Find all modules with module code that contains the given keyword(s).</p>
+<p><code>mod\</code> : Find all modules with <strong>module code</strong> that contains the given <strong>keyword(s)</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Example: <code>find module\ cs ma st</code> will list all modules with module code containing <code>cs</code> or <code>ma</code> or <code>st</code>.</p>
+<p>Example: <code>find mod\ cs ma st</code> will list all modules with module code containing <code>cs</code> or <code>ma</code> or <code>st</code>.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><code>desc\</code> : Find all modules with description that contains the given keyword or sentence.</p>
+<p><code>title\</code> : Find all modules with <strong>title</strong> that contains the given <strong>sentence</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: <code>find title\ software engineering</code> will list all modules with titles containing <code>"software engineering"</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>desc\</code> : Find all modules with <strong>description</strong> that contains the given <strong>sentence</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -214,7 +236,7 @@ Format: <code>find PREFIX\ KEYWORD &#8230;&#8203;</code></p>
 </div>
 </li>
 <li>
-<p><code>prereq\</code> : Find all modules with prerequisites that match the given keyword(s).</p>
+<p><code>prereq\</code> : Find all modules with <strong>prerequisites</strong> that match the given <strong>keyword(s)</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -224,7 +246,7 @@ Format: <code>find PREFIX\ KEYWORD &#8230;&#8203;</code></p>
 </div>
 </li>
 <li>
-<p><code>preclu\</code> : Find all modules with preclusion that match the given keyword(s).</p>
+<p><code>preclu\</code> : Find all modules with <strong>preclusion</strong> that match the given <strong>keyword(s)</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -251,7 +273,7 @@ Format: <code>find PREFIX\ KEYWORD &#8230;&#8203;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Example: <code>find module\ cs2 cs3 desc\ software engineering sem\ 1</code> will show all modules with module code containing <code>cs2</code>
+<p>Example: <code>find mod\ cs2 cs3 desc\ software engineering sem\ 1</code> will show all modules with module code containing <code>cs2</code>
 or <code>cs3</code> with description containing <code>"software engineering"</code> offered in semester 1.</p>
 </li>
 </ul>
@@ -263,6 +285,18 @@ or <code>cs3</code> with description containing <code>"software engineering"</co
 </ul>
 </div>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+title\ and desc\ will seach a single sentence while mod\, prereq\, preclu\ and sem\ will search for all modules with any of the keywords.
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -573,7 +607,7 @@ e.g. <code>view cs2100</code></p>
 </li>
 <li>
 <p><strong>Find</strong> : <code>find PREFIx\ KEYWORD(s) &#8230;&#8203;</code><br>
-e.g. <code>find module\ cs2 cs3 desc\ software engineering prereq\ cs2030 sem\ 1 2</code></p>
+e.g. <code>find mod\ cs2 cs3 desc\ software engineering prereq\ cs2030 sem\ 1 2</code></p>
 </li>
 <li>
 <p><strong>Add</strong> <code>add MODULE_CODE</code><br>
@@ -610,4 +644,4 @@ e.g. <code>delete cs2101</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 17:19:07 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-02 05:07:02 UTC</div></div></div></body></html>
