@@ -206,6 +206,16 @@ It is possible to use any number or combination of filters. Prefixes not present
 <div class="ulist">
 <ul>
 <li>
+<p><code>all\</code> : List all the modules. <strong>Overrides</strong> all other prefixes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: <code>find mod\ cs all\</code> all\ will override mod\ and list all the modules.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p><code>mod\</code> : Find all modules with <strong>module code</strong> that contains the given <strong>keyword(s)</strong>.</p>
 <div class="ulist">
 <ul>
@@ -282,6 +292,29 @@ or <code>cs3</code> with description containing <code>"software engineering"</co
 <li>
 <p>The keywords are case insensitive. e.g <code>cs2103t</code> will match <code>CS2103T</code>.</p>
 </li>
+<li>
+<p>Sentences used in title\ and desc\ are tolerant of minor spelling mistakes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: <code>find desc\ enginering</code> will display results similar to <code>find desc\ engineering</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Search is performed using string matching, which can result results being shown by searching random keywords.</p>
+</li>
+<li>
+<p>Invalid prefixes and keywords before a valid prefix will be ignored.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Eg: <code>find INVALID\ invalidKeyword mod\ cs</code> the <code>INVALID\ invalidKeyword</code> will be ignored.</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -293,7 +326,7 @@ or <code>cs3</code> with description containing <code>"software engineering"</co
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-title\ and desc\ will seach a single sentence while mod\, prereq\, preclu\ and sem\ will search for all modules with any of the keywords.
+title\ and desc\ will seach a single sentence. mod\, prereq\, preclu\ and sem\ will search for all modules with any of the keywords without checking for spelling errors.
 </td>
 </tr>
 </table>
@@ -644,4 +677,4 @@ e.g. <code>delete cs2101</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-05 15:50:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-05 18:21:36 UTC</div></div></div></body></html>
