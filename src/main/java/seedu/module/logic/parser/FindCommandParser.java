@@ -21,8 +21,6 @@ import seedu.module.model.module.predicate.TitleContainsKeywordsPredicate;
  */
 public class FindCommandParser implements Parser<FindCommand> {
 
-    Predicate<Module> PREDICATE_SHOW_ALL_MODULES = unused -> true;
-
     private final ArrayList<String> prefixes = new ArrayList<>() {
         {
             add("all\\");
@@ -111,8 +109,9 @@ public class FindCommandParser implements Parser<FindCommand> {
         for (ArrayList<String> list : listOfLists) {
             switch (list.get(0)) {
             case "all\\":
+                Predicate<Module> showAll = unused -> true;
                 listOfPredicates.clear();
-                listOfPredicates.add(PREDICATE_SHOW_ALL_MODULES);
+                listOfPredicates.add(showAll);
                 return listOfPredicates;
             case "mod\\":
                 list.remove(0);
