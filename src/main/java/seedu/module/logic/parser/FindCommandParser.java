@@ -119,7 +119,7 @@ public class FindCommandParser implements Parser<FindCommand> {
                 break;
             case "title\\":
                 list.remove(0);
-                listOfPredicates.add(new TitleContainsKeywordsPredicate(String.join(" ", list)));
+                listOfPredicates.add(new TitleContainsKeywordsPredicate(list));
                 break;
             case "desc\\":
                 list.remove(0);
