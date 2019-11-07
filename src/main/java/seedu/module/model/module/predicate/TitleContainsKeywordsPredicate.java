@@ -20,7 +20,7 @@ public class TitleContainsKeywordsPredicate implements Predicate<Module> {
     @Override
     public boolean test(Module module) {
         return keywords.stream()
-                .anyMatch(keyword -> checker.fuzzyContains(module.getTitle().toLowerCase(), keyword));
+                .allMatch(keyword -> checker.fuzzyContains(module.getTitle().toLowerCase(), keyword));
     }
 
     @Override
