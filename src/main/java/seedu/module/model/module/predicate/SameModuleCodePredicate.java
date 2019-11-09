@@ -17,6 +17,7 @@ public class SameModuleCodePredicate implements Predicate<Module> {
 
     @Override
     public boolean test(Module module) {
+        assert !module.equals("") : "SameModuleCodePredicate received an empty String.";
         return StringUtil.containsWordIgnoreCase(module.getModuleCode(), moduleCode);
     }
 
