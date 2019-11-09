@@ -1,7 +1,7 @@
 package seedu.module.model.module.predicate;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 
@@ -12,10 +12,10 @@ import seedu.module.testutil.ArchivedModuleBuilder;
 
 public class TitleContainsKeywordsPredicateTest {
 
-    ArchivedModule archivedModule = new ArchivedModuleBuilder().build();
+    private ArchivedModule archivedModule = new ArchivedModuleBuilder().build();
 
     @Test
-    public void test_SameDescription_returnsTrue() {
+    public void test_sameDescription_returnsTrue() {
         ArrayList<String> list = new ArrayList<>() {
             {
                 add("Software");
@@ -27,7 +27,7 @@ public class TitleContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_SameDescriptionLowerCase_returnsTrue() {
+    public void test_sameDescriptionLowerCase_returnsTrue() {
         ArrayList<String> list = new ArrayList<>() {
             {
                 add("software");
@@ -81,6 +81,39 @@ public class TitleContainsKeywordsPredicateTest {
         };
         TitleContainsKeywordsPredicate titleContainsKeywordsPredicate = new TitleContainsKeywordsPredicate(list);
         assertTrue(titleContainsKeywordsPredicate.test(archivedModule));
+    }
+
+    @Test
+    public void equals_sameList_returnsTrue() {
+        ArrayList<String> list = new ArrayList<>() {
+            {
+                add("Software");
+            }
+        };
+        TitleContainsKeywordsPredicate titleContainsKeywordsPredicate =
+                new TitleContainsKeywordsPredicate(list);
+        TitleContainsKeywordsPredicate otherTitleContainsKeywordsPredicate =
+                new TitleContainsKeywordsPredicate(list);
+        assertTrue(titleContainsKeywordsPredicate.equals(otherTitleContainsKeywordsPredicate));
+    }
+
+    @Test
+    public void equals_differentList_returnsFalse() {
+        ArrayList<String> list = new ArrayList<>() {
+            {
+                add("Software");
+            }
+        };
+        ArrayList<String> diffList = new ArrayList<>() {
+            {
+                add("engineering");
+            }
+        };
+        TitleContainsKeywordsPredicate titleContainsKeywordsPredicate =
+                new TitleContainsKeywordsPredicate(list);
+        TitleContainsKeywordsPredicate otherTitleContainsKeywordsPredicate =
+                new TitleContainsKeywordsPredicate(diffList);
+        assertFalse(titleContainsKeywordsPredicate.equals(otherTitleContainsKeywordsPredicate));
     }
 
 }

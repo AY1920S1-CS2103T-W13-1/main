@@ -10,17 +10,17 @@ import seedu.module.testutil.ArchivedModuleBuilder;
 
 public class SameModuleCodePredicateTest {
 
-    ArchivedModule archivedModule = new ArchivedModuleBuilder().build();
+    private ArchivedModule archivedModule = new ArchivedModuleBuilder().build();
 
 
     @Test
-    public void test_SameModuleCode_returnsTrue() {
+    public void test_sameModuleCode_returnsTrue() {
         SameModuleCodePredicate sameModuleCodePredicate = new SameModuleCodePredicate("CS2103T");
         assertTrue(sameModuleCodePredicate.test(archivedModule));
     }
 
     @Test
-    public void test_SameModuleCodeLowerCase_returnsTrue() {
+    public void test_sameModuleCodeLowerCase_returnsTrue() {
         SameModuleCodePredicate sameModuleCodePredicate = new SameModuleCodePredicate("cs2103t");
         assertTrue(sameModuleCodePredicate.test(archivedModule));
     }
@@ -35,6 +35,24 @@ public class SameModuleCodePredicateTest {
     public void test_partialModuleCode_returnsFalse() {
         SameModuleCodePredicate sameModuleCodePredicate = new SameModuleCodePredicate("CS2103");
         assertFalse(sameModuleCodePredicate.test(archivedModule));
+    }
+
+    @Test
+    public void equals_sameString_returnsTrue() {
+        SameModuleCodePredicate moduleCodeContainsKeywordsPredicate =
+                new SameModuleCodePredicate("CS2103T");
+        SameModuleCodePredicate otherModuleCodeContainsKeywordsPredicate =
+                new SameModuleCodePredicate("CS2103T");
+        assertTrue(moduleCodeContainsKeywordsPredicate.equals(otherModuleCodeContainsKeywordsPredicate));
+    }
+
+    @Test
+    public void equals_differentList_returnsFalse() {
+        SameModuleCodePredicate moduleCodeContainsKeywordsPredicate =
+                new SameModuleCodePredicate("CS2103T");
+        SameModuleCodePredicate otherModuleCodeContainsKeywordsPredicate =
+                new SameModuleCodePredicate("CS2101");
+        assertFalse(moduleCodeContainsKeywordsPredicate.equals(otherModuleCodeContainsKeywordsPredicate));
     }
 
 }

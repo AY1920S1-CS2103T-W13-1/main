@@ -1,7 +1,7 @@
 package seedu.module.model.module.predicate;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 
@@ -12,29 +12,31 @@ import seedu.module.testutil.ArchivedModuleBuilder;
 
 public class DescriptionContainsKeywordsPredicateTest {
 
-    ArchivedModule archivedModule = new ArchivedModuleBuilder().build();
+    private ArchivedModule archivedModule = new ArchivedModuleBuilder().build();
 
     @Test
-    public void test_SameDescription_returnsTrue() {
+    public void test_sameDescription_returnsTrue() {
         ArrayList<String> list = new ArrayList<>() {
             {
                 add("Lorem");
                 add("Ipsum");
             }
         };
-        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate = new DescriptionContainsKeywordsPredicate(list);
+        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate =
+                new DescriptionContainsKeywordsPredicate(list);
         assertTrue(descriptionContainsKeywordsPredicate.test(archivedModule));
     }
 
     @Test
-    public void test_SameDescriptionLowerCase_returnsTrue() {
+    public void test_sameDescriptionLowerCase_returnsTrue() {
         ArrayList<String> list = new ArrayList<>() {
             {
                 add("lorem");
                 add("ipsum");
             }
         };
-        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate = new DescriptionContainsKeywordsPredicate(list);
+        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate =
+                new DescriptionContainsKeywordsPredicate(list);
         assertTrue(descriptionContainsKeywordsPredicate.test(archivedModule));
     }
 
@@ -45,7 +47,8 @@ public class DescriptionContainsKeywordsPredicateTest {
                 add("hello");
             }
         };
-        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate = new DescriptionContainsKeywordsPredicate(list);
+        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate =
+                new DescriptionContainsKeywordsPredicate(list);
         assertFalse(descriptionContainsKeywordsPredicate.test(archivedModule));
     }
 
@@ -56,7 +59,8 @@ public class DescriptionContainsKeywordsPredicateTest {
                 add("Lorem");
             }
         };
-        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate = new DescriptionContainsKeywordsPredicate(list);
+        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate =
+                new DescriptionContainsKeywordsPredicate(list);
         assertTrue(descriptionContainsKeywordsPredicate.test(archivedModule));
     }
 
@@ -68,7 +72,8 @@ public class DescriptionContainsKeywordsPredicateTest {
                 add("invalid");
             }
         };
-        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate = new DescriptionContainsKeywordsPredicate(list);
+        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate =
+                new DescriptionContainsKeywordsPredicate(list);
         assertFalse(descriptionContainsKeywordsPredicate.test(archivedModule));
     }
 
@@ -79,8 +84,42 @@ public class DescriptionContainsKeywordsPredicateTest {
                 add("Loem");
             }
         };
-        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate = new DescriptionContainsKeywordsPredicate(list);
+        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate =
+                new DescriptionContainsKeywordsPredicate(list);
         assertTrue(descriptionContainsKeywordsPredicate.test(archivedModule));
+    }
+
+    @Test
+    public void equals_sameList_returnsTrue() {
+        ArrayList<String> list = new ArrayList<>() {
+            {
+                add("Loem");
+            }
+        };
+        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate =
+                new DescriptionContainsKeywordsPredicate(list);
+        DescriptionContainsKeywordsPredicate otherDescriptionContainsKeywordsPredicate =
+                new DescriptionContainsKeywordsPredicate(list);
+        assertTrue(descriptionContainsKeywordsPredicate.equals(otherDescriptionContainsKeywordsPredicate));
+    }
+
+    @Test
+    public void equals_differentList_returnsFalse() {
+        ArrayList<String> list = new ArrayList<>() {
+            {
+                add("Loem");
+            }
+        };
+        ArrayList<String> diffList = new ArrayList<>() {
+            {
+                add("Meol");
+            }
+        };
+        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate =
+                new DescriptionContainsKeywordsPredicate(list);
+        DescriptionContainsKeywordsPredicate otherDescriptionContainsKeywordsPredicate =
+                new DescriptionContainsKeywordsPredicate(diffList);
+        assertFalse(descriptionContainsKeywordsPredicate.equals(otherDescriptionContainsKeywordsPredicate));
     }
 
 }
