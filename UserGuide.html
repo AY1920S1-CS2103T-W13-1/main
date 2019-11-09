@@ -454,8 +454,9 @@ Format: <code>delete MODULE_CODE</code></p>
 </div>
 <div class="paragraph">
 <p>Adds deadline task consisting of description, time and priority tag to the respective module.
-If deadline list is empty, creates a list. Else, adds to the end of the list. Priority tags can be
-<code>HIGH</code>, <code>MEDIUM</code> OR <code>LOW</code>.</p>
+Priority tags can be <code>HIGH</code>, <code>MEDIUM</code> OR <code>LOW</code>. Deadline tasks tagged as <code>HIGH</code> is displayed in red, <code>MEDIUM</code> in yellow
+and <code>LOW</code> in green. Deadline list is sorted according to priority and deadline date and time.
+All fields are compulsory.</p>
 </div>
 <div class="paragraph">
 <p>Example: <code>deadline 1 a/add d/tutorial 1 t/22/10/2019 2359 p/HIGH</code></p>
@@ -495,55 +496,53 @@ If deadline list is empty, creates a list. Else, adds to the end of the list. Pr
 </div>
 <div class="paragraph">
 <p>Marks the deadline task numbered in deadline list
-as <strong>done</strong> with a tick on the checkbox for the respective module.</p>
+as <strong>done</strong> with a tick.</p>
 </div>
 <div class="paragraph">
 <p>Example: <code>deadline 1 a/done task/2</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-in-progress-code"><a class="link" href="#code-in-progress-code">3.9.4. <code>in Progress</code></a></h4>
+<h4 id="code-doneall-code"><a class="link" href="#code-doneall-code">3.9.4. <code>doneAll</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>deadline MODULE_LIST_NUM a/doneAll</code></p>
+</div>
+<div class="paragraph">
+<p>Marks all the deadline tasks in deadline list
+as <strong>done</strong> with a tick.</p>
+</div>
+<div class="paragraph">
+<p>Example: <code>deadline 1 a/doneAll</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-in-progress-code"><a class="link" href="#code-in-progress-code">3.9.5. <code>in Progress</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>deadline MODULE_LIST_NUM a/inProgress task/TASK_NUMBER_IN_LIST</code></p>
 </div>
 <div class="paragraph">
 <p>Marks the deadline task numbered in deadline list
-as <strong>in-progress</strong> with a dash on the checkbox for the respective module.</p>
+as <strong>in-progress</strong> with a dash.</p>
 </div>
 <div class="paragraph">
 <p>Example: <code>deadline 1 a/inProgress task/1</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-sort-code-coming-in-mid-v1-4"><a class="link" href="#code-sort-code-coming-in-mid-v1-4">3.9.5. <code>sort</code>(Coming in mid V1.4)</a></h4>
+<h4 id="code-undone-code"><a class="link" href="#code-undone-code">3.9.6. <code>undone</code></a></h4>
 <div class="paragraph">
-<p>1.Sort by Time</p>
+<p>Format: <code>deadline MODULE_LIST_NUM a/undone task/TASK_NUMBER_IN_LIST</code></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>deadline MODULE_LIST_NUM a/sort by/time</code></p>
+<p>Marks the deadline task numbered in deadline list
+as <strong>undone</strong> with empty space.</p>
 </div>
 <div class="paragraph">
-<p>Sorts deadline tasks according to time, latest deadline at the top and later ones below.</p>
-</div>
-<div class="paragraph">
-<p>Example: <code>deadline 1 a/sort by/time</code></p>
-</div>
-<div class="paragraph">
-<p>2.Sort by Priority</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>deadline MODULE_LIST_NUM a/sort by/priority</code></p>
-</div>
-<div class="paragraph">
-<p>Sorts deadline tasks according to priority, highest priority at the top, followed
-by medium priority and lastly low priority at the bottom.</p>
-</div>
-<div class="paragraph">
-<p>Example: <code>deadline 2 a/sort by/priority</code></p>
+<p>Example: <code>deadline 1 a/undone task/1</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-delete-code"><a class="link" href="#code-delete-code">3.9.6. <code>delete</code></a></h4>
+<h4 id="code-delete-code"><a class="link" href="#code-delete-code">3.9.7. <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>deadline MODULE_LIST_NUM a/delete task/TASK_NUMBER_IN_LIST</code></p>
 </div>
@@ -552,6 +551,18 @@ by medium priority and lastly low priority at the bottom.</p>
 </div>
 <div class="paragraph">
 <p>Example: <code>deadline 1 a/delete task/2</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-deleteall-code"><a class="link" href="#code-deleteall-code">3.9.8. <code>deleteAll</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>deadline MODULE_LIST_NUM a/deleteAll</code></p>
+</div>
+<div class="paragraph">
+<p>Deletes all the deadline tasks from the respective module.</p>
+</div>
+<div class="paragraph">
+<p>Example: <code>deadline 1 a/deleteAll</code></p>
 </div>
 </div>
 </div>
@@ -710,4 +721,4 @@ e.g. <code>delete cs2101</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 13:59:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 02:50:21 UTC</div></div></div></body></html>
