@@ -25,7 +25,7 @@
 <li><a href="#module-view-feature">3.1. Module View Feature</a></li>
 <li><a href="#proposed-marking-modules-as-completed-ongoing-or-planned">3.2. [Proposed] Marking modules as completed, ongoing or planned</a></li>
 <li><a href="#search-filtering-feature">3.3. Search filtering feature</a></li>
-<li><a href="#deadline-feature">3.4. Deadline Feature</a></li>
+<li><a href="#deadline-management-feature">3.4. Deadline Management Feature</a></li>
 <li><a href="#logging">3.5. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
 <li><a href="#link-management-feature">3.7. Link Management Feature</a></li>
@@ -651,28 +651,67 @@ as individual fields in the <code>ArchivedModule</code> object.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deadline-feature"><a class="link" href="#deadline-feature">3.4. Deadline Feature</a></h3>
+<h3 id="deadline-management-feature"><a class="link" href="#deadline-management-feature">3.4. Deadline Management Feature</a></h3>
 <div class="paragraph">
-<p>Deadline allows users to manage deadline tasks for a module.
-Users can add, edit, mark as done or in-progress, tag priority,
-sort and delete deadline tasks.</p>
+<p>As a module management system, one of the important features will be the management of deadlines for each modules.</p>
+</div>
+<div class="paragraph">
+<p>This section will elaborate the current implementation and design considerations of deadline management feature.</p>
 </div>
 <div class="sect3">
-<h4 id="add-deadline"><a class="link" href="#add-deadline">3.4.1. Add Deadline</a></h4>
-<div class="sect4">
-<h5 id="3-3-3-1-implementation"><a class="link" href="#3-3-3-1-implementation">3.3.3.1. Implementation</a></h5>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.4.1. Current implementation</a></h4>
+<div class="paragraph">
+<p>The deadline management feature supports the following main operations.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add</code> - adds a new deadline task to the respective module.</p>
+</li>
+<li>
+<p><code>edit</code> - edits the description or date and time of deadline task.</p>
+</li>
+<li>
+<p><code>done</code> - marks a deadline task as done.</p>
+</li>
+<li>
+<p><code>doneAll</code> - marks all the deadline tasks as done.</p>
+</li>
+<li>
+<p><code>inProgress</code> - marks a deadline task as inProgress.</p>
+</li>
+<li>
+<p><code>undone</code> - marks a deadline task as undone</p>
+</li>
+<li>
+<p><code>delete</code> - deletes an existing task from the deadline list.</p>
+</li>
+<li>
+<p><code>deleteAll</code> - deletes the entire deadline list from a module.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarises what happened when a user executes the AddDeadlineCommand:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddDeadlineActivityDiagram.png" alt="AddDeadlineActivityDiagram">
+</div>
+<div class="title">Figure 13. Activity Diagram for the execution of AddDeadlineCommand.</div>
+</div>
 <div class="paragraph">
 <p>The format to add deadline command is as follows:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>deadline 2 a/add d/description t/dateAndTime</pre>
+<pre>deadline 2 a/add d/description t/dateAndTime p/priority</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The add deadline mechanism is facilitated by <code>AddDeadlineCommand</code> and <code>AddDeadlineCommandParser</code>.
-It takes in the following input from the user: <code>MODULE_CODE</code>, <code>DESCRIPTION</code>, <code>DATE_AND_TIME</code>,
-which will construct individual Deadline object to be added to the deadline list.</p>
+It takes in the following input from the user: <code>MODULE_LIST_NUMBER</code>, <code>DESCRIPTION</code>, <code>DATE_AND_TIME</code> and
+<code>PRIORITY</code> which will construct a Deadline object to be added to the deadline list.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario of how add deadline mechanism behaves at each step.</p>
@@ -682,7 +721,7 @@ which will construct individual Deadline object to be added to the deadline list
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>deadline 2 a/add d/do homework t/2/12/2019 1645</pre>
+<pre>deadline 2 a/add d/do homework t/2/12/2019 1645 p/MEDIUM</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -695,61 +734,74 @@ the user’s input would be passed in as a parameter.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. <code>DeadlineCommandParser</code> would then determine which action is being used and creates the respective parser.
-In this case, <code>AddDeadlineCommandParser</code> is created and user&#8217;s input would be parsed in as a ArgumentMultimap parameter.</p>
+In this case, <code>AddDeadlineCommandParser</code> is created and user&#8217;s input would be parsed.</p>
 </div>
 <div class="paragraph">
 <p>Step 5. <code>AddDeadlineCommandParser</code> would do a validation check on the user’s input before creating
-and returning a <code>AddDeadlineCommand</code> with <code>index</code> and <code>Deadline</code> as its attribute.</p>
+and returning a <code>AddDeadlineCommand</code> with <code>index</code> and <code>Deadline</code> as its attributes. <code>index</code> represents
+the <code>TrackedModule</code> list index (i.e 2) which the <code>Deadline</code> object will be added to.</p>
 </div>
 <div class="paragraph">
 <p>Step 6. <code>LogicManager</code> would execute <code>AddDeadlineCommand#execute()</code>,
 checks whether there is an existing module,
-then adds the <code>TrackedModule</code> into the <code>Model</code> which is handled by the <code>ModelManager</code>.</p>
+then adds to the <code>TrackedModule</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 7. <code>AddDeadlineCommand</code> would return a <code>CommandResult</code>
-to the <code>LogicManager</code> which would then be returned back to the user.</p>
+to the <code>LogicManager</code>.</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the add deadline operation works:</p>
+<p>The following sequence diagram illustrates how the add deadline operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AddDeadlineSequenceDiagram.png" alt="AddDeadlineSequenceDiagram">
 </div>
-<div class="title">Figure 13. Add Deadline Command Sequence Diagram</div>
+<div class="title">Figure 14. Sequence Diagram diagram for AddDeadlineCommand.</div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="3-3-3-2-design-considerations"><a class="link" href="#3-3-3-2-design-considerations">3.3.3.2. Design Considerations</a></h5>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Aspect: Data Structure used to support add command</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Alternative 1(Current choice) : Use of ArrayList to store deadline tasks of each module.</p>
+<p>Alternative 1(Current choice) : Use of <code>ArrayList</code> to store deadline tasks in a <code>TrackedModule</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Other commands (eg. edit, sort, delete) can be easily supported
+<p>Pros: Commands (eg. edit, sort, delete) can be easily supported
 by a list operations.</p>
 </li>
 <li>
-<p>Pros: One and only one list is created for each TrackedModule.</p>
+<p>Pros: Ensures that only one deadline list is maintained for each TrackedModule.</p>
 </li>
 <li>
 <p>Cons: More difficult to maintain over the course of the project.
 New commands(eg. done, priority) need to edit and maintain the list constantly.</p>
 </li>
 <li>
-<p>Cons: Potential side effects from certain commands.</p>
+<p>Cons: Duplicate deadline tasks harder to identify.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2 : Use a <code>HashSet</code> to store deadline tasks in a <code>TrackedModule</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Duplicate deadline tasks can be identified easily.</p>
+</li>
+<li>
+<p>Cons: Not easy to identify tasks using index.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
-</div>
 </div>
 </div>
 </div>
@@ -848,17 +900,17 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 <div class="content">
 <img src="images/AddLinkCommandSequenceDiagram.png" alt="AddLinkCommandSequenceDiagram">
 </div>
-<div class="title">Figure 14. Sequence diagram for add link operation</div>
+<div class="title">Figure 15. Sequence diagram for add link operation</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AddLinkCommandSequenceDiagramExtension.png" alt="AddLinkCommandSequenceDiagramExtension">
 </div>
-<div class="title">Figure 15. Reference of add link to module function from sequence diagram shown above</div>
+<div class="title">Figure 16. Reference of add link to module function from sequence diagram shown above</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.7.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Aspect: Data structure used for link management</p>
 </div>
@@ -1378,4 +1430,4 @@ Expected: No module is deleted. Error details shown in the status message. Statu
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 10:49:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 11:31:15 UTC</div></div></div></body></html>
