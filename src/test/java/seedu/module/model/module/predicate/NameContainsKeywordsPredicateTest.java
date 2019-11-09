@@ -1,4 +1,4 @@
-package seedu.module.model.module;
+package seedu.module.model.module.predicate;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.module.model.module.predicate.NameContainsKeywordsPredicate;
+import seedu.module.model.module.ArchivedModule;
 import seedu.module.testutil.ArchivedModuleBuilder;
 
 public class NameContainsKeywordsPredicateTest {
