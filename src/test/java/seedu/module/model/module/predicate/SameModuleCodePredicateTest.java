@@ -3,8 +3,6 @@ package seedu.module.model.module.predicate;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
 
 import seedu.module.model.module.ArchivedModule;
@@ -29,11 +27,6 @@ public class SameModuleCodePredicateTest {
 
     @Test
     public void test_differentModuleCode_returnsFalse() {
-        ArrayList<String> list = new ArrayList<>() {
-            {
-                add("cs2101");
-            }
-        };
         SameModuleCodePredicate sameModuleCodePredicate = new SameModuleCodePredicate("CS2101");
         assertFalse(sameModuleCodePredicate.test(archivedModule));
     }
