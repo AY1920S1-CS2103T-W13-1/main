@@ -52,9 +52,9 @@ This section documents my contribution to this team project in the from of code,
 ** Enhancements to existing features:
 *** Overhauled the base addressbook code to meet the requirements of Modulebook features. (Pull request https://github.com/AY1920S1-CS2103T-W13-1/main/pull/16[#16])
 ** Documentations:
-*** Updated UML diagrams for Developer Guide (https://github.com/AY1920S1-CS2103T-W13-1/main/pull/58[#58],)(https://github.com/AY1920S1-CS2103T-W13-1/main/pull/175[#175])
+*** Updated UML diagrams for Developer Guide (Pull request https://github.com/AY1920S1-CS2103T-W13-1/main/pull/58[#58],)(Pull request https://github.com/AY1920S1-CS2103T-W13-1/main/pull/175[#175])
 ** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com/AY1920S1-CS2103T-W13-1/main/pull/40([#40])
+*** PRs reviewed (with non-trivial review comments): (Pull request https://github.com/AY1920S1-CS2103T-W13-1/main/pull/40([#40])
 
 
 == Contributions to the User Guide
