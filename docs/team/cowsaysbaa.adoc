@@ -54,7 +54,7 @@ This section documents my contribution to this team project in the from of code,
 ** Documentations:
 *** Updated UML diagrams for Developer Guide (https://github.com/AY1920S1-CS2103T-W13-1/main/pull/58[#58])
 ** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com/AY1920S1-CS2103T-W13-1/main/pull/40[#40]
+*** PRs reviewed (with non-trivial review comments): https://github.com/AY1920S1-CS2103T-W13-1/main/pull/40([#40])
 
 
 == Contributions to the User Guide
