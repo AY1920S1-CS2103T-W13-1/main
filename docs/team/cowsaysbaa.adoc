@@ -34,7 +34,7 @@ This section documents my contribution to this team project in the from of code,
 . module
 . title
 . description
-. prerequsite modules
+. prerequisite modules
 . precluded modules
 . semesters the modules are offered
 ** Justification: This feature should be very useful for freshmen students, or students who are unfamiliar with the large selection of modules offered by NUS. These students would be able to able to find a module of their interest without requiring in depth knowledge of specific details related to these modules.
@@ -43,7 +43,7 @@ This section documents my contribution to this team project in the from of code,
 
 * *Minor enhancement*: improved the base add and delete module commands to be more in line with the program specifics.
 
-* *Code contributed*: [https://github.com/AY1920S1-CS2103T-W13-1/main/blob/master/src/main/java/seedu/module/logic/commands/FindCommand.java[Functional code]] [https://github.com/AY1920S1-CS2103T-W13-1/main/blob/master/src/test/java/seedu/module/logic/parser/FindCommandParserTest.java[Test code]]
+* *Code contributed*: [https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=cowsaysbaa&sort=groupTitle&sortWithin=title&since=2019-09-06&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false[Link to RepoSense]] [https://github.com/AY1920S1-CS2103T-W13-1/main/blob/master/src/test/java/seedu/module/logic/parser/FindCommandParserTest.java[Test code]]
 
 * *Other contributions*:
 
@@ -52,7 +52,7 @@ This section documents my contribution to this team project in the from of code,
 ** Enhancements to existing features:
 *** Overhauled the base addressbook code to meet the requirements of Modulebook features. (Pull request https://github.com/AY1920S1-CS2103T-W13-1/main/pull/16[#16])
 ** Documentations:
-*** Updated UML diagrams for Developer Guide (https://github.com/AY1920S1-CS2103T-W13-1/main/pull/58[#58])
+*** Updated UML diagrams for Developer Guide (https://github.com/AY1920S1-CS2103T-W13-1/main/pull/58[#58],)(https://github.com/AY1920S1-CS2103T-W13-1/main/pull/175[#175])
 ** Community:
 *** PRs reviewed (with non-trivial review comments): https://github.com/AY1920S1-CS2103T-W13-1/main/pull/40([#40])
 
