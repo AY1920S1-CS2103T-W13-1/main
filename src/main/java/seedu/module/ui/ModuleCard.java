@@ -1,12 +1,13 @@
 package seedu.module.ui;
 
+import java.util.function.Consumer;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import seedu.module.model.module.Module;
-import seedu.module.model.module.Trackable;
 
 /**
  * An UI component that displays information of a {@code Module}.
@@ -36,20 +37,22 @@ public class ModuleCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label deadline;
-    @FXML
-    private FlowPane tags;
+    private Pane trackedStatus;
 
-    public ModuleCard(Module module, int displayedIndex) {
+    public ModuleCard(Consumer<Module> onClickDisplayModule, Module module, int displayedIndex) {
         super(FXML);
         this.module = module;
         id.setText(displayedIndex + ". ");
         moduleCode.setText(module.getModuleCode());
         title.setText(module.getTitle());
         description.setText(module.getDescription());
-        if (module instanceof Trackable) {
-            deadline.setText(((Trackable) module).getDeadline());
+
+        if (module.isTracked()) {
+            trackedStatus.getStyleClass().clear();
+            trackedStatus.getStyleClass().add("tag-tracked");
         }
+
+        cardPane.setOnMouseClicked(unused -> onClickDisplayModule.accept(module));
     }
 
     @Override

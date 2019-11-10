@@ -26,13 +26,17 @@ public class EditDeadlineDescCommand extends EditDeadlineCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         TrackedModule moduleToEditDescription = model.getTrackedModuleByIndex(model, index);
+        if (taskListNum <= 0 || taskListNum > moduleToEditDescription.getDeadlineList().size()) {
+            throw new CommandException(DeadlineCommand.MESSAGE_TASK_LIST_NUMBER_NOT_FOUND);
+        }
         deadline = moduleToEditDescription.getDeadlineList().get(taskListNum - 1);
         deadline.editDescription(description);
 
         model.updateFilteredModuleList(Model.PREDICATE_SHOW_ALL_MODULES);
-        model.displayTrackedList();
+        model.showAllTrackedModules();
 
-        return new CommandResult(generateSuccessMessage(moduleToEditDescription));
+        return new CommandResult(generateSuccessMessage(moduleToEditDescription),
+                false, true, false);
     }
 
     /**
@@ -42,6 +46,7 @@ public class EditDeadlineDescCommand extends EditDeadlineCommand {
     private String generateSuccessMessage(TrackedModule moduleToEditDescription) {
         String message = !deadline.getDescription().isEmpty() ? MESSAGE_EDIT_DEADLINE_SUCCESS
                 : MESSAGE_EDIT_DEADLINE_FAIL;
-        return String.format(message, moduleToEditDescription);
+        return String.format(message, moduleToEditDescription.getModuleCode() + " "
+                + moduleToEditDescription.getTitle());
     }
 }

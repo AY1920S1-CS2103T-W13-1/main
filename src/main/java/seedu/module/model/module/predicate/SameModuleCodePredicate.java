@@ -2,7 +2,6 @@ package seedu.module.model.module.predicate;
 
 import java.util.function.Predicate;
 
-import seedu.module.commons.util.StringUtil;
 import seedu.module.model.module.Module;
 
 /**
@@ -12,12 +11,13 @@ public class SameModuleCodePredicate implements Predicate<Module> {
     private final String moduleCode;
 
     public SameModuleCodePredicate(String moduleCode) {
-        this.moduleCode = moduleCode;
+        assert !moduleCode.equals("") : "SameModuleCodePredicate received an empty String.";
+        this.moduleCode = moduleCode.toLowerCase();
     }
 
     @Override
     public boolean test(Module module) {
-        return StringUtil.containsWordIgnoreCase(module.getModuleCode(), moduleCode);
+        return module.getModuleCode().toLowerCase().equals(moduleCode);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package seedu.module.model.module.predicate;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.module.model.module.Module;
@@ -8,22 +9,25 @@ import seedu.module.model.module.Module;
  * Tests that a {@code Module}'s description contains the keywords given.
  */
 public class DescriptionContainsKeywordsPredicate implements Predicate<Module> {
-    private final String keyword;
+    private final LevenshteinDistanceChecker checker = new LevenshteinDistanceChecker(2);
+    private final List<String> keywords;
 
-    public DescriptionContainsKeywordsPredicate(String keyword) {
-        this.keyword = keyword.toLowerCase();
+    public DescriptionContainsKeywordsPredicate(List<String> keywords) {
+        keywords.replaceAll(String::toLowerCase);
+        this.keywords = keywords;
     }
 
     @Override
     public boolean test(Module module) {
-        return module.getDescription().toLowerCase().contains(keyword);
+        return keywords.stream()
+                .allMatch(keyword -> checker.fuzzyContains(module.getDescription().toLowerCase(), keyword));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof DescriptionContainsKeywordsPredicate // instanceof handles nulls
-                && keyword.equals(((DescriptionContainsKeywordsPredicate) other).keyword)); // state check
+                && keywords.equals(((DescriptionContainsKeywordsPredicate) other).keywords)); // state check
     }
 
 }

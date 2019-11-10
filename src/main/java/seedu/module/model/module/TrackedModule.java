@@ -54,6 +54,10 @@ public class TrackedModule implements Module, Trackable {
         return deadlineList.toString();
     }
 
+    public String getDeadlineTask(int i) {
+        return deadlineList.getDeadlineTask(i);
+    }
+
     public List<Deadline> getDeadlineList() {
         return deadlineList.getDeadlineList();
     }
@@ -66,6 +70,14 @@ public class TrackedModule implements Module, Trackable {
         deadlineList.markDeadlineTaskAsDone(taskListNum);
     }
 
+    public void markAllDone() {
+        deadlineList.markAllDone();
+    }
+
+    public void markDeadlineTaskAsUndone(int taskListNum) {
+        deadlineList.markDeadlineTaskAsUndone(taskListNum);
+    }
+
     public void markDeadlineTaskAsInProgress(int taskListNum) {
         deadlineList.markDeadlineTaskAsInProgress(taskListNum);
     }
@@ -73,22 +85,27 @@ public class TrackedModule implements Module, Trackable {
     public void deleteDeadlineTask(int taskListNum) {
         deadlineList.deleteDeadlineTask(taskListNum);
     }
-
-    public List<Link> getLink() {
-        return links;
+    public void deleteAllDeadlineTasks() {
+        deadlineList.deleteAllDeadlineTasks();
     }
 
     /**
-     * Returns true if both modules of the same name have the same identity field.
-     * This defines a weaker notion of equality between two modules.
+     * Returns true if there exists a deadline with the same description, time and tag
+     * @param deadline
+     * @return
      */
-    public boolean isSameModule(TrackedModule otherTrackedModule) {
-        if (otherTrackedModule == this) {
-            return true;
+    public boolean hasDeadline(Deadline deadline) {
+        for (Deadline d : deadlineList.getDeadlineList()) {
+            if (deadline.getDescription().equals(d.getDescription()) && deadline.getTime().equals(d.getTime())
+                    && deadline.getTag().equals(d.getTag())) {
+                return true;
+            }
         }
+        return false;
+    }
 
-        return otherTrackedModule != null
-                && otherTrackedModule.getModuleCode().equals(getModuleCode());
+    public List<Link> getLink() {
+        return links;
     }
 
     /**
@@ -144,8 +161,7 @@ public class TrackedModule implements Module, Trackable {
         final StringBuilder builder = new StringBuilder();
         builder.append(getModuleCode())
                 .append(" Title: ").append(getTitle())
-                .append(" Description: ").append(getDescription())
-                .append(" Deadline: ").append(getDeadline());
+                .append(" Description: ").append(getDescription());
         return builder.toString();
     }
 

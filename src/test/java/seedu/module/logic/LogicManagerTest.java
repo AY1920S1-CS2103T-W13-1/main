@@ -106,7 +106,7 @@ public class LogicManagerTest {
     @Disabled("Archived List is modifiable!")
     @Test
     public void getDisplayedList_modifyList_throwsUnsupportedOperationException() {
-        model.displayArchivedList();
+        model.showAllTrackedModules();
         assertThrows(UnsupportedOperationException.class, () -> logic.getDisplayedList().remove(0));
     }
 
@@ -123,6 +123,14 @@ public class LogicManagerTest {
 
         model.setDisplayedModule(archivedModule);
         assertEquals(expectedModule, model.getDisplayedModule());
+    }
+
+    @Test
+    public void setDisplayedModule() {
+        ArchivedModule archivedModule = new ArchivedModuleBuilder().build();
+
+        logic.setDisplayedModule(archivedModule);
+        assertEquals((ArchivedModule) model.getDisplayedModule().get(), archivedModule);
     }
 
     /**

@@ -79,7 +79,7 @@ image::UiClassDiagram.png[]
 
 *API* : link:{repoURL}/src/main/java/seedu/address/ui/Ui.java[`Ui.java`]
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ModuleListPanel`, `StatusBarFooter`, `HomeViewPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the link:{repoURL}/src/main/java/seedu/address/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
 
@@ -177,13 +177,10 @@ image::ModuleViewSequenceDiagram.png[]
 [NOTE]
 The `BackCommand` mostly follows the same sequence as described above, except that it does not need to find any module, and sets the displayed module to `null`.
 
-The following sequence diagram shows how the `ViewCommand` attempts to find the module from the `Model`.
+The following activity diagram describes the process of finding a matching module to display.
 
-.Reference Diagram for finding a matching module
-image::ModuleViewSequenceDiagram_FindModule.png[]
-
-[NOTE]
-`TrackedModule` composes of an `ArchivedModule`. If a `TrackedModule` is found, it is guaranteed the corresponding `ArchivedModule` can be found.
+.Activity Diagram of module finding process
+image::ModuleViewFindModuleActivityDiagram.png[]
 
 ==== Design Considerations
 
@@ -211,6 +208,45 @@ Cons:
 * Possible side effects from certain commands.
 // end::moduleview[]
 
+// tag::markmodulestatus[]
+=== [Proposed] Marking modules as completed, ongoing or planned
+
+Users can mark modules as pass:[<text style="color:darkgreen"><b>completed</b></text>], pass:[<text style="color:darkorange"><b>ongoing</b></text>] or pass:[<text style="color:blue"><b>planned</b></text>]. Users can also timestamp the modules with the semester that the user pass:[<text style="color:darkgreen"><b>has taken</b></text>]/pass:[<text style="color:darkorange"><b>is taking</b></text>]/pass:[<text style="color:blue"><b>will take</b></text>] the module.
+
+==== Implementation
+
+The tracked module will have 2 new fields: `moduleStatus` and `semesterTimestamp`.
+
+The `moduleStatus` will be an enumeration of:
+
+* pass:[<text style="color:darkgreen"><b>completed</b></text>],
+* pass:[<text style="color:darkorange"><b>ongoing</b></text>] and
+* pass:[<text style="color:blue"><b>planned</b></text>].
+
+The `semesterTimestamp` will be a combination of:
+
+* an academic year
+** In NUS, the academic year representation is prefixed with "AY", followed by the last 2 digits of the starting year, and the last 2 digits of the ending year
+** e.g. AY1920, AY2021
+
+* a semester
+** In NUS, there are a total of 4 semesters. Semester 1, Semester 2, Special Term 1 (ST1) and Special Term 2 (ST2).
+** e.g. 1, 2, ST1, ST2
+
+The user will be free to modify the `moduleStatus` and the `semesterTimestamp`. The following class diagram will illustrate the above implementation.
+
+.Possible implementation of Module Status
+image::ModuleStatusClassDiagram.png[]
+
+==== Possible Extensions
+
+With the new data, users may be able to easier manage their tracked modules and gleam useful information.
+
+. pass:[<text style="color:darkgreen"><b>Completed modules</b></text>] will be hidden from the module list, but still viewable through a `listall` command (proposed command) and accessible through the `view` command.
+
+. pass:[<text style="color:darkgreen"><b>Completed modules</b></text>] and pass:[<text style="color:darkorange"><b>ongoing modules</b></text>] can be used to determine if a user fulfil the requirements for their pass:[<text style="color:blue"><b>planned modules</b></text>].
+// end::markmodulestatus[]
+
 // tag::searchfitering[]
 === Search filtering feature
 ==== Implementation
@@ -221,27 +257,35 @@ of search to find modules that passes all the user defined filters. This can be 
 which can be chained with additional predicates and applied to a `FilteredList`. This requires additional predicate classes that searches their individual fields
 for the keywords.:
 
-* `ModuleCodeContainsKeywordsPredicate#test()` -- Tests that a `module` module code matches any of the keywords given.
-* `DescriptionContainsKeywordsPredicate#test()` -- Tests that a `module` description matches the keyword or sentence given.
-* `PrerequisiteContainsKeywordsPredicate()#test()` -- Tests that a `module` prerequisites matches any of the keywords given.
-* `PreclusionContainsKeywordsPredicate()#test()` -- Tests that a `module` preclusions matches any of the keywords given.
-* `SemesterContainsKeywordsPredicate()#test()` -- Tests that a `module` semester matches any of the keywords given.
+* `ModuleCodeContainsKeywordsPredicate` -- Tests that a `module` module code matches any of the keywords given.
+* `TitleContainsKeywordsPredicate` -- Tests that a `module` title contains all of the keywords given.
+* `DescriptionContainsKeywordsPredicate` -- Tests that a `module` description contains all of the keywords given.
+* `PrerequisiteContainsKeywordsPredicate` -- Tests that a `module` prerequisites matches any of the keywords given.
+* `PreclusionContainsKeywordsPredicate` -- Tests that a `module` preclusions matches any of the keywords given.
+* `SemesterContainsKeywordsPredicate` -- Tests that a `module` semester matches any of the keywords given.
+
+.Activity diagram for search predicates.
+image::SearchActivityDiagram.png[]
+
+Figure 12 above shows how each predicate checks for the keyword. Do note that `DescriptionContainsKeywordsPredicate`
+and `TitleContainsKeywordsPredicate` requires their specified field to contain *all* of the keywords, while the rest of the
+predicates returns true as long as their field contains *at least one* of the keyword.
 
 The user is able to use any combination of filters and the order of input should not matter. Examples of valid find commands:
 
 ****
-* `find module\ cs2` : Should display a list of modules with module code containing "cs2"
-* `find module\ cs2 prereq\ cs2040` : Should display a list of modules with module code containing "cs" and with prerequisite of "cs2040"
+* `find mod\ cs2` : Should display a list of modules with module code containing "cs2"
+* `find mod\ cs2 prereq\ cs2040` : Should display a list of modules with module code containing "cs" and with prerequisite of "cs2040"
 ****
 
 The following sequence diagram shows how the find operation wold work:
 
-.Proposed sequence diagram for search filtering.
+.Sequence diagram for search filtering.
 image::FindSequenceDiagram.png[]
 
 NOTE: The lifeline for `FindCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
-As represented in Fig 9, when a `FindCommandParser` is constructed by `ModuleBookParser#parseCommand`, the `FindCommandParser` would construct a list
+As represented in Figure 13, when a `FindCommandParser` is constructed by `ModuleBookParser#parseCommand`, the `FindCommandParser` would construct a list
 of `Predicate<module>` based on the parsed arguments, which is used to construct a `FindCommand`.
 
 During the execution of `FindCommand#execute()`, each predicate is chained and applied to the `FilteredList`.
@@ -254,43 +298,72 @@ Finally, a `FilteredList` of `Modules` that passes all of the filters will be di
 
 * **Module field requirements:** Information from the `archivedModules.json` would have to be abstracted out
 as individual fields in the `ArchivedModule` object.
-** pros: Added fields can be used for future developments.
-** cons: Can potentially slow down `Module` construction and operations due to increased size for each `Module` object.
+** *pros:* Added fields can be used for future developments.
+** *cons:* Can potentially slow down `Module` construction and operations due to increased size for each `Module` object.
+
+===== Aspect: Fuzzy search.
+
+* **Search with spelling mistake tolerance:** Due to the potential of spelling mistakes within fields such as the module
+and module discription which does not rely on module codes, searching these fields can accept mistakes with a degree of 2
+Levenshtein Distance from any of the original intended word.
+** *pros*: Much more robust searching potential.
+** *cons*: Will slow down the search.
 
 ===== Aspect: Incremental development.
 
 * **Adding new search filters:** Developing and integrating new filters.
-** pros: Filters can be developed independently and incrementally, filters can be integrated based on priority.
-** pros: Can be further adapted to search fields from `Deadline` and `Links`.
+** *pros:* Filters can be developed independently and incrementally, filters can be integrated based on priority.
+** *pros:* Can be further adapted to search fields from `Deadline` and `Links`.
 // end::searchfiltering[]
 
 // tag::deadline[]
-=== Deadline Feature
+=== Deadline Management Feature
 
-Deadline allows users to manage deadline tasks for a module.
-Users can add, edit, mark as done or in-progress, tag priority,
-sort and delete deadline tasks.
+As a module management system, one of the important features will be the management of deadlines for each modules.
 
-==== Add Deadline
+This section will elaborate the current implementation and design considerations of deadline management feature.
 
-===== 3.3.3.1. Implementation
+==== Current implementation
+
+The deadline management feature supports the following main operations.
+
+* `add` - adds a new deadline task to the respective module.
+
+* `edit` - edits the description or date and time of deadline task.
+
+* `done` - marks a deadline task as done.
+
+* `doneAll` - marks all the deadline tasks as done.
+
+* `inProgress` - marks a deadline task as inProgress.
+
+* `undone` - marks a deadline task as undone
+
+* `delete` - deletes an existing task from the deadline list.
+
+* `deleteAll` - deletes the entire deadline list from a module.
+
+The following activity diagram summarises what happened when a user executes the AddDeadlineCommand:
+
+.Activity Diagram for the execution of AddDeadlineCommand.
+image::AddDeadlineActivityDiagram.png[]
 
 The format to add deadline command is as follows:
 
 ....
-deadline 2 a/add d/description t/dateAndTime
+deadline 2 a/add d/description t/dateAndTime p/priority
 ....
 
 The add deadline mechanism is facilitated by `AddDeadlineCommand` and `AddDeadlineCommandParser`.
-It takes in the following input from the user: `MODULE_CODE`, `DESCRIPTION`, `DATE_AND_TIME`,
-which will construct individual Deadline object to be added to the deadline list.
+It takes in the following input from the user: `MODULE_LIST_NUMBER`, `DESCRIPTION`, `DATE_AND_TIME` and
+`PRIORITY` which will construct a Deadline object to be added to the deadline list.
 
 Given below is an example usage scenario of how add deadline mechanism behaves at each step.
 
 Step 1. The user executes:
 
 ....
-deadline 2 a/add d/do homework t/2/12/2019 1645
+deadline 2 a/add d/do homework t/2/12/2019 1645 p/MEDIUM
 ....
 
 Step 2. `LogicManager` would use `ModuleBookParser#parseCommand()` to parse input from the user.
@@ -300,34 +373,38 @@ In this case, `DeadlineCommandParser` is being created from the COMMAND.WORD: `d
 the user’s input would be passed in as a parameter.
 
 Step 4. `DeadlineCommandParser` would then determine which action is being used and creates the respective parser.
-In this case, `AddDeadlineCommandParser` is created and user's input would be parsed in as a ArgumentMultimap parameter.
+In this case, `AddDeadlineCommandParser` is created and user's input would be parsed.
 
 Step 5. `AddDeadlineCommandParser` would do a validation check on the user’s input before creating
-and returning a `AddDeadlineCommand` with `index` and `Deadline` as its attribute.
+and returning a `AddDeadlineCommand` with `index` and `Deadline` as its attributes. `index` represents
+the `TrackedModule` list index (i.e 2) which the `Deadline` object will be added to.
 
 Step 6. `LogicManager` would execute `AddDeadlineCommand#execute()`,
 checks whether there is an existing module,
-then adds the `TrackedModule` into the `Model` which is handled by the `ModelManager`.
+then adds to the `TrackedModule`.
 
 Step 7. `AddDeadlineCommand` would return a `CommandResult`
-to the `LogicManager` which would then be returned back to the user.
+to the `LogicManager`.
 
-The following sequence diagram shows how the add deadline operation works:
+The following sequence diagram illustrates how the add deadline operation works:
 
-.Add Deadline Command Sequence Diagram
+.Sequence Diagram diagram for AddDeadlineCommand.
 image::AddDeadlineSequenceDiagram.png[]
 
-===== 3.3.3.2. Design Considerations
+==== Design Considerations
 Aspect: Data Structure used to support add command
 
-*  Alternative 1(Current choice) : Use of ArrayList to store deadline tasks of each module.
-** Pros: Other commands (eg. edit, sort, delete) can be easily supported
+*  Alternative 1(Current choice) : Use of `ArrayList` to store deadline tasks in a `TrackedModule`.
+** Pros: Commands (eg. edit, sort, delete) can be easily supported
 by a list operations.
-** Pros: One and only one list is created for each TrackedModule.
+** Pros: Ensures that only one deadline list is maintained for each TrackedModule.
 ** Cons: More difficult to maintain over the course of the project.
 New commands(eg. done, priority) need to edit and maintain the list constantly.
-** Cons: Potential side effects from certain commands.
+** Cons: Duplicate deadline tasks harder to identify.
 
+*  Alternative 2 : Use a `HashSet` to store deadline tasks in a `TrackedModule`.
+** Pros: Duplicate deadline tasks can be identified easily.
+** Cons: Not easy to identify tasks using index.
 // end::deadline[]
 
 === Logging

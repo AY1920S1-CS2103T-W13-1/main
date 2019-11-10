@@ -14,6 +14,7 @@ import seedu.module.model.module.predicate.ModuleCodeContainsKeywordsPredicate;
 import seedu.module.model.module.predicate.PreclusionContainsKeywordsPredicate;
 import seedu.module.model.module.predicate.PrerequisiteContainsKeywordsPredicate;
 import seedu.module.model.module.predicate.SemesterContainsKeywordsPredicate;
+import seedu.module.model.module.predicate.TitleContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object.
@@ -22,8 +23,10 @@ public class FindCommandParser implements Parser<FindCommand> {
 
     private final ArrayList<String> prefixes = new ArrayList<>() {
         {
+            add("all\\");
             add("mod\\");
             add("desc\\");
+            add("title\\");
             add("prereq\\");
             add("preclu\\");
             add("sem\\");
@@ -83,7 +86,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         }
 
         for (ArrayList<String> list : listOfLists) {
-            if (list.size() <= 1) {
+            if (!list.get(0).equals("all\\") && list.size() <= 1) {
                 throw new ParseException(
                         String.format(MESSAGE_INVALID_SEARCH_FIELD));
             }
@@ -105,13 +108,22 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         for (ArrayList<String> list : listOfLists) {
             switch (list.get(0)) {
+            case "all\\":
+                Predicate<Module> showAll = unused -> true;
+                listOfPredicates.clear();
+                listOfPredicates.add(showAll);
+                return listOfPredicates;
             case "mod\\":
                 list.remove(0);
                 listOfPredicates.add(new ModuleCodeContainsKeywordsPredicate(list));
                 break;
+            case "title\\":
+                list.remove(0);
+                listOfPredicates.add(new TitleContainsKeywordsPredicate(list));
+                break;
             case "desc\\":
                 list.remove(0);
-                listOfPredicates.add(new DescriptionContainsKeywordsPredicate(String.join(" ", list)));
+                listOfPredicates.add(new DescriptionContainsKeywordsPredicate(list));
                 break;
             case "prereq\\":
                 list.remove(0);

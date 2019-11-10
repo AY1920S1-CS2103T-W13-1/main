@@ -6,8 +6,6 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 
-import org.apache.commons.validator.routines.UrlValidator;
-
 import seedu.module.model.module.exceptions.LinkAccessException;
 
 /**
@@ -18,24 +16,21 @@ public class Link {
 
     public final String url;
     public final String name;
+    private boolean marked = false;
 
-    public Link(String name, String url) throws IllegalArgumentException {
+    public Link(String name, String url) {
+
         requireNonNull(url);
-        if (!isValidUrl(url)) {
-            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
-        }
         this.name = name;
         this.url = url;
     }
 
-    /**
-     * Returns True if the string given is a valid URL
-     * @param url
-     * @return
-     */
-    public static boolean isValidUrl(String url) {
-        UrlValidator urlValidator = new UrlValidator();
-        return urlValidator.isValid(url);
+    public Link(String name, String url, boolean marked) {
+
+        requireNonNull(url);
+        this.name = name;
+        this.url = url;
+        this.marked = marked;
     }
 
     /**
@@ -63,8 +58,39 @@ public class Link {
         }
     }
 
+    public boolean isMarked() {
+        return this.marked;
+    }
+
+    public boolean setMarked() {
+        if (this.marked) {
+            return false;
+        } else {
+            this.marked = true;
+            return true;
+        }
+    }
+
+    public boolean setUnmarked() {
+        if (!this.marked) {
+            return false;
+        } else {
+            this.marked = false;
+            return true;
+        }
+    }
+
     @Override
     public String toString() {
         return this.name;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof Link // instanceof handles nulls
+                && name.equals(((Link) other).name))
+                && url.equals(((Link) other).url); // state check
+    }
+
 }

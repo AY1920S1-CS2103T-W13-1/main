@@ -13,14 +13,17 @@ import seedu.module.model.module.Link;
 public class JsonAdaptedLink {
     private final String linkTitle;
     private final String url;
+    private final boolean marked;
 
     /**
      * Constructs a {@code JsonAdaptedLink} with the given parameters.
      */
     @JsonCreator
-    public JsonAdaptedLink(@JsonProperty("linkTitle") String linkTitle, @JsonProperty("url") String url) {
+    public JsonAdaptedLink(@JsonProperty("linkTitle") String linkTitle, @JsonProperty("url") String url,
+                           @JsonProperty("marked") boolean marked) {
         this.linkTitle = linkTitle;
         this.url = url;
+        this.marked = marked;
     }
 
     /**
@@ -29,6 +32,7 @@ public class JsonAdaptedLink {
     public JsonAdaptedLink(Link source) {
         this.linkTitle = source.name;
         this.url = source.url;
+        this.marked = source.isMarked();
     }
 
     /**
@@ -37,10 +41,7 @@ public class JsonAdaptedLink {
      * @throws IllegalValueException if there were any data constraints violated in the adapted Link.
      */
     public Link toModelType() throws IllegalValueException {
-        if (!Link.isValidUrl(url)) {
-            throw new IllegalValueException(Link.MESSAGE_CONSTRAINTS);
-        }
-        return new Link(linkTitle, url);
+        return new Link(linkTitle, url, marked);
     }
 
 

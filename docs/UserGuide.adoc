@@ -71,7 +71,10 @@ Format: `exit`
 Shows a list of all current tracked modules. +
 Format: `list`
 
+// tag::moduleview[]
 === Viewing a module: `view`
+
+==== Method 1: Typing the command
 
 Views a module and enters the module view. Can be a tracked module or an archived module.
 
@@ -79,33 +82,68 @@ Format: `view <MODULE_CODE>`
 
 Example: `view cs1231`
 
+==== Method 2: Double clicking on the module in the list
+
+Alternatively, you may simply view the module by double clicking on the module in the module list.
+
+image::userguide/ViewCommandGuiStep1.png[]
+
+image::userguide/ViewCommandGuiStep2.png[]
+
+
 === Return from module view: `back`
 Returns from the module view.
 
 Format: `back`
 
+// end::moduleview[]
+
 === Finding an archived module: `find`
 
+==== Method 1: Using command lines
 Find archived modules with the the given prefix and keyword. +
 Format: `find PREFIX\ KEYWORD ...`
 
+[NOTE]
+It is possible to use any number or combination of filters. Prefixes not present will not be considered in the search.
+
 ****
 * Prefixes: (case sensitive)
-** `mod\` : Find all modules with module code that contains the given keyword(s).
-*** Example: `find module\ cs ma st` will list all modules with module code containing `cs` or `ma` or `st`.
-** `desc\` : Find all modules with description that contains the given keyword or sentence.
-*** Example: `find desc\ software engineering` will list all modules with description containing `"software engineering"`.
-** `prereq\` : Find all modules with prerequisites that match the given keyword(s).
-*** Example: `find prereq\ cs2030 cs2040` will list all modules with prerequisite of `cs2030` or `cs2040`.
-** `preclu\` : Find all modules with preclusion that match the given keyword(s).
-*** Example: `find preclu\ cs2030 cs2040` will list all modules with preclusion of `cs2030` or `cs2040`.
+** `all\` : List all the modules. *Overrides* all other prefixes.
+*** Example: `find mod\ cs all\` `all\` will override mod\ and list all the modules.
+** `mod\` : Find all modules with *module code* that contains *at least one* of the given *keyword(s)*.
+*** Example: `find mod\ cs ma st` will list all modules with module code containing `cs` *or* `ma` *or* `st`.
+** `title\` : Find all modules with *title* that contains *all* of the given *keyword(s)*.
+*** Example: `find title\ software engineering` will list all modules with titles containing `"software" *and* "engineering"`.
+** `desc\` : Find all modules with *description* that contains *all* of the given *keywords(s)*.
+*** Example: `find desc\ software engineering` will list all modules with description containing `"software" *and* "engineering"`.
+** `prereq\` : Find all modules with *prerequisites* that match *at least one* of the given *keyword(s)*.
+*** Example: `find prereq\ cs2030 cs2040` will list all modules with prerequisite of `cs2030` *or* `cs2040`.
+** `preclu\` : Find all modules with *preclusion* that match *at least one* of the given *keyword(s)*.
+*** Example: `find preclu\ cs2030 cs2040` will list all modules with preclusion of `cs2030` *or* `cs2040`.
 ** `sem\` : Find all modules offered in a particular sem 1 - 4. (Sem 3 and 4 are special terms 1 and 2).
-*** Example: `find sem\ 1 3` will list all modules offered in semester 1 or special term 1.
+*** Example: `find sem\ 1 3` will list all modules offered in semester 1 *or* special term 1.
 * The prefixes can be used together in any order to filter modules that passes all the search requirements.
-** Example: `find module\ cs2 cs3 desc\ software engineering sem\ 1` will show all modules with module code containing `cs2`
-or `cs3` with description containing `"software engineering"` offered in semester 1.
+** Example: `find mod\ cs2 cs3 desc\ software engineering sem\ 1` will show all modules with module code containing `cs2`
+*or* `cs3` with description containing `"software"` *and* `"engineering"` offered in semester 1.
 * The keywords are case insensitive. e.g `cs2103t` will match `CS2103T`.
+* *Keywords* used in *title\* and *desc\* are tolerant of minor *spelling mistakes*.
+** Example: `find desc\ enginering` will display results similar to `find desc\ engineering`.
+* Search is performed using string matching, commonly used keywords will therefore produce many search results.
+* Invalid prefixes and keywords before a valid prefix will be ignored.
+** Eg: `find INVALID\ invalidKeyword mod\ cs` the `INVALID\ invalidKeyword` will be ignored, `mod\ cs` will be searched.
 ****
+[NOTE]
+Keywords are searched using *"OR"* relation (apart from `title\` and `desc\` which uses an *"AND"* relation.) while predicates are seached using
+*"AND"* relations.
+For example, `find mod\ cs ma title\ linear algebra` will produce results of all modules with (module code containing `cs` *OR* `ma`) *AND* (title containing `linear` *AND* `algebra`)
+
+==== Method 2: Using GUI
+
+Alternatively, you can simply click on the search button on the top left hand corner (shortcut key: F2) and select search. Input your
+keywords in the fields provided within the popup.
+
+image::userguide/SearchGui.png[]
 
 [TIP]
 Modules are imported from NUSMods database.
@@ -140,118 +178,91 @@ Examples:
 
 * `delete cs2103t`
 
+// tag::deadline[]
 === Manage deadline tasks: `deadline`
 
 ==== `add`
 
-Format: `deadline MODULE_CODE a/add d/DESCRIPTION t/TIME`
+Format: `deadline MODULE_LIST_NUM a/add d/DESCRIPTION t/TIME p/PRIORITY`
 
-Adds deadline task consisting of description and time to the respective module.
-If deadline list is empty, creates a list. Else, adds to the end of the list.
+Adds deadline task consisting of description, time and priority to the respective module.
+Priority inputs are `HIGH`, `MEDIUM` OR `LOW`. Deadline task with `HIGH` priority is displayed in red, `MEDIUM` in yellow
+and `LOW` in green. Deadline list is sorted according to priority and deadline date and time.
+All parameters are compulsory.
 
-Example: `deadline cs2103t a/add d/finish Ug and Dg t/22/10/2019 2359`
+Example: `deadline 1 a/add d/tutorial 1 t/22/10/2019 2359 p/HIGH`
 
 ==== `edit`
 
-===== Edit Description
+* Edit Description
 
-Format: `deadline MODULE_CODE a/edit l/TASK_NUMBER_IN_LIST d/NEW_DESCRIPTION`
+Format: `deadline MODULE_LIST_NUM a/edit task/TASK_NUMBER_IN_LIST d/NEW_DESCRIPTION`
 
 Edits description from the deadline task numbered in deadline list for the respective module.
 
-Example: `deadline cs2103t a/edit l/2 d/finish increments`
+Example: `deadline 2 a/edit task/2 d/finish increments`
 
-===== Edit Time
+* Edit Time
 
-Format: `deadline MODULE_CODE a/edit l/TASK_NUMBER_IN_LIST t/NEW_TIME`
+Format: `deadline MODULE_LIST_NUM a/edit task/TASK_NUMBER_IN_LIST t/NEW_TIME`
 
 Edits time from the deadline task numbered in deadline list for the respective module.
 
-Example: `deadline cs2103t a/edit l/2 t/29/10/2018 2359`
+Example: `deadline 3 a/edit task/2 t/29/10/2018 2359`
 
 ==== `done`
 
-Format: `deadline MODULE_CODE a/done l/TASK_NUMBER_IN_LIST`
+Format: `deadline MODULE_LIST_NUM a/done task/TASK_NUMBER_IN_LIST`
 
 Marks the deadline task numbered in deadline list
-as *done* with a tick on the checkbox for the respective module.
+as *done* with a tick.
 
-Example: `deadline cs2103t a/done l/2`
+Example: `deadline 1 a/done task/2`
+
+==== `doneAll`
+
+Format: `deadline MODULE_LIST_NUM a/doneAll`
+
+Marks all the deadline tasks in deadline list
+as *done* with a tick.
+
+Example: `deadline 1 a/doneAll`
 
 ==== `in Progress`
 
-Format: `deadline MODULE_CODE a/inProgress l/TASK_NUMBER_IN_LIST`
+Format: `deadline MODULE_LIST_NUM a/inProgress task/TASK_NUMBER_IN_LIST`
 
 Marks the deadline task numbered in deadline list
-as *in-progress* with a dash on the checkbox for the respective module.
+as *in-progress* with a dash.
 
-Example: `deadline cs2103t a/inProgress l/2`
+Example: `deadline 1 a/inProgress task/1`
 
-==== `priority`
+==== `undone`
 
-===== High Priority
+Format: `deadline MODULE_LIST_NUM a/undone task/TASK_NUMBER_IN_LIST`
 
-Format: `deadline MODULE_CODE a/highPriority l/TASK_NUMBER_IN_LIST`
+Marks the deadline task numbered in deadline list
+as *undone* with empty space.
 
-Tags the deadline task numbered in deadline list
-as *High-Priority* for the respective module.
-
-Example: `deadline cs2103t a/highPriority l/2`
-
-===== Medium Priority
-
-Format: `deadline MODULE_CODE a/mediumPriority l/TASK_NUMBER_IN_LIST`
-
-Tags deadline task numbered in deadline list
-as *Medium-Priority* for the respective module.
-
-Example: `deadline cs2103t a/mediumPriority l/2`
-
-===== Low Priority
-
-Format: `deadline MODULE_CODE a/lowPriority l/TASK_NUMBER_IN_LIST`
-
-Tags deadline task numbered in deadline list
-as *Low-Priority* for the respective module.
-
-Example: `deadline cs2103t a/lowPriority l/2`
-
-==== `sort`
-
-===== Sort by Time
-
-Format: `deadline MODULE_CODE a/sort by/time`
-
-Sorts deadline tasks according to time, latest deadline at the top and later ones below.
-
-Example: `deadline cs2103t a/sort by/time`
-
-===== Sort by Priority
-
-Format: `deadline MODULE_CODE a/sort by/priority`
-
-Sorts deadline tasks according to priority, highest priority at the top, followed
-by medium priority and lastly low priority at the bottom.
-
-Example: `deadline cs2103t a/sort by/priority`
+Example: `deadline 1 a/undone task/1`
 
 ==== `delete`
 
-===== Delete entire list
-
-Format: `deadline MODULE_CODE a/deleteList`
-
-Deletes deadline list for the respective module.
-
-Example: `deadline cs2103t a/deleteList`
-
-===== Delete specific deadline task from list
-
-Format: `deadline MODULE_CODE a/delete l/TASK_NUMBER_IN_LIST`
+Format: `deadline MODULE_LIST_NUM a/delete task/TASK_NUMBER_IN_LIST`
 
 Deletes deadline task numbered from the respective module.
 
-Example: `deadline cs2103t a/delete l/2`
+Example: `deadline 1 a/delete task/2`
+
+==== `deleteAll`
+
+Format: `deadline MODULE_LIST_NUM a/deleteAll`
+
+Deletes all the deadline tasks from the respective module.
+
+Example: `deadline 1 a/deleteAll`
+
+// end::deadline[]
 
 === Manage links in modules: `link`
 
@@ -259,7 +270,7 @@ Link commands are only available when viewing a module and only valid on current
 
 ==== `add`
 
-Format: `link add n/LINK_TITLE l/LINK_URL`
+Format: `link add n/LINK_NAME l/LINK_URL`
 
 Adds link provided to the respective module.
 
@@ -267,15 +278,15 @@ Example: `link add n/course website l/https://www.comp.nus.edu.sg/~cs1231/`
 
 ==== `edit`
 
-Format: `link edit n/LINK_TITLE [nt/EDITED_TITLE nl/EDITED_LINK]`
+Format: `link edit n/LINK_NAME [nn/EDITED_NAME nl/EDITED_LINK]`
 
 Edits the link identified by its current title for the respective module.
 
-Example: `link edit t/course website nt/module website`
+Example: `link edit n/course website nn/module website`
 
 ==== `go`
 
-Format: `link go n/LINK_TITLE`
+Format: `link go n/LINK_NAME`
 
 Launches the link in the user system's default browser.
 
@@ -283,11 +294,19 @@ Example: `link go n/module website`
 
 ==== `delete`
 
-Format: `link delete n/LINK_TITLE`
+Format: `link delete n/LINK_NAME`
 
 Deletes the link with the given link title in the respective module.
 
 Example: `link delete n/module website`
+
+==== `mark`/`unmark`
+
+Format: `link mark n/LINK_NAME`
+
+Marks/unmarks the link with the given link title in the respective module
+
+Example: `link mark n/module website`
 
 === Saving the data
 
@@ -316,22 +335,35 @@ Calculates the cumulative GPA of all tracked modules.
 e.g. `view cs2100`
 * *Back* `back`
 * *Find* : `find PREFIx\ KEYWORD(s) ...` +
-e.g. `find module\ cs2 cs3 desc\ software engineering prereq\ cs2030 sem\ 1 2`
+e.g. `find mod\ cs2 cs3 desc\ software engineering prereq\ cs2030 sem\ 1 2`
 * *Add* `add MODULE_CODE` +
 e.g. `add cs2101`
 * *Delete* : `delete MODULE_CODE` +
 e.g. `delete cs2101`
 
+// tag::glossary[]
+
+[[Glossary]]
 == Glossary
 
 === Common Application terms
 
 **Home view** - The state of the application that displays the home page in the main panel.
 
+image::userguide/Glossary_HomeView.png[]
+
 **Module view** - The state of the application that displays the specified module in the main panel.
+
+image::userguide/Glossary_ModuleView.png[]
 
 === Common Module terms
 
-**Archived** - A module that the institution provides. Can be viewed and tracked.
+**Archived** - A module that the institution provides. Can be viewed and tracked. It is indicated by a gray vertical bar on the module list.
 
-**Tracked** - A module that is tracked. References an archived module. Can be viewed.
+image::userguide/Glossary_ArchivedModule.png[]
+
+**Tracked** - A module that is tracked. References an archived module. Can be viewed and untracked. It is indicated by a green vertical bar on the module list.
+
+image::userguide/Glossary_TrackedModule.png[]
+
+// end::glossary[]
