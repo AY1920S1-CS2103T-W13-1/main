@@ -176,7 +176,7 @@ The following class plays an important role at the architecture level:</p>
 <p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-W13-1/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>ModuleListPanel</code>, <code>StatusBarFooter</code>, <code>HomeViewPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103T-W13-1/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103T-W13-1/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -381,7 +381,7 @@ The <code>BackCommand</code> mostly follows the same sequence as described above
 <div class="content">
 <img src="images/ModuleViewFindModuleActivityDiagram.png" alt="ModuleViewFindModuleActivityDiagram">
 </div>
-<div class="title">Figure 10. Sequence Diagram of module finding process</div>
+<div class="title">Figure 10. Activity Diagram of module finding process</div>
 </div>
 </div>
 <div class="sect3">
@@ -540,21 +540,35 @@ for the keywords.:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ModuleCodeContainsKeywordsPredicate#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> module code matches any of the keywords given.</p>
+<p><code>ModuleCodeContainsKeywordsPredicate</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> module code matches any of the keywords given.</p>
 </li>
 <li>
-<p><code>DescriptionContainsKeywordsPredicate#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> description matches the keyword or sentence given.</p>
+<p><code>TitleContainsKeywordsPredicate</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> title contains all of the keywords given.</p>
 </li>
 <li>
-<p><code>PrerequisiteContainsKeywordsPredicate()#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> prerequisites matches any of the keywords given.</p>
+<p><code>DescriptionContainsKeywordsPredicate</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> description contains all of the keywords given.</p>
 </li>
 <li>
-<p><code>PreclusionContainsKeywordsPredicate()#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> preclusions matches any of the keywords given.</p>
+<p><code>PrerequisiteContainsKeywordsPredicate</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> prerequisites matches any of the keywords given.</p>
 </li>
 <li>
-<p><code>SemesterContainsKeywordsPredicate()#test()</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> semester matches any of the keywords given.</p>
+<p><code>PreclusionContainsKeywordsPredicate</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> preclusions matches any of the keywords given.</p>
+</li>
+<li>
+<p><code>SemesterContainsKeywordsPredicate</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> semester matches any of the keywords given.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SearchActivityDiagram.png" alt="SearchActivityDiagram">
+</div>
+<div class="title">Figure 12. Activity diagram for search predicates.</div>
+</div>
+<div class="paragraph">
+<p>Figure 12 above shows how each predicate checks for the keyword. Do note that <code>DescriptionContainsKeywordsPredicate</code>
+and <code>TitleContainsKeywordsPredicate</code> requires their specified field to contain <strong>all</strong> of the keywords, while the rest of the
+predicates returns true as long as their field contains <strong>at least one</strong> of the keyword.</p>
 </div>
 <div class="paragraph">
 <p>The user is able to use any combination of filters and the order of input should not matter. Examples of valid find commands:</p>
@@ -564,10 +578,10 @@ for the keywords.:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find module\ cs2</code> : Should display a list of modules with module code containing "cs2"</p>
+<p><code>find mod\ cs2</code> : Should display a list of modules with module code containing "cs2"</p>
 </li>
 <li>
-<p><code>find module\ cs2 prereq\ cs2040</code> : Should display a list of modules with module code containing "cs" and with prerequisite of "cs2040"</p>
+<p><code>find mod\ cs2 prereq\ cs2040</code> : Should display a list of modules with module code containing "cs" and with prerequisite of "cs2040"</p>
 </li>
 </ul>
 </div>
@@ -580,7 +594,7 @@ for the keywords.:</p>
 <div class="content">
 <img src="images/FindSequenceDiagram.png" alt="FindSequenceDiagram">
 </div>
-<div class="title">Figure 12. Proposed sequence diagram for search filtering.</div>
+<div class="title">Figure 13. Sequence diagram for search filtering.</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -595,7 +609,7 @@ The lifeline for <code>FindCommand</code> should end at the destroy marker (X) b
 </table>
 </div>
 <div class="paragraph">
-<p>As represented in Fig 9, when a <code>FindCommandParser</code> is constructed by <code>ModuleBookParser#parseCommand</code>, the <code>FindCommandParser</code> would construct a list
+<p>As represented in Figure 13, when a <code>FindCommandParser</code> is constructed by <code>ModuleBookParser#parseCommand</code>, the <code>FindCommandParser</code> would construct a list
 of <code>Predicate&lt;module&gt;</code> based on the parsed arguments, which is used to construct a <code>FindCommand</code>.</p>
 </div>
 <div class="paragraph">
@@ -617,10 +631,32 @@ as individual fields in the <code>ArchivedModule</code> object.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>pros: Added fields can be used for future developments.</p>
+<p><strong>pros:</strong> Added fields can be used for future developments.</p>
 </li>
 <li>
-<p>cons: Can potentially slow down <code>Module</code> construction and operations due to increased size for each <code>Module</code> object.</p>
+<p><strong>cons:</strong> Can potentially slow down <code>Module</code> construction and operations due to increased size for each <code>Module</code> object.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-fuzzy-search"><a class="link" href="#aspect-fuzzy-search">Aspect: Fuzzy search.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Search with spelling mistake tolerance:</strong> Due to the potential of spelling mistakes within fields such as the module
+and module discription which does not rely on module codes, searching these fields can accept mistakes with a degree of 2
+Levenshtein Distance from any of the original intended word.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>pros</strong>: Much more robust searching potential.</p>
+</li>
+<li>
+<p><strong>cons</strong>: Will slow down the search.</p>
 </li>
 </ul>
 </div>
@@ -637,10 +673,10 @@ as individual fields in the <code>ArchivedModule</code> object.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>pros: Filters can be developed independently and incrementally, filters can be integrated based on priority.</p>
+<p><strong>pros:</strong> Filters can be developed independently and incrementally, filters can be integrated based on priority.</p>
 </li>
 <li>
-<p>pros: Can be further adapted to search fields from <code>Deadline</code> and <code>Links</code>.</p>
+<p><strong>pros:</strong> Can be further adapted to search fields from <code>Deadline</code> and <code>Links</code>.</p>
 </li>
 </ul>
 </div>
@@ -698,7 +734,7 @@ as individual fields in the <code>ArchivedModule</code> object.</p>
 <div class="content">
 <img src="images/AddDeadlineActivityDiagram.png" alt="AddDeadlineActivityDiagram">
 </div>
-<div class="title">Figure 13. Activity Diagram for the execution of AddDeadlineCommand.</div>
+<div class="title">Figure 14. Activity Diagram for the execution of AddDeadlineCommand.</div>
 </div>
 <div class="paragraph">
 <p>The format to add deadline command is as follows:</p>
@@ -757,7 +793,7 @@ to the <code>LogicManager</code>.</p>
 <div class="content">
 <img src="images/AddDeadlineSequenceDiagram.png" alt="AddDeadlineSequenceDiagram">
 </div>
-<div class="title">Figure 14. Sequence Diagram diagram for AddDeadlineCommand.</div>
+<div class="title">Figure 15. Sequence Diagram diagram for AddDeadlineCommand.</div>
 </div>
 </div>
 <div class="sect3">
@@ -900,13 +936,13 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 <div class="content">
 <img src="images/AddLinkCommandSequenceDiagram.png" alt="AddLinkCommandSequenceDiagram">
 </div>
-<div class="title">Figure 15. Sequence diagram for add link operation</div>
+<div class="title">Figure 16. Sequence diagram for add link operation</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AddLinkCommandSequenceDiagramExtension.png" alt="AddLinkCommandSequenceDiagramExtension">
 </div>
-<div class="title">Figure 16. Reference of add link to module function from sequence diagram shown above</div>
+<div class="title">Figure 17. Reference of add link to module function from sequence diagram shown above</div>
 </div>
 </div>
 <div class="sect3">
@@ -1430,4 +1466,4 @@ Expected: No module is deleted. Error details shown in the status message. Statu
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 12:36:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 13:50:48 UTC</div></div></div></body></html>
