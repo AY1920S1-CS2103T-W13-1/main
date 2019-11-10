@@ -12,12 +12,12 @@ public class SameModuleCodePredicate implements Predicate<Module> {
     private final String moduleCode;
 
     public SameModuleCodePredicate(String moduleCode) {
+        assert !moduleCode.equals("") : "SameModuleCodePredicate received an empty String.";
         this.moduleCode = moduleCode;
     }
 
     @Override
     public boolean test(Module module) {
-        assert !module.equals("") : "SameModuleCodePredicate received an empty String.";
         return StringUtil.containsWordIgnoreCase(module.getModuleCode(), moduleCode);
     }
 
