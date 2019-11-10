@@ -1,0 +1,609 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Guo Zili - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">ModuleBook</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-W13-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Guo Zili - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-modulebook"><a class="link" href="#project-modulebook">PROJECT: ModuleBook</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As part of the project requirement of CS2103T offered by NUS, my team of 4 software engineering students and I were tasked with enhancing a basic command line interface desktop addressbook application for our Software Engineering project. We decided to morph the addressbook into a module management application called ModuleBook designed specifically for NUS students.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ModuleBookUILayout.png" alt="ModuleBookUILayout">
+</div>
+<div class="title">Figure 1. Graphical user interface of ModuleBook</div>
+</div>
+<div class="paragraph">
+<p>ModuleBook is a desktop module manager application designed with the needs of NUS students in mind, to streamline the process of managing time and resources related to the modules offered by NUS. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java.</p>
+</div>
+<div class="paragraph">
+<p>As of the current build (v1.4), ModuleBook offers the following features:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Detailed archive of all modules offered by NUS (adaped from NUSMods API).</p>
+</li>
+<li>
+<p>Track modules of interest.</p>
+</li>
+<li>
+<p>Search for specific modules using search filters.</p>
+</li>
+<li>
+<p>Add personalised deadlines to tracked modules.</p>
+</li>
+<li>
+<p>Add links to tracked modules.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>My role was to adapt and migrate the base code of addressbook to the requirements of ModuleBook, as well as to design and enhance the codes for operations related to tracking a module. This includes the add, delete, list and find command.
+The following sections illustrate these enhancements in more detail, as well as the relevant documentation I have added to the user and developer guides in relation to these enhancements.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section documents my contribution to this team project in the from of code, documentation as well as supporting the team.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the ability to find specific modules using filtered search.</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the user to search for modules by filtering any combination of the following categories:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>module</p>
+</li>
+<li>
+<p>title</p>
+</li>
+<li>
+<p>description</p>
+</li>
+<li>
+<p>prerequisite modules</p>
+</li>
+<li>
+<p>precluded modules</p>
+</li>
+<li>
+<p>semesters the modules are offered</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Justification: This feature should be very useful for freshmen students, or students who are unfamiliar with the large selection of modules offered by NUS. These students would be able to able to find a module of their interest without requiring in depth knowledge of specific details related to these modules.</p>
+</li>
+<li>
+<p>Highlights: The search is is able to detect and ignore minor spelling mistakes when searching within the title or description. Searching is also extremely fast, with most search cases taking less than a second. These would definitely improve the user friendliness of the search feature.</p>
+</li>
+<li>
+<p>Credits: Module information is directly adapted from the API provided by NUSMods. The adaptation and storage of module information is done by Ge Shuming, one of the students involved in this project. Without these information, this feature would not be possible.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: improved the base add and delete module commands to be more in line with the program specifics.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=cowsaysbaa&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">Link to RepoSense</a>] [<a href="https://github.com/AY1920S1-CS2103T-W13-1/main/blob/master/src/test/java/seedu/module/logic/parser/FindCommandParserTest.java">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Took part in the release of <code>v1.1</code> - <code>v1.4</code> (3 releases) on GitHub</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Overhauled the base addressbook code to meet the requirements of Modulebook features. (Pull request <a href="https://github.com/AY1920S1-CS2103T-W13-1/main/pull/16">#16</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentations:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated UML diagrams for Developer Guide (Pull request <a href="https://github.com/AY1920S1-CS2103T-W13-1/main/pull/58">#58</a>,)(Pull request <a href="https://github.com/AY1920S1-CS2103T-W13-1/main/pull/175">#175</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): (Pull request <a href="https://github.com/AY1920S1-CS2103T-W13-1/main/pull/40(">#40</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The following is an excerpt from our ModuleBook User Guide, showing additions that I have made for the add, delete and find commands. They showcase my ability to write a comprehensive documentation with the end-users in mind.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="finding-an-archived-module-code-find-code"><a class="link" href="#finding-an-archived-module-code-find-code">Finding an archived module: <code>find</code></a></h3>
+<div class="sect3">
+<h4 id="method-1-using-command-lines"><a class="link" href="#method-1-using-command-lines">Method 1: Using command lines</a></h4>
+<div class="paragraph">
+<p>Find archived modules with the the given prefix and keyword.<br>
+Format: <code>find PREFIX\ KEYWORD &#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+It is possible to use any number or combination of filters. Prefixes not present will not be considered in the search.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Prefixes: (case sensitive)</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>all\</code> : List all the modules. <strong>Overrides</strong> all other prefixes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: <code>find mod\ cs all\</code> <code>all\</code> will override mod\ and list all the modules.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>mod\</code> : Find all modules with <strong>module code</strong> that contains <strong>at least one</strong> of the given <strong>keyword(s)</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: <code>find mod\ cs ma st</code> will list all modules with module code containing <code>cs</code> <strong>or</strong> <code>ma</code> <strong>or</strong> <code>st</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>title\</code> : Find all modules with <strong>title</strong> that contains <strong>all</strong> of the given <strong>keyword(s)</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: <code>find title\ software engineering</code> will list all modules with titles containing <code>"software" <strong>and</strong> "engineering"</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>desc\</code> : Find all modules with <strong>description</strong> that contains <strong>all</strong> of the given <strong>keywords(s)</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: <code>find desc\ software engineering</code> will list all modules with description containing <code>"software" <strong>and</strong> "engineering"</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>prereq\</code> : Find all modules with <strong>prerequisites</strong> that match <strong>at least one</strong> of the given <strong>keyword(s)</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: <code>find prereq\ cs2030 cs2040</code> will list all modules with prerequisite of <code>cs2030</code> <strong>or</strong> <code>cs2040</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>preclu\</code> : Find all modules with <strong>preclusion</strong> that match <strong>at least one</strong> of the given <strong>keyword(s)</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: <code>find preclu\ cs2030 cs2040</code> will list all modules with preclusion of <code>cs2030</code> <strong>or</strong> <code>cs2040</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>sem\</code> : Find all modules offered in a particular sem 1 - 4. (Sem 3 and 4 are special terms 1 and 2).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: <code>find sem\ 1 3</code> will list all modules offered in semester 1 <strong>or</strong> special term 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The prefixes can be used together in any order to filter modules that passes all the search requirements.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: <code>find mod\ cs2 cs3 desc\ software engineering sem\ 1</code> will show all modules with module code containing <code>cs2</code>
+<strong>or</strong> <code>cs3</code> with description containing <code>"software"</code> <strong>and</strong> <code>"engineering"</code> offered in semester 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The keywords are case insensitive. e.g <code>cs2103t</code> will match <code>CS2103T</code>.</p>
+</li>
+<li>
+<p><strong>Keywords</strong> used in <strong>title\</strong> and <strong>desc\</strong> are tolerant of minor <strong>spelling mistakes</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Example: <code>find desc\ enginering</code> will display results similar to <code>find desc\ engineering</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Search is performed using string matching, commonly used keywords will therefore produce many search results.</p>
+</li>
+<li>
+<p>Invalid prefixes and keywords before a valid prefix will be ignored.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Eg: <code>find INVALID\ invalidKeyword mod\ cs</code> the <code>INVALID\ invalidKeyword</code> will be ignored, <code>mod\ cs</code> will be searched.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Keywords are searched using <strong>"OR"</strong> relation (apart from <code>title\</code> and <code>desc\</code> which uses an <strong>"AND"</strong> relation.) while predicates are seached using
+<strong>"AND"</strong> relations.
+For example, <code>find mod\ cs ma title\ linear algebra</code> will produce results of all modules with (module code containing <code>cs</code> <strong>OR</strong> <code>ma</code>) <strong>AND</strong> (title containing <code>linear</code> <strong>AND</strong> <code>algebra</code>)
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="method-2-using-gui"><a class="link" href="#method-2-using-gui">Method 2: Using GUI</a></h4>
+<div class="paragraph">
+<p>Alternatively, you can simply click on the search button on the top left hand corner (shortcut key: F2) and select search. Input your
+keywords in the fields provided within the popup.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/SearchGui.png" alt="SearchGui">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Modules are imported from NUSMods database.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-module-code-add-code"><a class="link" href="#adding-a-module-code-add-code">Adding a module: <code>add</code></a></h3>
+<div class="paragraph">
+<p>Adds a module to be tracked.<br>
+Format: <code>add MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The add is case insensitive. e.g <code>cs2103t</code> will match <code>CS2103T</code>.</p>
+</li>
+<li>
+<p>Only module code is searched for module to be added.</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>cs2103</code> will not match <code>cs2103t</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Modules are imported from NUSMods database.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add cs2103t</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-module-code-delete-code"><a class="link" href="#deleting-a-module-code-delete-code">Deleting a module: <code>delete</code></a></h3>
+<div class="paragraph">
+<p>Untracks a module.<br>
+Format: <code>delete MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The delete is case insensitive. e.g <code>cs2103t</code> will match <code>CS2103T</code>.</p>
+</li>
+<li>
+<p>Only module code is searched for module to be added.</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>cs2103</code> will not match <code>cs2103t</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete cs2103t</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This section contains an excerpt for the filtered find feature in the ModuleBook Developer Guide. This should highlight my ability to write a detailed technical documentation and simplify complicated technical knowledge.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="search-filtering-feature"><a class="link" href="#search-filtering-feature">Search filtering feature</a></h3>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>The search filtering feature Uses different categories of predicates
+to narrow down the search space of the archived module list. The user is able to able to combine different categories
+of search to find modules that passes all the user defined filters. This can be achieved through the use of <code>Predicate</code>
+which can be chained with additional predicates and applied to a <code>FilteredList</code>. This requires additional predicate classes that searches their individual fields
+for the keywords.:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ModuleCodeContainsKeywordsPredicate</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> module code matches any of the keywords given.</p>
+</li>
+<li>
+<p><code>TitleContainsKeywordsPredicate</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> title contains all of the keywords given.</p>
+</li>
+<li>
+<p><code>DescriptionContainsKeywordsPredicate</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> description contains all of the keywords given.</p>
+</li>
+<li>
+<p><code>PrerequisiteContainsKeywordsPredicate</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> prerequisites matches any of the keywords given.</p>
+</li>
+<li>
+<p><code>PreclusionContainsKeywordsPredicate</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> preclusions matches any of the keywords given.</p>
+</li>
+<li>
+<p><code>SemesterContainsKeywordsPredicate</code>&#8201;&#8212;&#8201;Tests that a <code>module</code> semester matches any of the keywords given.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SearchActivityDiagram.png" alt="SearchActivityDiagram">
+</div>
+<div class="title">Figure 2. Activity diagram for search predicates.</div>
+</div>
+<div class="paragraph">
+<p>Figure 12 above shows how each predicate checks for the keyword. Do note that <code>DescriptionContainsKeywordsPredicate</code>
+and <code>TitleContainsKeywordsPredicate</code> requires their specified field to contain <strong>all</strong> of the keywords, while the rest of the
+predicates returns true as long as their field contains <strong>at least one</strong> of the keyword.</p>
+</div>
+<div class="paragraph">
+<p>The user is able to use any combination of filters and the order of input should not matter. Examples of valid find commands:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>find mod\ cs2</code> : Should display a list of modules with module code containing "cs2"</p>
+</li>
+<li>
+<p><code>find mod\ cs2 prereq\ cs2040</code> : Should display a list of modules with module code containing "cs" and with prerequisite of "cs2040"</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the find operation wold work:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindSequenceDiagram.png" alt="FindSequenceDiagram">
+</div>
+<div class="title">Figure 3. Sequence diagram for search filtering.</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>FindCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As represented in Figure 13, when a <code>FindCommandParser</code> is constructed by <code>ModuleBookParser#parseCommand</code>, the <code>FindCommandParser</code> would construct a list
+of <code>Predicate&lt;module&gt;</code> based on the parsed arguments, which is used to construct a <code>FindCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>During the execution of <code>FindCommand#execute()</code>, each predicate is chained and applied to the <code>FilteredList</code>.</p>
+</div>
+<div class="paragraph">
+<p>Finally, a <code>FilteredList</code> of <code>Modules</code> that passes all of the filters will be displayed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-requirements"><a class="link" href="#aspect-requirements">Aspect: Requirements.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Module field requirements:</strong> Information from the <code>archivedModules.json</code> would have to be abstracted out
+as individual fields in the <code>ArchivedModule</code> object.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>pros:</strong> Added fields can be used for future developments.</p>
+</li>
+<li>
+<p><strong>cons:</strong> Can potentially slow down <code>Module</code> construction and operations due to increased size for each <code>Module</code> object.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-fuzzy-search"><a class="link" href="#aspect-fuzzy-search">Aspect: Fuzzy search.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Search with spelling mistake tolerance:</strong> Due to the potential of spelling mistakes within fields such as the module
+and module discription which does not rely on module codes, searching these fields can accept mistakes with a degree of 2
+Levenshtein Distance from any of the original intended word.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>pros</strong>: Much more robust searching potential.</p>
+</li>
+<li>
+<p><strong>cons</strong>: Will slow down the search.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-incremental-development"><a class="link" href="#aspect-incremental-development">Aspect: Incremental development.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Adding new search filters:</strong> Developing and integrating new filters.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>pros:</strong> Filters can be developed independently and incrementally, filters can be integrated based on priority.</p>
+</li>
+<li>
+<p><strong>pros:</strong> Can be further adapted to search fields from <code>Deadline</code> and <code>Links</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 16:50:55 UTC</div></div></div></body></html>
