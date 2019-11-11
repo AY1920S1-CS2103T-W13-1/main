@@ -162,10 +162,18 @@ They showcase my ability to write documentation targeting end-users.</em></p></t
 <p>Adds deadline task consisting of description, time and priority to the respective module.
 Priority inputs are <code>HIGH</code>, <code>MEDIUM</code> OR <code>LOW</code>. Deadline task with <code>HIGH</code> priority is displayed in red, <code>MEDIUM</code> in yellow
 and <code>LOW</code> in green. Deadline list is sorted according to priority and deadline date and time.
-All parameters are compulsory.</p>
+All parameters are compulsory. Date and Time must be in <code>dd/MM/yyyy HHmm</code> format.</p>
 </div>
 <div class="paragraph">
 <p>Example: <code>deadline 1 a/add d/tutorial 1 t/22/10/2019 2359 p/HIGH</code></p>
+</div>
+<div class="paragraph">
+<p>Here is result of inputting the above command successfully.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/AddDeadlineUI.png" alt="AddDeadlineUI" width="790">
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -197,7 +205,8 @@ All parameters are compulsory.</p>
 <p>Format: <code>deadline MODULE_LIST_NUM a/edit task/TASK_NUMBER_IN_LIST t/NEW_TIME</code></p>
 </div>
 <div class="paragraph">
-<p>Edits time from the deadline task numbered in deadline list for the respective module.</p>
+<p>Edits time from the deadline task numbered in deadline list for the respective module.
+Date and Time must be in <code>dd/MM/yyyy HHmm</code> format.</p>
 </div>
 <div class="paragraph">
 <p>Example: <code>deadline 3 a/edit task/2 t/29/10/2018 2359</code></p>
@@ -214,6 +223,14 @@ as <strong>done</strong> with a tick.</p>
 </div>
 <div class="paragraph">
 <p>Example: <code>deadline 1 a/done task/2</code></p>
+</div>
+<div class="paragraph">
+<p>Here is result of inputting the above command successfully.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/DoneDeadlineUI.png" alt="DoneDeadlineUI" width="790">
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -261,7 +278,7 @@ as <strong>undone</strong> with empty space.</p>
 <p>Format: <code>deadline MODULE_LIST_NUM a/delete task/TASK_NUMBER_IN_LIST</code></p>
 </div>
 <div class="paragraph">
-<p>Deletes deadline task numbered from the respective module.</p>
+<p>Deletes deadline task numbered in deadline list from the respective module.</p>
 </div>
 <div class="paragraph">
 <p>Example: <code>deadline 1 a/delete task/2</code></p>
@@ -452,4 +469,4 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 06:42:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:10:40 UTC</div></div></div></body></html>
