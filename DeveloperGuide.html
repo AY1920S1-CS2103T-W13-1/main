@@ -9,49 +9,62 @@
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting up</a></li>
-<li><a href="#design">2. Design</a>
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#setting-up">2. Setting up</a></li>
+<li><a href="#design">3. Design</a>
 <ul class="sectlevel2">
-<li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI component</a></li>
-<li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
+<li><a href="#Design-Architecture">3.1. Architecture</a></li>
+<li><a href="#Design-Ui">3.2. UI component</a></li>
+<li><a href="#Design-Logic">3.3. Logic component</a></li>
+<li><a href="#Design-Model">3.4. Model component</a></li>
+<li><a href="#Design-Storage">3.5. Storage component</a></li>
+<li><a href="#Design-Commons">3.6. Common classes</a></li>
 </ul>
 </li>
-<li><a href="#implementation">3. Implementation</a>
+<li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#module-view-feature">3.1. Module View Feature</a></li>
-<li><a href="#proposed-marking-modules-as-completed-ongoing-or-planned">3.2. [Proposed] Marking modules as completed, ongoing or planned</a></li>
-<li><a href="#search-filtering-feature">3.3. Search filtering feature</a></li>
-<li><a href="#deadline-management-feature">3.4. Deadline Management Feature</a></li>
-<li><a href="#logging">3.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
-<li><a href="#link-management-feature">3.7. Link Management Feature</a></li>
+<li><a href="#module-view-feature">4.1. Module View Feature</a></li>
+<li><a href="#proposed-marking-modules-as-completed-ongoing-or-planned">4.2. [Proposed] Marking modules as completed, ongoing or planned</a></li>
+<li><a href="#search-filtering-feature">4.3. Search filtering feature</a></li>
+<li><a href="#deadline-management-feature">4.4. Deadline Management Feature</a></li>
+<li><a href="#logging">4.5. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.6. Configuration</a></li>
+<li><a href="#link-management-feature">4.7. Link Management Feature</a></li>
 </ul>
 </li>
-<li><a href="#documentation">4. Documentation</a></li>
-<li><a href="#testing">5. Testing</a></li>
-<li><a href="#dev-ops">6. Dev Ops</a></li>
+<li><a href="#documentation">5. Documentation</a></li>
+<li><a href="#testing">6. Testing</a></li>
+<li><a href="#dev-ops">7. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
-<li><a href="#glossary">Appendix E: Glossary</a></li>
+<li><a href="#glossary">Appendix E: Glossary</a>
+<ul class="sectlevel2">
+<li><a href="#common-application-terms">E.1. Common Application terms</a></li>
+<li><a href="#common-module-terms">E.2. Common Module terms</a></li>
+</ul>
+</li>
 <li><a href="#product-survey">Appendix F: Product Survey</a></li>
 <li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-module">G.2. Deleting a module</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This developer guide describes the software architecture and implementation details of the software, ModuleBook. It is intended to be read by developers and software testers for the software.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setting-up"><a class="link" href="#setting-up">2. Setting up</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="SettingUp.html">here</a>.</p>
@@ -59,10 +72,10 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
+<h2 id="design"><a class="link" href="#design">3. Design</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
+<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ArchitectureDiagram.png" alt="ArchitectureDiagram">
@@ -165,7 +178,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">3.2. UI component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
@@ -196,7 +209,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">3.3. Logic component</a></h3>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
@@ -249,7 +262,7 @@ The lifeline for <code>AddCommandParser</code> should end at the destroy marker 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
@@ -280,7 +293,7 @@ The lifeline for <code>AddCommandParser</code> should end at the destroy marker 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
@@ -308,7 +321,7 @@ The lifeline for <code>AddCommandParser</code> should end at the destroy marker 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
+<h3 id="Design-Commons"><a class="link" href="#Design-Commons">3.6. Common classes</a></h3>
 <div class="paragraph">
 <p>Classes used by multiple components are in the <code>seedu.module.commons</code> package.</p>
 </div>
@@ -316,18 +329,18 @@ The lifeline for <code>AddCommandParser</code> should end at the destroy marker 
 </div>
 </div>
 <div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<h2 id="implementation"><a class="link" href="#implementation">4. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="module-view-feature"><a class="link" href="#module-view-feature">3.1. Module View Feature</a></h3>
+<h3 id="module-view-feature"><a class="link" href="#module-view-feature">4.1. Module View Feature</a></h3>
 <div class="paragraph">
 <p>The module view feature allows users to view a module to access extra information about the module. The user can view (and unview) a module using the <code>view</code> (and <code>back</code>) commands.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">4.1.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The module view feature is facilitated by <code>displayedModule</code> in <code>ModelManager</code>. The following describes how the <code>displayedModule</code> is modified and read to the <code>Ui</code>.</p>
 </div>
@@ -385,7 +398,7 @@ The <code>BackCommand</code> mostly follows the same sequence as described above
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="updating-the-ui"><a class="link" href="#updating-the-ui">Updating the Ui</a></h5>
 <div class="paragraph">
@@ -441,12 +454,12 @@ The <code>BackCommand</code> mostly follows the same sequence as described above
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-marking-modules-as-completed-ongoing-or-planned"><a class="link" href="#proposed-marking-modules-as-completed-ongoing-or-planned">3.2. [Proposed] Marking modules as completed, ongoing or planned</a></h3>
+<h3 id="proposed-marking-modules-as-completed-ongoing-or-planned"><a class="link" href="#proposed-marking-modules-as-completed-ongoing-or-planned">4.2. [Proposed] Marking modules as completed, ongoing or planned</a></h3>
 <div class="paragraph">
 <p>Users can mark modules as <text style="color:darkgreen"><b>completed</b></text>, <text style="color:darkorange"><b>ongoing</b></text> or <text style="color:blue"><b>planned</b></text>. Users can also timestamp the modules with the semester that the user <text style="color:darkgreen"><b>has taken</b></text>/<text style="color:darkorange"><b>is taking</b></text>/<text style="color:blue"><b>will take</b></text> the module.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">4.2.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The tracked module will have 2 new fields: <code>moduleStatus</code> and <code>semesterTimestamp</code>.</p>
 </div>
@@ -510,7 +523,7 @@ The <code>BackCommand</code> mostly follows the same sequence as described above
 </div>
 </div>
 <div class="sect3">
-<h4 id="possible-extensions"><a class="link" href="#possible-extensions">3.2.2. Possible Extensions</a></h4>
+<h4 id="possible-extensions"><a class="link" href="#possible-extensions">4.2.2. Possible Extensions</a></h4>
 <div class="paragraph">
 <p>With the new data, users may be able to easier manage their tracked modules and gleam useful information.</p>
 </div>
@@ -527,9 +540,9 @@ The <code>BackCommand</code> mostly follows the same sequence as described above
 </div>
 </div>
 <div class="sect2">
-<h3 id="search-filtering-feature"><a class="link" href="#search-filtering-feature">3.3. Search filtering feature</a></h3>
+<h3 id="search-filtering-feature"><a class="link" href="#search-filtering-feature">4.3. Search filtering feature</a></h3>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">3.3.1. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">4.3.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The search filtering feature Uses different categories of predicates
 to narrow down the search space of the archived module list. The user is able to able to combine different categories
@@ -620,7 +633,7 @@ of <code>Predicate&lt;module&gt;</code> based on the parsed arguments, which is 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-requirements"><a class="link" href="#aspect-requirements">Aspect: Requirements.</a></h5>
 <div class="ulist">
@@ -687,7 +700,7 @@ Levenshtein Distance from any of the original intended word.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deadline-management-feature"><a class="link" href="#deadline-management-feature">3.4. Deadline Management Feature</a></h3>
+<h3 id="deadline-management-feature"><a class="link" href="#deadline-management-feature">4.4. Deadline Management Feature</a></h3>
 <div class="paragraph">
 <p>As a module management system, one of the important features will be the management of deadlines for each modules.</p>
 </div>
@@ -695,7 +708,7 @@ Levenshtein Distance from any of the original intended word.</p>
 <p>This section will elaborate the current implementation and design considerations of deadline management feature.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.4.1. Current implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">4.4.1. Current implementation</a></h4>
 <div class="paragraph">
 <p>The deadline management feature supports the following main operations.</p>
 </div>
@@ -797,7 +810,7 @@ to the <code>LogicManager</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.4.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Aspect: Data Structure used to support add command</p>
 </div>
@@ -842,14 +855,14 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.5. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.6, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -880,18 +893,18 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="link-management-feature"><a class="link" href="#link-management-feature">3.7. Link Management Feature</a></h3>
+<h3 id="link-management-feature"><a class="link" href="#link-management-feature">4.7. Link Management Feature</a></h3>
 <div class="paragraph">
 <p>The link management feature allows users to add and manage a set of website links that will be associated with a given module.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">3.7.1. Implementation</a></h4>
+<h4 id="implementation-5"><a class="link" href="#implementation-5">4.7.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The link management feature is facilitated by the <code>link</code> class.</p>
 </div>
@@ -946,7 +959,7 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.7.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Aspect: Data structure used for link management</p>
 </div>
@@ -985,7 +998,7 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">5. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Documentation.html">here</a>.</p>
@@ -993,7 +1006,7 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 </div>
 </div>
 <div class="sect1">
-<h2 id="testing"><a class="link" href="#testing">5. Testing</a></h2>
+<h2 id="testing"><a class="link" href="#testing">6. Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Testing.html">here</a>.</p>
@@ -1001,7 +1014,7 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
+<h2 id="dev-ops"><a class="link" href="#dev-ops">7. Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="DevOps.html">here</a>.</p>
@@ -1044,7 +1057,7 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 <div class="paragraph">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 59%;">
+<table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 22%;">
 <col style="width: 23%;">
@@ -1093,20 +1106,20 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">busy student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">manage deadlines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add and manage deadlines</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track of my assignments and tasks</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">organized student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">manage my grades</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">know roughly how well I&#8217;m doing in the module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add and manage hyperlinks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of online resources and websites that the module uses</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">new student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">schedule my modules</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">plan how to approach my future focus areas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">catalog past modules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know what modules I have taken, and access the content if needed</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -1122,12 +1135,6 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">competitive student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">calculate my GPA</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">busy student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">prioritize certain modules (and their deadlines)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">manage my time better</p></td>
@@ -1135,14 +1142,38 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">organized student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">manage files related to a module</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add and tag files</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add and manage files</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of files related to a module</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">catalog past modules</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">access the content conveniently</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">organized student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add notes to a module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of certain information about a module</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hardworking student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">access past exam papers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">download them without too much hassle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">organized student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">track my grades</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know roughly how well I&#8217;m doing in the module</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">competitive student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">calculate my GPA</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule my modules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">plan how to approach my future focus areas</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
@@ -1150,17 +1181,8 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 <td class="tableblock halign-left valign-top"><p class="tableblock">generate a sample module planner</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">plan my modules</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hardworking student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">access past exam papers</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1185,7 +1207,7 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 <p>User requests to track a module</p>
 </li>
 <li>
-<p>ModuleBook tracks the module</p>
+<p>ModuleBook tracks the module and displays to the user that the module is now tracked.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1277,10 +1299,10 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
+<li>
+<p>Should be able to track and manage about <strong>60 modules</strong> without unreasonable lag (as this is roughly more than the number of modules a typical student is expected to complete at NUS).</p>
+</li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -1295,14 +1317,50 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 </dd>
 </dl>
 </div>
+<div class="sect2">
+<h3 id="common-application-terms"><a class="link" href="#common-application-terms">E.1. Common Application terms</a></h3>
+<div class="paragraph">
+<p><strong>Home view</strong> - The state of the application that displays the home page in the main panel.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/Glossary_HomeView.png" alt="Glossary HomeView">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Module view</strong> - The state of the application that displays the specified module in the main panel.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/Glossary_ModuleView.png" alt="Glossary ModuleView">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="common-module-terms"><a class="link" href="#common-module-terms">E.2. Common Module terms</a></h3>
+<div class="paragraph">
+<p><strong>Archived</strong> - A module that the institution provides. Can be viewed and tracked. It is indicated by a gray vertical bar on the module list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/Glossary_ArchivedModule.png" alt="Glossary ArchivedModule">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tracked</strong> - A module that is tracked. References an archived module. Can be viewed and untracked. It is indicated by a green vertical bar on the module list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/Glossary_TrackedModule.png" alt="Glossary TrackedModule">
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>LumiNUS</p>
-</div>
+<h3 id="luminus" class="discrete">LumiNUS</h3>
 <div class="paragraph">
 <p>Pros:</p>
 </div>
@@ -1333,9 +1391,7 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 </ul>
 </div>
 <hr>
-<div class="paragraph">
-<p>NUSMods</p>
-</div>
+<h3 id="nusmods" class="discrete">NUSMods</h3>
 <div class="paragraph">
 <p>Pros:</p>
 </div>
@@ -1413,9 +1469,6 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="deleting-a-module"><a class="link" href="#deleting-a-module">G.2. Deleting a module</a></h3>
@@ -1441,29 +1494,6 @@ Expected: No module is deleted. Error details shown in the status message. Statu
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Dealing with missing/corrupted data files</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 11:14:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:21:16 UTC</div></div></div></body></html>
