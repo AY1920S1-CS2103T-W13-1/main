@@ -481,9 +481,19 @@ for the keywords.:</p>
 </div>
 <div class="imageblock">
 <div class="content">
+<img src="../images/FindCommandClassDiagram.png" alt="FindCommandClassDiagram">
+</div>
+<div class="title">Figure 3. Class diagram for search.</div>
+</div>
+<div class="paragraph">
+<p>As shown in the figure above, predicate classes are created in the FindCommandParser, the list of predicates is used to construct a find command.
+Note that only DescriptionContainsKeywordsPredicate and TitleContainsKeywordsPredicate depends on LevenshteinDistanceChecker, the rest of the predicates do not depend on it.</p>
+</div>
+<div class="imageblock">
+<div class="content">
 <img src="../images/SearchActivityDiagram.png" alt="SearchActivityDiagram">
 </div>
-<div class="title">Figure 3. Activity diagram for search predicates.</div>
+<div class="title">Figure 4. Activity diagram for search predicates.</div>
 </div>
 <div class="paragraph">
 <p>The figure above shows how each predicate checks for the keyword. Do note that <code>DescriptionContainsKeywordsPredicate</code>
@@ -514,7 +524,7 @@ predicates returns true as long as their field contains <strong>at least one</st
 <div class="content">
 <img src="../images/FindSequenceDiagram.png" alt="FindSequenceDiagram">
 </div>
-<div class="title">Figure 4. Sequence diagram for search filtering.</div>
+<div class="title">Figure 5. Sequence diagram for search filtering.</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -607,4 +617,4 @@ Levenshtein Distance from any of the original intended word.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:38:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:40:12 UTC</div></div></div></body></html>

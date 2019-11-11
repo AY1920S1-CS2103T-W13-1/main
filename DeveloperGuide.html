@@ -574,9 +574,19 @@ for the keywords.:</p>
 </div>
 <div class="imageblock">
 <div class="content">
+<img src="images/FindCommandClassDiagram.png" alt="FindCommandClassDiagram">
+</div>
+<div class="title">Figure 12. Class diagram for search.</div>
+</div>
+<div class="paragraph">
+<p>As shown in the figure above, predicate classes are created in the FindCommandParser, the list of predicates is used to construct a find command.
+Note that only DescriptionContainsKeywordsPredicate and TitleContainsKeywordsPredicate depends on LevenshteinDistanceChecker, the rest of the predicates do not depend on it.</p>
+</div>
+<div class="imageblock">
+<div class="content">
 <img src="images/SearchActivityDiagram.png" alt="SearchActivityDiagram">
 </div>
-<div class="title">Figure 12. Activity diagram for search predicates.</div>
+<div class="title">Figure 13. Activity diagram for search predicates.</div>
 </div>
 <div class="paragraph">
 <p>The figure above shows how each predicate checks for the keyword. Do note that <code>DescriptionContainsKeywordsPredicate</code>
@@ -607,7 +617,7 @@ predicates returns true as long as their field contains <strong>at least one</st
 <div class="content">
 <img src="images/FindSequenceDiagram.png" alt="FindSequenceDiagram">
 </div>
-<div class="title">Figure 13. Sequence diagram for search filtering.</div>
+<div class="title">Figure 14. Sequence diagram for search filtering.</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -747,7 +757,7 @@ Levenshtein Distance from any of the original intended word.</p>
 <div class="content">
 <img src="images/AddDeadlineActivityDiagram.png" alt="AddDeadlineActivityDiagram">
 </div>
-<div class="title">Figure 14. Activity Diagram for the execution of AddDeadlineCommand.</div>
+<div class="title">Figure 15. Activity Diagram for the execution of AddDeadlineCommand.</div>
 </div>
 <div class="paragraph">
 <p>The format to add deadline command is as follows:</p>
@@ -806,7 +816,7 @@ to the <code>LogicManager</code>.</p>
 <div class="content">
 <img src="images/AddDeadlineSequenceDiagram.png" alt="AddDeadlineSequenceDiagram">
 </div>
-<div class="title">Figure 15. Sequence Diagram diagram for AddDeadlineCommand.</div>
+<div class="title">Figure 16. Sequence Diagram diagram for AddDeadlineCommand.</div>
 </div>
 </div>
 <div class="sect3">
@@ -939,7 +949,7 @@ New commands(eg. done, priority) need to edit and maintain the list constantly.<
 <div class="content">
 <img src="images/LinkClassDiagram.png" alt="LinkClassDiagram">
 </div>
-<div class="title">Figure 16. Class diagram for Link objects</div>
+<div class="title">Figure 17. Class diagram for Link objects</div>
 </div>
 <div class="paragraph">
 <p>The link feature currently recognizes and supports add, delete, edit and launch commands.</p>
@@ -955,7 +965,7 @@ The <code>XYZLinkCommandParser</code> class parses and returns a corresponding <
 <div class="content">
 <img src="images/LinkCommandActivityDiagram.png" alt="LinkCommandActivityDiagram">
 </div>
-<div class="title">Figure 17. Activity diagram for a LinkCommand execution</div>
+<div class="title">Figure 18. Activity diagram for a LinkCommand execution</div>
 </div>
 <div class="paragraph">
 <p>An example usage scenario of an <strong>add link</strong> operation is given below and the behavior of the link management feature is shown.</p>
@@ -992,13 +1002,13 @@ The <code>XYZLinkCommandParser</code> class parses and returns a corresponding <
 <div class="content">
 <img src="images/AddLinkCommandSequenceDiagram.png" alt="AddLinkCommandSequenceDiagram">
 </div>
-<div class="title">Figure 18. Sequence diagram for add link operation</div>
+<div class="title">Figure 19. Sequence diagram for add link operation</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AddLinkCommandSequenceDiagramExtension.png" alt="AddLinkCommandSequenceDiagramExtension">
 </div>
-<div class="title">Figure 19. Reference of add link to module function from sequence diagram shown above</div>
+<div class="title">Figure 20. Reference of add link to module function from sequence diagram shown above</div>
 </div>
 </div>
 </div>
@@ -1543,4 +1553,4 @@ Expected: No module is deleted. Error details shown in the status message. Statu
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:38:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:40:12 UTC</div></div></div></body></html>
