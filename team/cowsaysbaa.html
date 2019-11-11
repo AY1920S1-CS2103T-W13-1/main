@@ -335,6 +335,7 @@ keywords in the fields provided within the popup.</p>
 <div class="content">
 <img src="../images/userguide/SearchGui.png" alt="SearchGui">
 </div>
+<div class="title">Figure 2. Searching using GUI</div>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -482,10 +483,10 @@ for the keywords.:</p>
 <div class="content">
 <img src="../images/SearchActivityDiagram.png" alt="SearchActivityDiagram">
 </div>
-<div class="title">Figure 2. Activity diagram for search predicates.</div>
+<div class="title">Figure 3. Activity diagram for search predicates.</div>
 </div>
 <div class="paragraph">
-<p>Figure 12 above shows how each predicate checks for the keyword. Do note that <code>DescriptionContainsKeywordsPredicate</code>
+<p>The figure above shows how each predicate checks for the keyword. Do note that <code>DescriptionContainsKeywordsPredicate</code>
 and <code>TitleContainsKeywordsPredicate</code> requires their specified field to contain <strong>all</strong> of the keywords, while the rest of the
 predicates returns true as long as their field contains <strong>at least one</strong> of the keyword.</p>
 </div>
@@ -513,7 +514,7 @@ predicates returns true as long as their field contains <strong>at least one</st
 <div class="content">
 <img src="../images/FindSequenceDiagram.png" alt="FindSequenceDiagram">
 </div>
-<div class="title">Figure 3. Sequence diagram for search filtering.</div>
+<div class="title">Figure 4. Sequence diagram for search filtering.</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -528,7 +529,7 @@ The lifeline for <code>FindCommand</code> should end at the destroy marker (X) b
 </table>
 </div>
 <div class="paragraph">
-<p>As represented in Figure 13, when a <code>FindCommandParser</code> is constructed by <code>ModuleBookParser#parseCommand</code>, the <code>FindCommandParser</code> would construct a list
+<p>As represented in the figure above, when a <code>FindCommandParser</code> is constructed by <code>ModuleBookParser#parseCommand</code>, the <code>FindCommandParser</code> would construct a list
 of <code>Predicate&lt;module&gt;</code> based on the parsed arguments, which is used to construct a <code>FindCommand</code>.</p>
 </div>
 <div class="paragraph">
@@ -606,4 +607,4 @@ Levenshtein Distance from any of the original intended word.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 05:21:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 05:23:09 UTC</div></div></div></body></html>
