@@ -1,0 +1,525 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Alex Wu - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">ModuleBook</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-W13-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Alex Wu - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-modulebook"><a class="link" href="#project-modulebook">PROJECT: ModuleBook</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="about-the-project"><a class="link" href="#about-the-project">About the project</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Our team consisting of 4 computer science students were tasked with enhancing a basic command line interface (CLI) desktop addressbook application for our Software Engineering project. We chose to morph the application into a study assistant application catering to NUS students called ModuleBook. ModuleBook is specially designed to help NUS students find and keep track of the modules they are taking each semester; add and maintain deadlines related to each module; keep a list of helpful and commonly used website links for easy access. This document presents my contributions to this project.</p>
+</div>
+<div class="paragraph">
+<p>This is what our project looks like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UiLabelledA.png" alt="UiLabelledA">
+</div>
+<div class="title">Figure 1. The graphical user interface for ModuleBook</div>
+</div>
+<div class="paragraph">
+<p>Note the use of the following symbols and formatting in this document:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>grey highlight</code> indicates that this is a command that can be inputted into the command line and executed by the application.</p>
+</li>
+<li>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add MODULE_CODE</code>, <code>MODULE_CODE</code> is a parameter which can be used as <code>add CS1101S</code>.</p>
+</li>
+<li>
+<p>Items in square brackets are optional e.g <code>MODULE_CODE [MODULE_TITLE]</code> can be used as <code>CS1231 discrete structures</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This symbol indicates important information
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Indicates a tip or advice
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section gives a summary of my contribution to the team project in terms of coding, documentation and other feature improvements.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement: Added link feature to manage links in a TrackedModule.</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: The link command allows the user to manage a set of website links. The link command currently supports add, delete , edit, go and mark actions.</p>
+</li>
+<li>
+<p>Justification: Some modules may have a module website, or the user may have found other academic websites that contain information helpful to their studies. In this case, the user can add the links to the specific module in ModuleBook and access it easily from the application.</p>
+</li>
+<li>
+<p>Highlights: This feature checks for validity of links provided and ensures that the user does not entire the same name for links twice so it would be easier for the user to manage. This feature was designed with the user’s needs in mind. Commands has been simplified so each action can be done with minimal typing. Some commands can be done through the GUI as well.</p>
+</li>
+<li>
+<p>Credit: A third-party library, Apache Commons, was imported to check for the validity of links provided.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=alexwxh&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=alexwxh&amp;tabRepo=AY1920S1-CS2103T-W13-1%2Fmain%5Bmaster%5D">RepoSense</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Created the general skeleton of the ModuleBook user guide (<a href="https://github.com/AY1920S1-CS2103T-W13-1/main/pull/12">#12</a>).</p>
+</li>
+<li>
+<p>Updated User Guide and Developer Guide pertaining to link feature (<a href="https://github.com/AY1920S1-CS2103T-W13-1/main/pull/66">#66</a>, <a href="https://github.com/AY1920S1-CS2103T-W13-1/main/pull/79">#79</a>, <a href="https://github.com/AY1920S1-CS2103T-W13-1/main/pull/150">#150</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reviewed Pull Requests (with non-trivial review comments): <a href="https://github.com/AY1920S1-CS2103T-W13-1/main/pull/16">#16</a>, <a href="https://github.com/AY1920S1-CS2103T-W13-1/main/pull/57">#57</a></p>
+</li>
+<li>
+<p>Reported bugs and offered suggestions for other teams: <a href="https://github.com/alexwxh/ped/issues">PE Dry Run Repo</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated a third-party library (Apache Commons) to the project: <a href="https://github.com/AY1920S1-CS2103T-W13-1/main/pull/40">#40</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>We had to update the original addressbook user guide to match our morphed application, ModuleBook. The following section are sections from my contribution to this task. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="manage-links-in-modules-code-link-code"><a class="link" href="#manage-links-in-modules-code-link-code">Manage links in modules: <code>link</code></a></h3>
+<div class="paragraph">
+<p>Link commands are only available when viewing a module and only valid on currently displayed tracked modules.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Before you use any <code>link</code> command, make sure you are viewing your desired course module first.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you happen to forget any of the url paired with the names you have entered, simply hover over the button and the information will be displayed.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="adding-link-to-module-code-link-add-n-link_name-l-link_url-code"><a class="link" href="#adding-link-to-module-code-link-add-n-link_name-l-link_url-code">Adding link to module: <code>link add n/LINK_NAME l/LINK_URL</code></a></h4>
+<div class="paragraph">
+<p>You can use this command to add a link with the given name to a selected TrackedModule. This is useful if you manage to come across an important website related to a certain module you are currently taking and wish to note it down. A button will be created in ModuleBook with name you specified.</p>
+</div>
+<div class="paragraph">
+<p>Suppose you are taking CS2103T, and you will frequently visit the course website to check for new updates or tasks to complete by the next milestone. You wish to put the link somewhere so you can access it easily and also manage them effectively.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the command</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/AddLinkStep1.png" alt="AddLinkStep1">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Press Enter. You should see a new button created in the Links section and a success message.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/AddLinkStep2.png" alt="AddLinkStep2">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-existing-link-code-link-edit-n-link_name-nn-new_name-nl-new_url-code"><a class="link" href="#editing-existing-link-code-link-edit-n-link_name-nn-new_name-nl-new_url-code">Editing existing link: <code>link edit n/LINK_NAME [nn/NEW_NAME nl/NEW_URL]</code></a></h4>
+<div class="paragraph">
+<p>You can use this command to edit the name and/or url of an existing link.</p>
+</div>
+<div class="paragraph">
+<p>Suppose the name "Nusmods Timetable" is too long and you want to change it to just "Nusmods".</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the corresponding command</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/EditLinkStep1.png" alt="EditLinkStep1">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Press Enter. The link should be updated with the new name and a success message should appear.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/EditLinkStep2.png" alt="EditLinkStep2">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="launching-the-link-code-link-go-n-link_name-code"><a class="link" href="#launching-the-link-code-link-go-n-link_name-code">Launching the link: <code>link go n/LINK_NAME</code></a></h4>
+<div class="paragraph">
+<p>You can use this command to access a link in the default browser of your system.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are using any lesser known operating system, the app may not be able to detect it and this feature may not work as intended.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now suppose you wish to access a link you provided previously (from the <code>add</code> command). Doing that is very simple:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the command <code>link go n/Course Website</code></p>
+</li>
+<li>
+<p>The website should open in the default browser of your system and a success message should display.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Alternatively, you can access the link by clicking on it through the GUI as well.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-link-code-link-delete-n-link_name-code"><a class="link" href="#deleting-a-link-code-link-delete-n-link_name-code">Deleting a link: <code>link delete n/LINK_NAME</code></a></h4>
+<div class="paragraph">
+<p>You can use this command to delete a link with a matching name in the given module.</p>
+</div>
+<div class="paragraph">
+<p>Suppose you have no use for a link to Nusmods in the module and you want to remove it to de-clutter.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the delete command</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/DeleteLinkStep1.png" alt="DeleteLinkStep1">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Press Enter. You should see a success message and the link should be gone.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/DeleteLinkStep2.png" alt="DeleteLinkStep2">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="marking-unmarking-a-link-code-link-mark-unmark-n-link_name-code"><a class="link" href="#marking-unmarking-a-link-code-link-mark-unmark-n-link_name-code">Marking/unmarking a link: <code>link mark/unmark n/LINK_NAME</code></a></h4>
+<div class="paragraph">
+<p>Some links may be more important than others, and you may access them more frequently. To keep track of that, you can mark them using the <code>mark</code> feature.</p>
+</div>
+<div class="paragraph">
+<p>Suppose you go to the course website of CS2103 very often and want to make sure you can identify the link immediately, mark it so it stays at the front all available links.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the command <code>link mark n/Course Website</code></p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/MarkLinkStep1.png" alt="MarkLinkStep1">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Press Enter. The specified link will now be marked with a symbol and brought to the front of the list.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/userguide/MarkLinkStep2.png" alt="MarkLinkStep2">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="link-management-feature"><a class="link" href="#link-management-feature">Link Management Feature</a></h3>
+<div class="paragraph">
+<p>The link management feature allows users to add and manage a set of website links that will be associated with a given module.</p>
+</div>
+<div class="sect3">
+<h4 id="overview-of-link-feature"><a class="link" href="#overview-of-link-feature">Overview of link feature</a></h4>
+<div class="sect4">
+<h5 id="implementation"><a class="link" href="#implementation">Implementation</a></h5>
+<div class="paragraph">
+<p>Our application currently supports adding and managing of links specific to certain modules.</p>
+</div>
+<div class="paragraph">
+<p>The link management feature is primarily facilitated by the following classes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Link</code> - represents a link object</p>
+</li>
+<li>
+<p><code>TrackedModule</code> - represents a module that was tracked. Stores the <code>Link</code> objects related to it.</p>
+</li>
+<li>
+<p><code>LinkCommand</code> - embodies the <code>link</code> command input given by the user and contains the necessary changes that will be made to the <code>TrackedModule</code> object.</p>
+</li>
+<li>
+<p><code>LinkCommandParser</code> - parses user input related to <code>link</code> commands and returns the corresponding <code>LinkCommand</code> to be executed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each <code>link</code> object is stored in an <code>ArrayList&lt;Link&gt;</code>, which in turn is stored in its corresponding <code>TrackedModule</code>.</p>
+</div>
+<div class="paragraph">
+<p>In summary, the class diagram of how <code>Link</code> is implemented is shown as:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LinkClassDiagram.png" alt="LinkClassDiagram">
+</div>
+<div class="title">Figure 2. Class diagram for Link objects</div>
+</div>
+<div class="paragraph">
+<p>The link feature currently recognizes and supports add, delete, edit and launch commands.</p>
+</div>
+<div class="paragraph">
+<p>Link commands are parsed through the <code>LinkCommandParser</code> class, which in turn calls the respective <code>XYZLinkCommandParser</code> class (i.e. <code>AddLinkCommandParser</code>, <code>EditLinkCommandParser</code>).
+The <code>XYZLinkCommandParser</code> class parses and returns a corresponding <code>XYZLinkCommand</code> class, which calls <code>execute()</code> and the <code>TrackedModule</code> will be updated accordingly if the execution was successful.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when the link command is entered and executed:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LinkCommandActivityDiagram.png" alt="LinkCommandActivityDiagram">
+</div>
+<div class="title">Figure 3. Activity diagram for a LinkCommand execution</div>
+</div>
+<div class="paragraph">
+<p>An example usage scenario of an <strong>add link</strong> operation is given below and the behavior of the link management feature is shown.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user launches the application with an existing save file. <code>ModuleBook</code> is initialized with existing <code>TrackedModule</code>.</p>
+</li>
+<li>
+<p>The user inputs <code>link add n/LINK_NAME l/LINK_URL</code> to add a link with name <code>LINK_NAME</code>, linked to <code>LINK_URL</code> to the <code>TrackedModule</code> with the corresponding <code>MODULE_INDEX</code>.</p>
+</li>
+<li>
+<p><code>LogicManager</code> receives user input and parses it using <code>ModuleBookParser#parseCommand()</code>.  <code>ModuleBookParser</code> reads the <code>COMMAND_WORD</code> and identifies the input as a <code>Link</code> related command and passes the input to <code>LinkCommandParser</code>.</p>
+</li>
+<li>
+<p><code>LinkCommandParser</code> determines the <code>add</code> action required. It then proceeds to pass the relevant input to  <code>AddLinkCommandParser</code>.</p>
+</li>
+<li>
+<p><code>AddLinkCommandParser</code> checks for the validity of <code>LINK_URL</code> given by the user and creates the relevant <code>Link</code> and <code>AddLinkCommand</code> objects.</p>
+</li>
+<li>
+<p><code>AddLinkCommand</code> calls <code>Model#getDisplayedModule()</code> to find the required module. If it does not exist or is not currently tracked, <code>AddLinkCommand</code> throws a <code>CommandException</code>. Otherwise, it then proceeds to call <code>TrackedModule#hasLinkTitle(LINK_NAME)</code> to check for an existing <code>Link</code> object with the same <code>LINK_NAME</code>.</p>
+</li>
+<li>
+<p>If such a <code>Link</code> object exists, <code>AddLinkCommand</code> aborts and throws a <code>CommandException</code>. Otherwise, the created <code>Link</code> will be added to the specified <code>TrackedModule</code>.</p>
+</li>
+<li>
+<p>If the operation is successful, a <code>CommandResult</code> with the success message will be returned.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddLinkCommandSequenceDiagram.png" alt="AddLinkCommandSequenceDiagram">
+</div>
+<div class="title">Figure 4. Sequence diagram for add link operation</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddLinkCommandSequenceDiagramExtension.png" alt="AddLinkCommandSequenceDiagramExtension">
+</div>
+<div class="title">Figure 5. Reference of add link to module function from sequence diagram shown above</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p>Aspect: Data structure used for link management</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1: All <code>TrackedModule</code> maintain a <code>ArrayList&lt;Link&gt;</code>. Adding <code>Link</code> objects will add to this <code>ArrayList</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and edit for beginner programmers.</p>
+</li>
+<li>
+<p>Cons: Accessing and editing existing <code>Link</code> might be less efficient. If number of <code>Link</code> objects maintained increases, <code>ArrayList</code> may not be optimal.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Use <code>HashSet&lt;Link&gt;</code> to maintain <code>Link</code> in each <code>TrackedModule</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduces access time, since <code>Link</code> objects can be obtained by giving <code>LINK_TITLE</code>, rather than searching the list linearly for a matching object.</p>
+</li>
+<li>
+<p>Cons: Difficult to add features. Future implmentations may add a <code>Priority</code> feature to <code>Link</code> objects. <code>HashSet</code> does not support any form of sorting and thus may pose a problem.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Solution (current implementation): Adopt alternative 1. Since from a user standpoint, the number of links added to any module should not be too large to affect performance of application.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:55:26 UTC</div></div></div></body></html>
